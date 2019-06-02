@@ -116,26 +116,25 @@
   
   
     
-    
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Yasen Hu">
   <meta property="og:url" content="https://yasenh.github.io/post/sfnd-lidar-object-detection/">
-  <meta property="og:title" content="LiDAR Obstacle Detection | Yasen Hu">
-  <meta property="og:description" content="Segment and cluster point clouds."><meta property="og:image" content="https://yasenh.github.io/img/icon-192.png">
+  <meta property="og:title" content="LiDAR Object Detection | Yasen Hu">
+  <meta property="og:description" content="Segment and cluster point clouds."><meta property="og:image" content="https://yasenh.github.io/post/sfnd-lidar-object-detection/featured.png">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2019-06-01T00:00:00&#43;00:00">
   
-  <meta property="article:modified_time" content="2019-06-01T20:06:51-04:00">
+  <meta property="article:modified_time" content="2019-06-01T22:14:55-04:00">
   
 
   
 
   
 
-  <title>LiDAR Obstacle Detection | Yasen Hu</title>
+  <title>LiDAR Object Detection | Yasen Hu</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -367,25 +366,29 @@
 
 
 
-  
 
-  
-  
-  
-<div class="article-container pt-3">
-  <h1 itemprop="name">LiDAR Obstacle Detection</h1>
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/post/sfnd-lidar-object-detection/featured_huf298ca7cdf99bb6152d568a961fc884c_606783_800x0_resize_lanczos_2.png');"></div>
+  <span class="article-header-caption">LiDAR object detection result</span>
+</div>
 
-  
-  <p class="page-subtitle">Udacity Sensor Fusion Nanodegree Project I</p>
-  
 
-  
-    
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">LiDAR Object Detection</h1>
+
+        
+        <p class="page-subtitle">Udacity Sensor Fusion Nanodegree Project I</p>
+        
+
+        
 
 
 
 <meta content="2019-06-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-<meta content="2019-06-01 20:06:51 -0400 EDT" itemprop="dateModified">
+<meta content="2019-06-01 22:14:55 -0400 EDT" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -421,7 +424,182 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    0 min read
+    1 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/sensor-fusion/">Sensor Fusion</a></span>
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/lidar-object-detection/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+        
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=LiDAR%20Object%20Detection&amp;url=https%3a%2f%2fyasenh.github.io%2fpost%2fsfnd-lidar-object-detection%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fyasenh.github.io%2fpost%2fsfnd-lidar-object-detection%2f"
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fyasenh.github.io%2fpost%2fsfnd-lidar-object-detection%2f&amp;title=LiDAR%20Object%20Detection"
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fyasenh.github.io%2fpost%2fsfnd-lidar-object-detection%2f&amp;title=LiDAR%20Object%20Detection"
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=LiDAR%20Object%20Detection&amp;body=https%3a%2f%2fyasenh.github.io%2fpost%2fsfnd-lidar-object-detection%2f">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/post/sfnd-lidar-object-detection/featured_huf298ca7cdf99bb6152d568a961fc884c_606783_680x500_fill_q90_lanczos_smart1_2.png" itemprop="image" alt="">
+        <span class="article-header-caption">LiDAR object detection result</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">LiDAR Object Detection</h1>
+
+  
+  <p class="page-subtitle">Udacity Sensor Fusion Nanodegree Project I</p>
+  
+
+  
+
+
+
+<meta content="2019-06-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-06-01 22:14:55 -0400 EDT" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Yasen Hu</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Jun 1, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
   </span>
   
 
@@ -482,12 +660,32 @@
 
 </div>
 
-    
+  
 
 
 
 
 
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
 
 
 
@@ -498,6 +696,24 @@
 
 
   
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/lidar-object-detection/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
 </div>
 
 
@@ -506,6 +722,37 @@
 
     <div class="article-style" itemprop="articleBody">
       
+
+<h2 id="introduction">Introduction</h2>
+
+<p><img src="demo.gif" alt="Scenario 1 demo" /></p>
+
+<p>LiDAR data is stored in a format called Point Cloud Data (PCD for short). A PCD file is a list of (x,y,z) Cartesian coordinates along with intensity values. The animation above shows the PCD of a city block with parked cars, and a passing van. Intensity values are being shown as different colors.</p>
+
+<p>In this project, we will be be working on processing point cloud data to find obstacles with the help of PCL. <a href="http://pointclouds.org/" target="_blank">Point Cloud Library (<strong>PCL</strong>)</a>  is an open source C++ library for 2D/3D image and point cloud processing. We will use it to visualize data, render shapes, and take advantage of some built in functions to process point cloud data. Built in PCL functions that will be used later in this project are Segmentation, Extraction, and Clustering.</p>
+
+<p>You can find the <a href="https://github.com/yasenh/SFND_Lidar_Obstacle_Detection" target="_blank">C++ Implementation</a> on my GitHub.</p>
+
+<h2 id="point-cloud-segmentation">Point Cloud Segmentation</h2>
+
+<p>Segment the filtered cloud into two parts, road and obstacles.</p>
+
+<h2 id="clustering-obstacles">Clustering Obstacles</h2>
+
+<p>Cluster the obstacle cloud.</p>
+
+<h2 id="generate-bounding-boxes">Generate bounding boxes</h2>
+
+<p>Find bounding boxes for the clusters</p>
+
+<h2 id="challenge">Challenge</h2>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313" target="_blank">Udacity Sensor Fusion Nanodegree Program</a></li>
+</ol>
+
     </div>
 
     
