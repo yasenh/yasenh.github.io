@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sensor Fusion on Yasen Hu</title>
+    <link>https://yasenh.github.io/tags/sensor-fusion/</link>
+    <description>Recent content in Sensor Fusion on Yasen Hu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>{year}</copyright>
+    <lastBuildDate>Sat, 01 Jun 2019 19:55:39 -0400</lastBuildDate>
+    
+	<atom:link href="https://yasenh.github.io/tags/sensor-fusion/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lidar Object Detection</title>
+      <link>https://yasenh.github.io/project/lidar-object-detection/</link>
+      <pubDate>Sat, 01 Jun 2019 19:55:39 -0400</pubDate>
+      
+      <guid>https://yasenh.github.io/project/lidar-object-detection/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>LiDAR Obstacle Detection</title>
+      <link>https://yasenh.github.io/post/sfnd-lidar-object-detection/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yasenh.github.io/post/sfnd-lidar-object-detection/</guid>
+      <description>Segment and cluster point clouds.</description>
+    </item>
+    
+  </channel>
+</rss>

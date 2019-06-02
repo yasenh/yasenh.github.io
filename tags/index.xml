@@ -7,10 +7,55 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 01 Jun 2019 19:55:39 -0400</lastBuildDate>
     
 	<atom:link href="https://yasenh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Demo</title>
+      <link>https://yasenh.github.io/tags/demo/</link>
+      <pubDate>Sat, 01 Jun 2019 19:55:39 -0400</pubDate>
+      
+      <guid>https://yasenh.github.io/tags/demo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sensor Fusion</title>
+      <link>https://yasenh.github.io/tags/sensor-fusion/</link>
+      <pubDate>Sat, 01 Jun 2019 19:55:39 -0400</pubDate>
+      
+      <guid>https://yasenh.github.io/tags/sensor-fusion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kd Tree</title>
+      <link>https://yasenh.github.io/tags/kd-tree/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yasenh.github.io/tags/kd-tree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LiDAR</title>
+      <link>https://yasenh.github.io/tags/lidar/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yasenh.github.io/tags/lidar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RANSAC</title>
+      <link>https://yasenh.github.io/tags/ransac/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yasenh.github.io/tags/ransac/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Source Themes</title>
@@ -18,33 +63,6 @@
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://yasenh.github.io/tags/source-themes/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deep Learning</title>
-      <link>https://yasenh.github.io/tags/deep-learning/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Demo</title>
-      <link>https://yasenh.github.io/tags/demo/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/tags/demo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Academic</title>
-      <link>https://yasenh.github.io/tags/academic/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/tags/academic/</guid>
       <description></description>
     </item>
     

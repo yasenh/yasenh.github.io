@@ -7,10 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
-    <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://yasenh.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lidar Object Detection</title>
+      <link>https://yasenh.github.io/project/lidar-object-detection/</link>
+      <pubDate>Sat, 01 Jun 2019 19:55:39 -0400</pubDate>
+      
+      <guid>https://yasenh.github.io/project/lidar-object-detection/</guid>
+      <description>Test</description>
+    </item>
+    
+    <item>
+      <title>LiDAR Obstacle Detection</title>
+      <link>https://yasenh.github.io/post/sfnd-lidar-object-detection/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://yasenh.github.io/post/sfnd-lidar-object-detection/</guid>
+      <description>Segment and cluster point clouds.</description>
+    </item>
     
     <item>
       <title>An example preprint / working paper</title>
@@ -28,15 +45,6 @@
       
       <guid>https://yasenh.github.io/post/jupyter/</guid>
       <description>Learn how to blog in Academic using Jupyter notebooks</description>
-    </item>
-    
-    <item>
-      <title>Academic: the website builder for Hugo</title>
-      <link>https://yasenh.github.io/post/getting-started/</link>
-      <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/post/getting-started/</guid>
-      <description>Create a beautifully simple website in under 10 minutes.</description>
     </item>
     
     <item>
@@ -60,7 +68,7 @@
     <item>
       <title></title>
       <link>https://yasenh.github.io/authors/admin/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yasenh.github.io/authors/admin/</guid>
       <description>Yasen is a perception systems engineer at the General Motors Research &amp;amp; Development. His research interests include perception and sensor fusion.</description>
