@@ -27,10 +27,12 @@
   
     
   
-  <meta name="description" content="Perception Systems Engineer">
+  <meta name="description" content="What is Homogeneous Coordinates Why Homogeneous Coordinates Let&rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation techniques include: scale, rotate and translate.
+Scale $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} k_x &amp; 0 \ 0 &amp; k_y \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$
+Rotate $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} \cos\theta &amp; -\sin\theta \ \sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/tags/ransac/">
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/homogeneous-coordinates/">
 
   
 
@@ -104,15 +106,12 @@
   
 
   
-  <link rel="alternate" href="/tags/ransac/index.xml" type="application/rss+xml" title="Yasen Hu">
-  <link rel="feed" href="/tags/ransac/index.xml" type="application/rss+xml" title="Yasen Hu">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://yasenh.github.io/tags/ransac/">
+  <link rel="canonical" href="https://yasenh.github.io/post/homogeneous-coordinates/">
 
   
   
@@ -124,19 +123,23 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Yasen Hu">
-  <meta property="og:url" content="https://yasenh.github.io/tags/ransac/">
-  <meta property="og:title" content="RANSAC | Yasen Hu">
-  <meta property="og:description" content="Perception Systems Engineer"><meta property="og:image" content="https://yasenh.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://yasenh.github.io/post/homogeneous-coordinates/">
+  <meta property="og:title" content="Homogeneous Coordinates | Yasen Hu">
+  <meta property="og:description" content="What is Homogeneous Coordinates Why Homogeneous Coordinates Let&rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation techniques include: scale, rotate and translate.
+Scale $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} k_x &amp; 0 \ 0 &amp; k_y \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$
+Rotate $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} \cos\theta &amp; -\sin\theta \ \sin\theta &amp; \cos\theta \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$"><meta property="og:image" content="https://yasenh.github.io/img/icon-192.png">
   <meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-06-01T00:00:00&#43;00:00">
+  <meta property="article:published_time" content="2019-06-09T20:28:56-04:00">
+  
+  <meta property="article:modified_time" content="2019-06-09T21:10:19-04:00">
   
 
   
 
   
 
-  <title>RANSAC | Yasen Hu</title>
+  <title>Homogeneous Coordinates | Yasen Hu</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
@@ -353,6 +356,136 @@
 </nav>
 
 
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">Homogeneous Coordinates</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-06-09 20:28:56 -0400 EDT" itemprop="datePublished">
+<meta content="2019-06-09 21:10:19 -0400 EDT" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Yasen Hu</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Jun 9, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/computer-vision/">Computer Vision</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=&amp;url="
+         target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u="
+         target="_blank" rel="noopener">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=&amp;title="
+         target="_blank" rel="noopener">
+        <i class="fab fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=&amp;body=">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
 
 
 
@@ -367,40 +500,154 @@
 
 
   
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h2 id="what-is-homogeneous-coordinates">What is Homogeneous Coordinates</h2>
+
+<h2 id="why-homogeneous-coordinates">Why Homogeneous Coordinates</h2>
+
+<p>Let&rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation techniques include: scale, rotate and translate.</p>
+
+<h4 id="scale">Scale</h4>
+
+<p>$$
+\begin{bmatrix} x_1 \ y_1 \end{bmatrix}
+= \begin{bmatrix} k_x &amp; 0 \ 0 &amp; k_y \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \end{bmatrix}
+$$</p>
+
+<h4 id="rotate">Rotate</h4>
+
+<p>$$
+\begin{bmatrix} x_1 \ y_1 \end{bmatrix}
+= \begin{bmatrix} \cos\theta &amp; -\sin\theta \ \sin\theta &amp; \cos\theta \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \end{bmatrix}
+$$</p>
+
+<h4 id="translate">Translate</h4>
+
+<p>$$
+\begin{bmatrix} x_1 \ y_1 \end{bmatrix}
+= \begin{bmatrix} x_0 \ y_0 \end{bmatrix} + \begin{bmatrix} t_x \ t_y \end{bmatrix}
+$$</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313" target="_blank">Udacity Sensor Fusion Nanodegree Program</a></li>
+<li><a href="http://www.songho.ca/math/homogeneous/homogeneous.html" target="_blank">Homogeneous Coordinates</a></li>
+<li><a href="https://blog.csdn.net/saltriver/article/details/79680364" target="_blank">为什么要引入齐次坐标</a></li>
+</ol>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/computer-vision/">Computer Vision</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
 
   
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">RANSAC</h1>
-
   
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  
-  
-  <div>
-    <h2><a href="/post/sfnd-lidar-object-detection/">LiDAR Object Detection</a></h2>
-    <div class="article-style">
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
       
-      Segment and cluster point clouds.
-      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://yasenh.github.io/">Yasen Hu</a></h5>
+      <h6 class="card-subtitle">Perception Systems Engineer</h6>
+      <p class="card-text" itemprop="description">My research interests include perception and sensor fusion.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/yasenh" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  
 
-  
 
-</div>
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
 <div class="container">
   <footer class="site-footer">
   

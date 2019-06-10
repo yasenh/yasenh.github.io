@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Yasen Hu</title>
-    <link>https://yasenh.github.io/post/</link>
-    <description>Recent content in Posts on Yasen Hu</description>
+    <title>Computer Vision on Yasen Hu</title>
+    <link>https://yasenh.github.io/categories/computer-vision/</link>
+    <description>Recent content in Computer Vision on Yasen Hu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
+    <lastBuildDate>Sun, 09 Jun 2019 20:28:56 -0400</lastBuildDate>
     
-	<atom:link href="https://yasenh.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://yasenh.github.io/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,24 +21,6 @@
       <description>What is Homogeneous Coordinates Why Homogeneous Coordinates Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation techniques include: scale, rotate and translate.
 Scale $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} k_x &amp;amp; 0 \ 0 &amp;amp; k_y \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$
 Rotate $$ \begin{bmatrix} x_1 \ y_1 \end{bmatrix} = \begin{bmatrix} \cos\theta &amp;amp; -\sin\theta \ \sin\theta &amp;amp; \cos\theta \end{bmatrix} \begin{bmatrix} x_0 \ y_0 \end{bmatrix} $$</description>
-    </item>
-    
-    <item>
-      <title>LiDAR Object Detection</title>
-      <link>https://yasenh.github.io/post/sfnd-lidar-object-detection/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/post/sfnd-lidar-object-detection/</guid>
-      <description>Segment and cluster point clouds.</description>
-    </item>
-    
-    <item>
-      <title>Display Jupyter Notebooks with Academic</title>
-      <link>https://yasenh.github.io/post/jupyter/</link>
-      <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/post/jupyter/</guid>
-      <description>Learn how to blog in Academic using Jupyter notebooks</description>
     </item>
     
   </channel>
