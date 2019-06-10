@@ -145,6 +145,50 @@ $$&lt;/p&gt;
 = \begin{bmatrix} x_0 \ y_0 \end{bmatrix} + \begin{bmatrix} t_x \ t_y \end{bmatrix}
 $$&lt;/p&gt;
 
+&lt;p&gt;Both scale and rotate operation are represented by matrix multiplication. So for example, we can scale up the image size by twice, then rotate 45 degree, and finally scale down to half of the size by multiplying three matrices:
+$$
+\begin{bmatrix} x_1 \ y_1 \end{bmatrix}
+= \begin{bmatrix} 2 &amp;amp; 0 \ 0 &amp;amp; 2 \end{bmatrix}
+\begin{bmatrix} \cos\frac{\pi}{4} &amp;amp; -\sin\frac{\pi}{4} \
+\sin\frac{\pi}{4} &amp;amp; \cos\frac{\pi}{4} \end{bmatrix}
+\begin{bmatrix} 0.5 &amp;amp; 0 \ 0 &amp;amp; 0.5 \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \end{bmatrix}
+$$&lt;/p&gt;
+
+&lt;p&gt;However, what if we want to do the translate operation at the same time? We note that translate operation is represented by matrix addition rather then multiplication. So we cannot combine the translation with scaling and rotation within a simple matrix multiplication equation.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;So what should be do?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here we will introduce Homogeneous Coordinates, which will increase the dimension of current coordinate. In our case, 2D points will become 3D points in homogeneous coordinates.&lt;/p&gt;
+
+&lt;h4 id=&#34;scale-in-homogeneous-coordinates&#34;&gt;Scale in Homogeneous Coordinates&lt;/h4&gt;
+
+&lt;p&gt;$$
+\begin{bmatrix} x_1 \ y_1 \ 1 \end{bmatrix}
+= \begin{bmatrix} k_x &amp;amp; 0 &amp;amp; 0 \ 0 &amp;amp; k_y &amp;amp; 0 \ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \ 1 \end{bmatrix}
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;rotate-in-homogeneous-coordinates&#34;&gt;Rotate in Homogeneous Coordinates&lt;/h4&gt;
+
+&lt;p&gt;$$
+\begin{bmatrix} x_1 \ y_1 \ 1 \end{bmatrix}
+= \begin{bmatrix} \cos\theta &amp;amp; -\sin\theta &amp;amp; 0 \ \sin\theta &amp;amp; \cos\theta &amp;amp; 0 \ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \ 1 \end{bmatrix}
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;translate-in-homogeneous-coordinates&#34;&gt;Translate in Homogeneous Coordinates&lt;/h4&gt;
+
+&lt;p&gt;$$
+\begin{bmatrix} x_1 \ y_1 \ 1 \end{bmatrix}
+= \begin{bmatrix} 1 &amp;amp; 0 &amp;amp; t_x \ 0 &amp;amp; 1 &amp;amp; t_y \ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
+\begin{bmatrix} x_0 \ y_0 \ 1 \end{bmatrix}
+$$&lt;/p&gt;
+
+&lt;p&gt;So now in homogeneous coordinates, we are able to do scaling, rotation and translation by simple matrix multiplication, which is much more convenient for us when we want to combine these operations together.&lt;/p&gt;
+
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 
 &lt;ol&gt;
