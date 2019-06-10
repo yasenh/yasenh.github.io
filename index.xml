@@ -116,11 +116,31 @@
       <guid>https://yasenh.github.io/post/homogeneous-coordinates/</guid>
       <description>
 
-&lt;h2 id=&#34;what-is-homogeneous-coordinates&#34;&gt;What is Homogeneous Coordinates&lt;/h2&gt;
+&lt;h2 id=&#34;what-is-homogeneous-coordinates&#34;&gt;What is Homogeneous Coordinates?&lt;/h2&gt;
 
-&lt;h2 id=&#34;why-homogeneous-coordinates&#34;&gt;Why Homogeneous Coordinates&lt;/h2&gt;
+&lt;p&gt;In mathematics, &lt;strong&gt;homogeneous coordinates&lt;/strong&gt; or &lt;strong&gt;projective coordinates&lt;/strong&gt; is a system of coordinates used in projective geometry, as Cartesian coordinates used in Euclidean geometry. It is a coordinate system that algebraically treats all points in the projective plane (both Euclidean and ideal) equally.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation techniques include: scale, rotate and translate.&lt;/p&gt;
+&lt;p&gt;Suppose we have a point $(x,y)$ in the Cartesian coordinates. To represent this same point in the homogeneous coordinates, we simply add a third coordinate of 1 at the end: $(x, y, 1)$.&lt;/p&gt;
+
+&lt;p&gt;If the homogeneous coordinates of a point are multiplied by a non-zero scalar then the resulting coordinates represent the same point.&lt;/p&gt;
+
+&lt;p&gt;For example, the point (1.4, -1.6) in Cartesian coordinates is the same as:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(1.4, -1.6, 1)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;or (2.8, -3.2, 2)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;or (0.7, -0.8, 0.5)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;or even (1400, -1600, 1000) in homogeneous coordinates.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;why-homogeneous-coordinates&#34;&gt;Why Homogeneous Coordinates?&lt;/h2&gt;
+
+&lt;p&gt;One of the advantages of homogeneous coordinates is that they allow for an easy combination of multiple transformations by concatenating several matrix-vector multiplications.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
 
 &lt;h4 id=&#34;scale&#34;&gt;Scale&lt;/h4&gt;
 
@@ -161,7 +181,7 @@ $$&lt;/p&gt;
 &lt;p&gt;So what should be do?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Here we will introduce Homogeneous Coordinates, which will increase the dimension of current coordinate. In our case, 2D points will become 3D points in homogeneous coordinates.&lt;/p&gt;
+&lt;p&gt;Here we will introduce Homogeneous Coordinates, which will increase the dimension of current coordinates. In our case, 2D points will become 3D points in homogeneous coordinates.&lt;/p&gt;
 
 &lt;h4 id=&#34;scale-in-homogeneous-coordinates&#34;&gt;Scale in Homogeneous Coordinates&lt;/h4&gt;
 
@@ -187,13 +207,48 @@ $$&lt;/p&gt;
 \begin{bmatrix} x_0 \\\ y_0 \\\ 1 \end{bmatrix}
 $$&lt;/p&gt;
 
-&lt;p&gt;So now in homogeneous coordinates, we are able to do scaling, rotation and translation by simple matrix multiplication, which is much more convenient for us when we want to combine these operations together.&lt;/p&gt;
+&lt;p&gt;So now in homogeneous coordinates, we are able to do scaling, rotation and translation by simple matrix multiplication instead of applying all the transformations separately, which is much more convenient for us when we want to combine these operations together.&lt;/p&gt;
+
+&lt;h2 id=&#34;example-lidar-to-camera-point-projection&#34;&gt;Example - LiDAR to Camera Point Projection&lt;/h2&gt;
+
+&lt;p&gt;In order to convert from Homogeneous coordinates $(x, y, w)$ to Cartesian coordinates, we simply divide $x$ and $y$ by $w$;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;./homogeneous01.png&#34; alt=&#34;homogeneous-to-Cartesian&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s give an example, our goal here is to  project points from 3D space onto the image plane.&lt;/p&gt;
+
+&lt;p&gt;In addition to the intrinsic camera parameters which make up the geometry of the projection, we need additional information about the position and alignment of both camera and LiDAR in a common reference coordinate system. To move from Lidar to camera involves translation and rotation operations, which we need to apply to every 3D point. So our goal here is to simplify the notation with which we can express the projection. Using a linear transformation (or mapping), 3D points could be represented by a vector and operations such as translation, rotation, scaling and perspective projection could be represented as matrices by which the vector is multiplied. The problem with the projection equations we have so far is that they involve a division by Z, which makes them non-linear and thus prevents us from transforming them into the much more convenient matrix-vector form.&lt;/p&gt;
+
+&lt;p&gt;A way to avoid this problem is to change the coordinate system and go from the original Euclidean coordinate system to a form called the &lt;em&gt;Homogenous coordinate system&lt;/em&gt;. Moving back and forth between both coordinate systems is a non-linear operation, but once we are in the homogenous coordinate system, projective transformations such as the one given above become linear and can thus be expressed as simple matrix-vector multiplications. Transformations between both coordinate systems work as shown in the following figure.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;TODO: FINISH THIS SECTION and add pics for each section and subtitle&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;for (auto &amp;amp; lidarPoint : lidarPoints) {
+    // assemble vector for matrix-vector-multiplication
+    X.at&amp;lt;double&amp;gt;(0, 0) = lidarPoint.x;
+    X.at&amp;lt;double&amp;gt;(1, 0) = lidarPoint.y;
+    X.at&amp;lt;double&amp;gt;(2, 0) = lidarPoint.z;
+    X.at&amp;lt;double&amp;gt;(3, 0) = 1;
+
+    // project LiDAR point into camera
+    Y = P_rect_xx * R_rect_xx * RT * X;
+    cv::Point pt;
+    // pixel coordinates
+    pt.x = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(0, 0) / Y.at&amp;lt;double&amp;gt;(0, 2)); 
+    pt.y = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(1, 0) / Y.at&amp;lt;double&amp;gt;(0, 2));
+}
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34; target=&#34;_blank&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34; target=&#34;_blank&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34; target=&#34;_blank&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34; target=&#34;_blank&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
