@@ -4,12 +4,12 @@
     <title>RANSAC on Yasen Hu</title>
     <link>https://yasenh.github.io/tags/ransac/</link>
     <description>Recent content in RANSAC on Yasen Hu</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
     <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://yasenh.github.io/tags/ransac/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://yasenh.github.io/tags/ransac/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,7 +18,38 @@
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://yasenh.github.io/post/sfnd-lidar-object-detection/</guid>
-      <description>Segment and cluster point clouds.</description>
+      <description>
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;demo.gif&#34; alt=&#34;Scenario 1 demo&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;LiDAR data is stored in a format called Point Cloud Data (PCD for short). A PCD file is a list of (x,y,z) Cartesian coordinates along with intensity values. The animation above shows the PCD of a city block with parked cars, and a passing van. Intensity values are being shown as different colors.&lt;/p&gt;
+
+&lt;p&gt;In this project, we will be be working on processing point cloud data to find obstacles with the help of PCL. &lt;a href=&#34;http://pointclouds.org/&#34; target=&#34;_blank&#34;&gt;Point Cloud Library (&lt;strong&gt;PCL&lt;/strong&gt;)&lt;/a&gt;  is an open source C++ library for 2D/3D image and point cloud processing. We will use it to visualize data, render shapes, and take advantage of some built in functions to process point cloud data. Built in PCL functions that will be used later in this project are Segmentation, Extraction, and Clustering.&lt;/p&gt;
+
+&lt;p&gt;You can find the &lt;a href=&#34;https://github.com/yasenh/SFND_Lidar_Obstacle_Detection&#34; target=&#34;_blank&#34;&gt;C++ Implementation&lt;/a&gt; on my GitHub.&lt;/p&gt;
+
+&lt;h2 id=&#34;point-cloud-segmentation&#34;&gt;Point Cloud Segmentation&lt;/h2&gt;
+
+&lt;p&gt;Segment the filtered cloud into two parts, road and obstacles.&lt;/p&gt;
+
+&lt;h2 id=&#34;clustering-obstacles&#34;&gt;Clustering Obstacles&lt;/h2&gt;
+
+&lt;p&gt;Cluster the obstacle cloud.&lt;/p&gt;
+
+&lt;h2 id=&#34;generate-bounding-boxes&#34;&gt;Generate bounding boxes&lt;/h2&gt;
+
+&lt;p&gt;Find bounding boxes for the clusters&lt;/p&gt;
+
+&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
     </item>
     
   </channel>

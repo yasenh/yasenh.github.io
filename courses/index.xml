@@ -4,11 +4,11 @@
     <title>Courses on Yasen Hu</title>
     <link>https://yasenh.github.io/courses/</link>
     <description>Recent content in Courses on Yasen Hu</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
     
-	<atom:link href="https://yasenh.github.io/courses/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://yasenh.github.io/courses/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
