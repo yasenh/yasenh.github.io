@@ -191,8 +191,8 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
     Y = intrinsicMatrix * extrinsicMatrix * X;
     cv::Point pt;
     // pixel coordinates
-    pt.x = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(0, 0) / Y.at&amp;lt;double&amp;gt;(0, 2)); 
-    pt.y = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(1, 0) / Y.at&amp;lt;double&amp;gt;(0, 2));
+    pt.x = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(0, 0) / Y.at&amp;lt;double&amp;gt;(2, 0)); 
+    pt.y = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(1, 0) / Y.at&amp;lt;double&amp;gt;(2, 0));
 }
 &lt;/code&gt;&lt;/pre&gt;
 
