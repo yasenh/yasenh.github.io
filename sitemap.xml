@@ -24,25 +24,48 @@
   
   <url>
     <loc>https://yasenh.github.io/</loc>
-    <lastmod>2019-06-12T22:23:19-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/authors/</loc>
-    <lastmod>2019-06-12T22:23:19-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/</loc>
-    <lastmod>2019-06-12T22:23:19-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/project/</loc>
-    <lastmod>2019-06-11T21:57:53-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/project/sort-cpp/</loc>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/tags/</loc>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/tags/tracking/</loc>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/categories/tracking/</loc>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -55,12 +78,6 @@
   <url>
     <loc>https://yasenh.github.io/categories/sensor-fusion/</loc>
     <lastmod>2019-06-11T21:57:53-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/tags/</loc>
-    <lastmod>2019-06-12T22:23:19-04:00</lastmod>
     <priority>0</priority>
   </url>
   
