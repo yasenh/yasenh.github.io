@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Yasen Hu">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Use KD-Tree to speed up Nearest Neighbor (NN) search for point cloud clustering">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/kd-tree/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.35387d828cf63a93f82a2d63a578781f.css">
+
+  
+
+  
+  
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-140650607-1', 'auto');
+      
+      ga('require', 'eventTracker');
+      ga('require', 'outboundLinkTracker');
+      ga('require', 'urlChangeTracker');
+      ga('send', 'pageview');
+    </script>
+    <script async src="//www.google-analytics.com/analytics.js"></script>
+    
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/autotrack/2.4.1/autotrack.js" integrity="sha512-HUmooslVKj4m6OBu0OgzjXXr+QuFYy/k7eLI5jdeEy/F4RSgMn6XRWRGkFi5IFaFgy7uFTkegp3Z0XnJf3Jq+g==" crossorigin="anonymous"></script>
+    
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://yasenh.github.io/post/kd-tree/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Yasen Hu">
+  <meta property="og:url" content="https://yasenh.github.io/post/kd-tree/">
+  <meta property="og:title" content="KD-Tree | Yasen Hu">
+  <meta property="og:description" content="Use KD-Tree to speed up Nearest Neighbor (NN) search for point cloud clustering"><meta property="og:image" content="https://yasenh.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://yasenh.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-18T21:54:54-04:00">
+  
+  <meta property="article:modified_time" content="2019-07-18T23:01:29-04:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>KD-Tree | Yasen Hu</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Yasen Hu</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">KD-Tree</h1>
+
+  
+
+  
+    
+
+
+
+<meta content="2019-07-18 21:54:54 -0400 EDT" itemprop="datePublished">
+<meta content="2019-07-18 23:01:29 -0400 EDT" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Yasen Hu</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    <time>Jul 18, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/algorithm/">Algorithm</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/post/kd-tree/&amp;text=KD-Tree" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/post/kd-tree/&amp;t=KD-Tree" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=KD-Tree&amp;body=https://yasenh.github.io/post/kd-tree/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/post/kd-tree/&amp;title=KD-Tree" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=KD-Tree%20https://yasenh.github.io/post/kd-tree/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/post/kd-tree/&amp;title=KD-Tree" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h2 id="introduction">Introduction</h2>
+
+<p><img src="./2.png" alt="" /></p>
+
+<p>A KD-Tree  (short for <em>k-dimensional tree</em>) is a binary tree that splits points between alternating axes. Every leaf node is a <em>k</em>-dimensional point. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.</p>
+
+<h2 id="problem-statement">Problem Statement</h2>
+
+<p><img src="./1.png" alt="Fig 1-point clouds" /></p>
+
+<p>Let&rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using <a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank">DBSCAN</a>.</p>
+
+<p>The basic idea is to associate groups of points by how close together they are. In other words, we need to implement a <em>nearest neighbor search</em>.</p>
+
+<h2 id="brute-force-nearest-neighbor-search">Brute-force Nearest Neighbor search</h2>
+
+<p><img src="./10.png" alt="Brute-force" /></p>
+
+<p>The most naive neighbor search implementation involves the brute-force computation of distances between all pairs of points in the dataset: for $N$ samples in $D$ dimensions, this approach scales as $O(DN^2)$. Efficient brute-force neighbors searches can be very competitive for small data samples. However, as the number of samples $N$ grows, the brute-force approach quickly becomes infeasible.</p>
+
+<h2 id="building-kd-tree">Building KD-Tree</h2>
+
+<p>The key idea of building KD-Tree is to insert points alternating comparison between dimensions. As one moves down the tree, one cycles through the axes used to select the splitting planes.</p>
+
+<p>For example, in a 3-dimensional tree, the root would have an <em>x</em>-aligned plane, the root&rsquo;s children would both have <em>y</em>-aligned planes, the root&rsquo;s grandchildren would all have <em>z</em>-aligned planes, and so on.</p>
+
+<p>The canonical method of <em>k</em>-d tree construction has the following steps:</p>
+
+<ol>
+<li>First inserted point becomes root of the tree.</li>
+<li>Select axis based on depth so that axis cycles through all valid values. In our example: axis = depth % 2 , where depth of root is 0, and axis = 0/1 means choose x/y axis accordingly.</li>
+<li>Sort point list by axis and choose median as pivot element. If less branch left, if greater branch right.</li>
+<li>Traverse tree until node is empty(nullptr), then assign point to node.</li>
+<li>Repeat step 2-4 recursively until all of the points processed.</li>
+</ol>
+
+<h3 id="example">Example</h3>
+
+<p>Let&rsquo;s start to build KD-Tree with an example.  First of all, we randomly generate 6 points in 2D as our dataset:</p>
+
+<pre><code class="language-c++">(2,3), (5,4), (9,6), (4,7), (8,1), (7,2)
+</code></pre>
+
+<p><img src="./3.png" alt="KD-1" /></p>
+
+<p>So first of all, we would first insert (7,2) since it is the median along the x axis.</p>
+
+<p><img src="./4.png" alt="KD-1" /></p>
+
+<p><img src="./5.png" alt="KD-1" /></p>
+
+<p><img src="./6.png" alt="KD-1" /></p>
+
+<p><img src="./7.png" alt="KD-1" /></p>
+
+<p><img src="./8.png" alt="KD-1" /></p>
+
+<p><img src="./9.png" alt="KD-1" /></p>
+
+<p>The next point to be inserted would be (5, 4), the median of the three points for y. This would be followed by (-5.7,6.3) the lower median between the two for x, and then finally (-6.3,8.4). This ordering will allow the tree to more evenly split the region space and improve search time later.</p>
+
+<h2 id="balanced-tree">Balanced Tree</h2>
+
+<p>Having a balanced tree that evenly splits regions improves the search time for finding points later. To improve the tree, insert points that alternate between splitting the x region and the y region evenly.</p>
+
+<h2 id="usage-advantage">Usage (Advantage?)</h2>
+
+<p>By grouping points into regions in a KD-Tree, you can avoid calculating distance for possibly thousands of points just because you know they are not even considered in a close enough region.</p>
+
+<p>The idea is you associate groups of points by how close together they are. To do a nearest neighbor search efficiently, you use a KD-Tree data structure which, on average, speeds up your look up time from $O(n)$ to $O(log(n))$. This is because the tree allows you to better break up your search space. By grouping points into regions in a KD-Tree, you can avoid calculating distance for possibly thousands of points just because you know they are not even considered in a close enough region.</p>
+
+<h2 id="利用kd-tree查找元素">利用KD-Tree查找元素</h2>
+
+<p>KD Tree建好之后，接下来就要利用KD Tree对元素进行查找了。查找的方式在BST的基础上又增加了一些难度，如下：
+\1. 从根节点开始，根据目标在分割特征中是否小于或大于当前节点，向左或向右移动。</p>
+
+<p>\2. 一旦算法到达叶节点，它就将节点点保存为“当前最佳”。</p>
+
+<p>\3. 回溯，即从叶节点再返回到根节点</p>
+
+<p>\4. 如果当前节点比当前最佳节点更接近，那么它就成为当前最好的。</p>
+
+<p>\5. 如果目标距离当前节点的父节点所在的将数据集分割为两份的超平面的距离更接近，说明当前节点的兄弟节点所在的子树有可能包含更近的点。因此需要对这个兄弟节点递归执行1-4步。</p>
+
+<p><strong>问题1： 每次对子空间的划分时，怎样确定在哪个维度上进行划分？</strong></p>
+
+<p>最简单的方法就是轮着来，即如果这次选择了在第i维上进行数据划分，那下一次就在第j(j≠i)维上进行划分，例如：j = (i mod k) + 1。想象一下我们切豆腐时，先是竖着切一刀，切成两半后，再横着来一刀，就得到了很小的方块豆腐。</p>
+
+<p>可是“轮着来”的方法是否可以很好地解决问题呢？再次想象一下，我们现在要切的是一根木条，按照“轮着来”的方法先是竖着切一刀，木条一分为二，干净利落，接下来就是再横着切一刀，这个时候就有点考验刀法了，如果木条的直径（横截面）较大，还可以下手，如果直径较小，就没法往下切了。因此，如果K维数据的分布像上面的豆腐一样，“轮着来”的切分方法是可以奏效，但是如果K维度上数据的分布像木条一样，“轮着来”就不好用了。因此，还需要想想其他的切法。</p>
+
+<p>如果一个K维数据集合的分布像木条一样，那就是说明这K维数据在木条较长方向代表的维度上，这些数据的分布散得比较开，数学上来说，就是这些数据在该维度上的方差（invariance）比较大，换句话说，正因为这些数据在该维度上分散的比较开，我们就更容易在这个维度上将它们划分开，因此，这就引出了我们选择维度的另一种方法：最大方差法（max invarince），即每次我们选择维度进行划分时，都选择具有最大方差维度。</p>
+
+<p><strong>问题2：在某个维度上进行划分时，怎样确保在这一维度上的划分得到的两个子集合的数量尽量相等，即左子树和右子树中的结点个数尽量相等？</strong></p>
+
+<p>假设当前我们按照最大方差法选择了在维度i上进行K维数据集S的划分，此时我们需要在维度i上将K维数据集合S划分为两个子集合A和B，子集合A中的数据在维度i上的值都小于子集合B中。首先考虑最简单的划分法，即选择第一个数作为比较对象（即划分轴，pivot），S中剩余的其他所有K维数据都跟该pivot在维度i上进行比较，如果小于pivot则划A集合，大于则划入B集合。把A集合和B集合分别看做是左子树和右子树，那么我们在构造一个二叉树的时候，当然是希望它是一棵尽量平衡的树，即左右子树中的结点个数相差不大。而A集合和B集合中数据的个数显然跟pivot值有关，因为它们是跟pivot比较后才被划分到相应的集合中去的。好了，现在的问题就是确定pivot了。给定一个数组，怎样才能得到两个子数组，这两个数组包含的元素个数差不多且其中一个子数组中的元素值都小于另一个子数组呢？方法很简单，找到数组中的中值（即中位数，median），然后将数组中所有元素与中值进行比较，就可以得到上述两个子数组。同样，在维度i上进行划分时，pivot就选择该维度i上所有数据的中值，这样得到的两个子集合数据个数就基本相同了</p>
+
+<p>建好树了之后，如何迅速找到一个坐标最邻近的点呢，这很简单，观察kd-tree的建树过程我们发现，每个节点相当与把空间分成了两个部分，分别对应着左子树的点集和右子树的点集，那么对于一个坐标，一定属于左边的部分或者右边的部分，也就是可以进入左子树和右子树，我们最后一定能到达一个叶子节点，我们只要沿途比较该坐标与沿途的节点的距离，取最小值即可。</p>
+
+<p>但问题并非这么容易，当一个坐标属于左半部分，是否和它最近的点一定在左半部分呢？答案是：否。</p>
+
+<p><img src="/home/yasen/Downloads/t.jpg" alt="" /></p>
+
+<p>比如我要问上图那个黄色的被我画残掉的点最邻近的点最近的点是哪个，我们发现，即使它是处在红线左侧，可是和它最临近的点却是出现在红线右侧，也就是我们还是得去右子树找一下，那什么情况下我们才需要到右子树找呢？结论是以这个坐标为圆心，和左边得到的最近的点的距离为半径画圆，如果这个圆越过了红线，如上图所示，那么就是说最邻近点有可能出现在它的另一棵子树上，那么我们就有必要到另外一棵子树上去寻找。</p>
+
+<p>在以上的算法中，当我们已经找到了比切分线更近的点时，就不需要继续搜索切分线另一边的点了，因为那些只会更远。于是，通过把整个空间进行分割并以树状结构进行记录，我们只需要在问题点附近的一些区域进行搜寻便可以找到最近的数据点，节省了大量的计算。</p>
+
+<h2 id="todo">TODO</h2>
+
+<p>Compare 2D vs 3D search for point clouds in SFND dataset, so 2D should be faster because the Z axis has small standard deviation, so 2D is actually better.</p>
+
+<p>So we should explain here how to choose axis.</p>
+
+<blockquote>
+<p>选取方差最大的特征作为分割特征 (为什么方差最大的适合作为特征呢？ 因为方差大，数据相对“分散”，选取该特征来对数据集进行分割，数据散得更“开”一些。)</p>
+</blockquote>
+
+<h2 id="c-implementation">C++ Implementation</h2>
+
+<h2 id="complexity">Complexity</h2>
+
+<p>如果特征的维度是 D，样本的数量是N，那么一般来讲 kd 树算法的复杂度是O(D log(N))，相比于穷算的 O(DN) 省去了非常多的计算量。</p>
+
+<h2 id="related-variations">Related variations:</h2>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Quadtree" target="_blank">Quadtree</a>, a space-partitioning structure that splits in two dimensions simultaneously, so that each node has 4 children</li>
+<li><a href="https://en.wikipedia.org/wiki/Octree" target="_blank">Octree</a>, a space-partitioning structure that splits in three dimensions simultaneously, so that each node has 8 children</li>
+<li><a href="https://en.wikipedia.org/wiki/Ball_tree" target="_blank">Ball tree</a>, a multi-dimensional space partitioning useful for nearest neighbor search</li>
+<li><a href="https://en.wikipedia.org/wiki/R-tree" target="_blank">R-tree</a> and <a href="https://en.wikipedia.org/wiki/Bounding_interval_hierarchy" target="_blank">bounding interval hierarchy</a>, structure for partitioning objects rather than points, with overlapping regions</li>
+<li><a href="https://en.wikipedia.org/wiki/Vantage-point_tree" target="_blank">Vantage-point tree</a>, a variant of a <em>k</em>-d tree that uses hyperspheres instead of hyperplanes to partition the data</li>
+</ul>
+
+<p>Problems that can be addressed with <em>k</em>-d trees:</p>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Recursive_partitioning" target="_blank">Recursive partitioning</a>, a technique for constructing statistical decision trees that are similar to <em>k</em>-d trees</li>
+<li><a href="https://en.wikipedia.org/wiki/Klee's_measure_problem" target="_blank">Klee&rsquo;s measure problem</a>, a problem of computing the area of a union of rectangles, solvable using <em>k</em>-d trees</li>
+<li><a href="https://en.wikipedia.org/wiki/Guillotine_problem" target="_blank">Guillotine problem</a>, a problem of finding a <em>k</em>-d tree whose cells are large enough to contain a given set of rectangles</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/K-d_tree" target="_blank"><em>k</em>-d tree Wikipedia</a></li>
+<li><a href="https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313" target="_blank">Udacity Sensor Fusion Nanodegree Program</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/neighbors.html" target="_blank">sklearn - Nearest Neighbor Algorithms</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/45346117" target="_blank">KD Tree的原理及Python实现</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/22557068" target="_blank">kd 树算法之思路篇</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23966698" target="_blank">kd 树算法之详细篇</a></li>
+</ol>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/algorithm/">Algorithm</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://yasenh.github.io/">Yasen Hu</a></h5>
+      <h6 class="card-subtitle">Perception Systems Engineer</h6>
+      <p class="card-text" itemprop="description">My research interests include perception and sensor fusion.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/yasenh" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.9881d84a7dbd704179a08d7d1d079225.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    2019 &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
