@@ -29,6 +29,18 @@
   </url>
   
   <url>
+    <loc>https://yasenh.github.io/categories/algorithm/</loc>
+    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/tags/algorithm/</loc>
+    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://yasenh.github.io/authors/</loc>
     <lastmod>2019-07-18T23:01:29-04:00</lastmod>
     <priority>0</priority>
@@ -36,6 +48,17 @@
   
   <url>
     <loc>https://yasenh.github.io/categories/</loc>
+    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/post/kd-tree/</loc>
+    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/tags/</loc>
     <lastmod>2019-07-18T23:01:29-04:00</lastmod>
     <priority>0</priority>
   </url>
@@ -49,12 +72,6 @@
   <url>
     <loc>https://yasenh.github.io/project/sort-cpp/</loc>
     <lastmod>2019-06-24T23:42:47-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/tags/</loc>
-    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
