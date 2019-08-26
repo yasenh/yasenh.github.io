@@ -21,10 +21,6 @@
 
 &lt;p&gt;From  &lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;wikipedia&lt;/a&gt;, the  &lt;strong&gt;Hungarian method&lt;/strong&gt; is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &amp;quot;Hungarian method&amp;quot; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.&lt;/p&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;There are two ways to formulate the problem: as a &lt;em&gt;matrix&lt;/em&gt; or as a &lt;em&gt;bipartite graph&lt;/em&gt;. We will focus on bipartite graph solution.&lt;/p&gt;
-&lt;/blockquote&gt;
-
 &lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
 
 &lt;h3 id=&#34;bipartite-graph&#34;&gt;Bipartite Graph&lt;/h3&gt;

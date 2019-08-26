@@ -7,6 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
+    <lastBuildDate>Sat, 10 Aug 2019 15:56:26 -0400</lastBuildDate>
     
 	    <atom:link href="https://yasenh.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,10 +21,6 @@
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;From  &lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;wikipedia&lt;/a&gt;, the  &lt;strong&gt;Hungarian method&lt;/strong&gt; is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &amp;quot;Hungarian method&amp;quot; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;There are two ways to formulate the problem: as a &lt;em&gt;matrix&lt;/em&gt; or as a &lt;em&gt;bipartite graph&lt;/em&gt;. We will focus on bipartite graph solution.&lt;/p&gt;
-&lt;/blockquote&gt;
 
 &lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
 
@@ -741,16 +738,6 @@ rm Untitled.md
 &lt;/div&gt;
 
 &lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;code and math&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://yasenh.github.io/authors/admin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yasenh.github.io/authors/admin/</guid>
-      <description>&lt;p&gt;Yasen is a perception systems engineer at the General Motors Research &amp;amp; Development. His research interests include perception and sensor fusion.&lt;/p&gt;
 </description>
     </item>
     
