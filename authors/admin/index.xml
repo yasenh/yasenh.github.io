@@ -7,10 +7,249 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>{year}</copyright>
-    <lastBuildDate>Sat, 10 Aug 2019 15:56:26 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 14:07:20 -0400</lastBuildDate>
     
 	    <atom:link href="https://yasenh.github.io/authors/admin/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hungarian Algorithm II</title>
+      <link>https://yasenh.github.io/post/hungarian-algorithm-2/</link>
+      <pubDate>Sun, 25 Aug 2019 14:07:20 -0400</pubDate>
+      
+      <guid>https://yasenh.github.io/post/hungarian-algorithm-2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;There are three workers: Paul, Dave, and Chris. One of them has to clean the bathroom, another sweep the floors and the third washes the windows, but they each demand different pay for the various tasks. The problem is to find the &lt;strong&gt;lowest-cost&lt;/strong&gt; way to assign the jobs.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Clean Bathroom&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Sweep floors&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Wash windows&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Paul&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Dave&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$2&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;Chris&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$3&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The Hungarian method, when applied to the above table, would give the minimum cost: this is $\textit{\$}$6, achieved by having Paul clean the bathroom($\textit{\$}$2), Dave sweep the floors($\textit{\$}$2), and Chris wash the windows($\textit{\$}$2).&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;There are two ways to formulate the problem: as a &lt;em&gt;matrix&lt;/em&gt; or as a &lt;em&gt;bipartite graph&lt;/em&gt;. The problem is easier to describe if we formulate it with a bipartite graph.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We have a &lt;strong&gt;complete bipartite graph&lt;/strong&gt; $G=(S, T, E)$ with $n$ worker vertices $(S)$ and $n$ job vertices $(T)$, and each edge $(E)$ has a non-negative cost $c(i,j)$. We want to find a &lt;strong&gt;complete matching with a minimum total cost&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+
+&lt;h3 id=&#34;complete-bipartite-graph&#34;&gt;Complete Bipartite Graph&lt;/h3&gt;
+
+&lt;p&gt;From  &lt;a href=&#34;https://en.wikipedia.org/wiki/Complete_bipartite_graph&#34;&gt;wikipedia&lt;/a&gt;, a &lt;strong&gt;complete bipartite graph&lt;/strong&gt; is a special kind of bipartite graph whose vertices can be partitioned into two subsets $V_1$ and $V_2$ such that no edge has both endpoints in the same subset, and every possible edge that could connect vertices in different subsets is part of the graph. That is, it is a bipartite graph $(V_1, V_2, E)$ such that for every two vertices $v_1 \in V_1$ and $v_2 \in V_2$, $v_1$ and $v_2$ is an edge in &lt;em&gt;E&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./1.png&#34; alt=&#34;Complete Bipartite Graph&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;complete-matching&#34;&gt;Complete Matching&lt;/h3&gt;
+
+&lt;p&gt;The definition comes from the &lt;a href=&#34;http://www.amazon.in/Theory-Applications-Engineering-Computer-Science/dp/8120301455&#34;&gt;book by Narsingh Deo&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;In a bipartite graph with vertex partition $V_1$ and $V_2$,  where $|V_1| \leq |V_2|$, a &lt;strong&gt;complete matching of vertices in set $V_1$ into $V_2$&lt;/strong&gt; is a matching in which there is one edge incident with every vertex in $V_1$. In other words, every vertex in $V_1$ is matched against some vertex in $V_2$.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Every complete matching is maximum matching.&lt;/li&gt;
+&lt;li&gt;Maximum matching may not necessary to be complete matching.&lt;/li&gt;
+&lt;li&gt;However complete matching equals to maximum matching in &lt;strong&gt;complete bipartite graph&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note that, complete matching becomes &lt;strong&gt;perfect matching&lt;/strong&gt; if $|V_1| = |V_2|$&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./2.png&#34; alt=&#34;Complete Matching&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;vertex-labelling&#34;&gt;Vertex Labelling&lt;/h3&gt;
+
+&lt;p&gt;For each vertex we assign some number called a label $l$, and let’s call this labelling &lt;strong&gt;feasible&lt;/strong&gt; if it satisfies the following condition:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[l(x) + l(y) \geq \text{weight(x, y)}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;In other words, the sum of the labels of the vertices on both sides of a given edge are greater than or equal to the weight of that edge.&lt;/p&gt;
+
+&lt;h3 id=&#34;equality-subgraph&#34;&gt;Equality Subgraph&lt;/h3&gt;
+
+&lt;p&gt;Let assume $G^{*} = (V,E^*)$ is a spanning subgraph of $G$, where $G^*$ includes all vertices from $G$.&lt;/p&gt;
+
+&lt;p&gt;If in $G^*$ , all of the edges $E^*$ satisfy the following condition:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[l(x) + l(y) == \text{weight(x, y)}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we call $G^*$ as an &lt;strong&gt;equality subgraph&lt;/strong&gt; of $G$. Which means $G^*$ only includes those edges from the bipartite matching which allow the vertices to be &lt;strong&gt;perfectly feasible&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./3.png&#34; alt=&#34;Equality Subgraph&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;kmkuhnmunkres-algorithm&#34;&gt;KM(Kuhn–Munkres) Algorithm&lt;/h2&gt;
+
+&lt;p&gt;KM(Kuhn–Munkres) algorithm provides the connection between equality subgraphs and maximum-weighted matching:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;$G^*$ is an equality subgraph of bipartite graph $G$.&lt;/p&gt;
+
+&lt;p&gt;If $M^*$ is a complete matching in $G^*$, then $M^*$ is a maximum-weighted matching in $G$.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;KM(Kuhn–Munkres) algorithm has following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Initialize feasible vertex labelling, where &lt;span  class=&#34;math&#34;&gt;\(l(x) = \min (w(x, y)), (x, y) \in E \)&lt;/span&gt; and &lt;span  class=&#34;math&#34;&gt;\(l(y) = 0\)&lt;/span&gt;.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Try to find complete(maximum) matching $M$ by using Hungarian algorithm in the equality subgraph.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;If $M$ does not exist, then update the vertex labelling to include others edges. The idea is to iterate augment path and add all visited vertices on each side into sets $S$ and $T$, then update the vertex labelling:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[\Delta = \min_{x \in S, y \in T} ( l(x) + l(y) - w(x, y)) \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ L(v) = \begin{cases} L(v) - \Delta &amp; \text{if }v \in S \\ L(v) + \Delta &amp; \text{if }v \in T \\ L(v) &amp; \text{otherwise } \end{cases} \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;Repeat step 2 and step 3, until we find complete matching.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my &lt;a href=&#34;http://localhost:1313/post/hungarian-algorithm-1/&#34;&gt;previous post.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;proof&#34;&gt;Proof&lt;/h3&gt;
+
+&lt;p&gt;Let&#39;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[l(x) + l(y) == \text{weight(x, y)}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember that the vertices remain &lt;strong&gt;perfectly feasible&lt;/strong&gt; during calculation, so that the sum of the edge weights always equals to the sum of all vertices labelling value:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ W(M^{*}) = \sum_{e \in M^{*}} W(e) = \sum_{ v \in V(G) } L(v) \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;$M$ can be any complete matching in the original graph $G$, we have feasible labelling:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[l(x) + l(y) \geq \text{weight(x, y)}\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Then we can proof that:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ W(M) = \sum_{ e \in M } W(e) \leq \sum_{ v \in V(G) } L(v) = W(M^{*}) \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Thus the problem of finding an optimal assignment is reduced to the problem of finding a
+feasible vertex labelling whose equality subgraph contains a complete matching.&lt;/p&gt;
+
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+
+&lt;p&gt;So first of all, the vertex labelling on left side equals to the maximum weights from connected edges, and right side is 0 at the beginning.&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./3.png&#34; alt=&#34;Equality Subgraph&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;OK, so the equality subgraph looks like:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./4.png&#34; alt=&#34;ES-1&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;And obviously, we are able to match vertex $A_1$ with $B_3$. However, we cannot find an augment path when trying to match $A_2$, which indicates that we have to update equality subgraph by modifying vertex labelling. Note that $S = (A_1, A_2)$ and $T = (B_3)$ at this point.&lt;/p&gt;
+
+&lt;p&gt;Let&#39;s go back to the original graph, and we can easily get the minimal delta value is:&lt;/p&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[ \Delta = 1 \]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./5.png&#34; alt=&#34;&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;After update:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./6.png&#34; alt=&#34;update-1&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Then what&#39;s the new equality subgraph looks like?&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./7.png&#34; alt=&#34;ES-2&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Again, we notice that there are 2 matches: $A_1$ to $B_3$ and $A_2$ to $B_1$, unfortunately we are not able to find any matching for $A_3$. In current stage, $S = (A_3)$ and $T = ()$.&lt;/p&gt;
+
+&lt;p&gt;Similarly, &lt;span  class=&#34;math&#34;&gt;\( \Delta = 1 \)&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./8.png&#34; alt=&#34;delta-2&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;After update $A_3$:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./9.png&#34; alt=&#34;update-2&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;New equality subgraph:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./10.png&#34; alt=&#34;ES-3&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;We trying to find augment path from A3 -&amp;gt; B3 -&amp;gt; A1 -&amp;gt; B1 -&amp;gt; A2, but failed because it ends up with a matched vertex $A_2$. $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$. Let&#39;s go back to original graph one more time 😃&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./11.png&#34; alt=&#34;&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;Updating $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$:&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./12.png&#34; alt=&#34;update-3&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;And from the graph above, we should notice that it includes all edges from the original graph. We will find the final maximum-weighted matching if we can find the complete matching from current graph!&lt;/p&gt;
+
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;./13.png&#34; alt=&#34;&#34;&gt;&lt;/figure&gt;&lt;/p&gt;
+
+&lt;p&gt;We apply Hungarian algorithm one more time, and the final complete matching will be: $A_1$ to $B_1$, $A_2$ to $B_2$ and $A_3$ to $B_3$, with its maximum cost of $9 = 3 + 1 + 5$.&lt;/p&gt;
+
+&lt;h2 id=&#34;application-experience&#34;&gt;Application Experience&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Kuhn-Munkres algorithm deals with the maximum-weighted matching problem, what if I need to calculate minimal-weighted matching?&lt;br&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[w(x, y) = -w(x, y), \forall (x, y) \in E\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;What if I want to calculate the maximum-product-weighted matching?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;span  class=&#34;math&#34;&gt;\[w(x, y) = log(w(x, y)), \forall (x, y) \in E\]&lt;/span&gt;&lt;/p&gt;
+
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;What if the graph is not Complete Bipartite Graph? Answer: assign missing edges as weights of 0.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;Hungarian algorithm Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/wenruo/p/5264235.html&#34;&gt;KM算法详解+模板&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/62981901&#34;&gt;带你入门多目标跟踪（三）匈牙利算法&amp;amp;KM算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm&#34;&gt;topcoder - assignment problem and hungarian algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/kuangbin/archive/2012/08/19/2646535.html&#34;&gt;Kuhn-Munkres算法(二分图最大权匹配)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/sixdaycoder/article/details/47720471&#34;&gt;二分图的最佳完美匹配——KM算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.iteye.com/blog/dsqiu-1689505&#34;&gt;二分图大讲堂——彻底搞定最大匹配数（最小覆盖数）、最大独立数、最小路径覆盖、带权最优匹配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://acm.taifua.com/archives/uva1411.html&#34;&gt;UVA1411 Ants - 二分图最优匹配 / 最小权值匹配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23562855&#34;&gt;图论在计算广告中的应用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=Q03gdAhILB4&#34;&gt;DM-64-Graphs Complete Matching&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://dlib.net/max_cost_assignment_ex.cpp.html&#34;&gt;dlib - max cost assignment&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>Hungarian Algorithm I</title>
