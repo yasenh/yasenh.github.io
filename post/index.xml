@@ -12,6 +12,57 @@
     
     
     <item>
+      <title>NVIDIA JetPack Flashing Issues Q&amp;A</title>
+      <link>https://yasenh.github.io/post/nvidia-jetson-1/</link>
+      <pubDate>Wed, 06 Nov 2019 22:52:31 -0500</pubDate>
+      
+      <guid>https://yasenh.github.io/post/nvidia-jetson-1/</guid>
+      <description>
+
+&lt;h2 id=&#34;jetson-usb-device-mode-issues&#34;&gt;Jetson usb-device mode issues&lt;/h2&gt;
+
+&lt;h4 id=&#34;q1-how-to-verify-if-usb-device-mode-is-working&#34;&gt;&lt;em&gt;Q1: How to verify if usb-device mode is working?&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;A: After flashing and Jetson device booting up, usb-device mode is up . The expected results at this stage are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;192.168.55.1 is assigned to Jetson device, and&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;192.168.55.100 is assigned to host machine.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;q2-usb-device-mode-is-already-up-and-running-however-192-168-55-100-not-assigned-on-host-why&#34;&gt;&lt;em&gt;Q2: usb-device mode is already up and running, however, 192.168.55.100 not assigned on host. Why?&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;A: One possible reason is that usb-ethernet network interface is disabled on host machine? To enable it,&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Disconnect and Connect the USB cable connecting the jetson and Host-PC, and check the dmesg log.
+You might see a log similar to this:
+[107833.388835] cdc_ether 2-2:1.5 usb1: register &amp;lsquo;cdc_ether&amp;rsquo; at usb-0000:00:1 4.0-2, CDC Ethernet Device, 72:40:f7:72:c9:fa&lt;/li&gt;
+&lt;li&gt;Next go to Settings-&amp;gt;Network and check all the wired connections for the same MAC-address.&lt;/li&gt;
+&lt;li&gt;In the top right corner there will be an option to enable it.&lt;/li&gt;
+&lt;li&gt;Next follow the procedure as provided by the SDK manager to install the SDK components&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&#34;q3-i-tried-thousands-of-ways-but-the-sdk-manager-still-reports-could-not-detect-nvidia-jetson-device-connected-to-usb-what-can-i-do&#34;&gt;&lt;em&gt;Q3: I tried thousands of ways, but the SDK Manager still reports &amp;ldquo;could not detect nvidia jetson device connected to usb&amp;rdquo;, what can I do?&lt;/em&gt;&lt;/h4&gt;
+
+&lt;p&gt;A: You can also use wired cable to connect your host machine and Jetson board, and then install everything. Just make sure they are assigned to appropriate IP address:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;192.168.55.10 (not 1) is assigned to Jetson device, and&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;192.168.55.100 is assigned to host machine.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://devtalk.nvidia.com/default/topic/1050477/jetson-tx2/jetpack-4-2-flashing-issues-and-how-to-resolve/&#34; target=&#34;_blank&#34;&gt;NVIDIA Forums - JetPack 4.2 Flashing Issues and how to resolve&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Hungarian Algorithm II</title>
       <link>https://yasenh.github.io/post/hungarian-algorithm-2/</link>
       <pubDate>Sun, 25 Aug 2019 14:07:20 -0400</pubDate>
