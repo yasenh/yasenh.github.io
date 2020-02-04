@@ -1,74 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Computer Vision on Yasen Hu</title>
+    <title>Computer Vision | Yasen Hu</title>
     <link>https://yasenh.github.io/categories/computer-vision/</link>
-    <description>Recent content in Computer Vision on Yasen Hu</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>{year}</copyright>
-    <lastBuildDate>Sun, 09 Jun 2019 20:28:56 -0400</lastBuildDate>
-    
-	    <atom:link href="https://yasenh.github.io/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
-    
+      <atom:link href="https://yasenh.github.io/categories/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computer Vision</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Sun, 09 Jun 2019 20:28:56 -0400</lastBuildDate>
+    <image>
+      <url>https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_300x300_fit_lanczos_2.png</url>
+      <title>Computer Vision</title>
+      <link>https://yasenh.github.io/categories/computer-vision/</link>
+    </image>
     
     <item>
       <title>Homogeneous Coordinates</title>
       <link>https://yasenh.github.io/post/homogeneous-coordinates/</link>
       <pubDate>Sun, 09 Jun 2019 20:28:56 -0400</pubDate>
-      
       <guid>https://yasenh.github.io/post/homogeneous-coordinates/</guid>
-      <description>
-
-&lt;h2 id=&#34;what-is-homogeneous-coordinates&#34;&gt;What is Homogeneous Coordinates?&lt;/h2&gt;
-
+      <description>&lt;h2 id=&#34;what-is-homogeneous-coordinates&#34;&gt;What is Homogeneous Coordinates?&lt;/h2&gt;
 &lt;p&gt;In mathematics, &lt;strong&gt;homogeneous coordinates&lt;/strong&gt; or &lt;strong&gt;projective coordinates&lt;/strong&gt; is a system of coordinates used in projective geometry, as Cartesian coordinates used in Euclidean geometry. It is a coordinate system that algebraically treats all points in the projective plane (both Euclidean and ideal) equally.&lt;/p&gt;
-
 &lt;p&gt;Suppose we have a point $(x,y)$ in the Cartesian coordinates. To represent this same point in the homogeneous coordinates, we simply add a third coordinate of 1 at the end: $(x, y, 1)$.&lt;/p&gt;
-
 &lt;p&gt;If the homogeneous coordinates of a point are multiplied by a non-zero scalar then the resulting coordinates represent the same point.&lt;/p&gt;
-
 &lt;p&gt;For example, the point (1.4, -1.6) in Cartesian coordinates is the same as:&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;(1.4, -1.6, 1)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;or (2.8, -3.2, 2)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;or (0.7, -0.8, 0.5)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;or even (1400, -1600, 1000) in homogeneous coordinates.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(1.4, -1.6, 1)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;or (2.8, -3.2, 2)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;or (0.7, -0.8, 0.5)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;or even (1400, -1600, 1000) in homogeneous coordinates.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;h2 id=&#34;why-using-homogeneous-coordinates&#34;&gt;Why Using Homogeneous Coordinates?&lt;/h2&gt;
-
 &lt;p&gt;One of the advantages of homogeneous coordinates is that they allow for an easy combination of multiple transformations by concatenating several matrix-vector multiplications.&lt;/p&gt;
-
 &lt;p&gt;Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
-
 &lt;h4 id=&#34;scale&#34;&gt;Scale&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
 = \begin{bmatrix} k_x &amp;amp; 0 \\\ 0 &amp;amp; k_y \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;h4 id=&#34;rotate&#34;&gt;Rotate&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
 = \begin{bmatrix} \cos\theta &amp;amp; -\sin\theta \\\ \sin\theta &amp;amp; \cos\theta \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;h4 id=&#34;translate&#34;&gt;Translate&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
 = \begin{bmatrix} x_0 \\\ y_0 \end{bmatrix} + \begin{bmatrix} t_x \\\ t_y \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;p&gt;Both scale and rotate operation are represented by matrix multiplication. So for example, we can scale up the image size by twice, then rotate 45 degree, and finally scale down to half of the size by multiplying three matrices:
 $$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
@@ -78,97 +65,77 @@ $$
 \begin{bmatrix} 0.5 &amp;amp; 0 \\\ 0 &amp;amp; 0.5 \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;p&gt;However, what if we want to do the translate operation at the same time? We note that translate operation is represented by matrix addition rather then multiplication. So we cannot combine the translation with scaling and rotation within a simple matrix multiplication equation.&lt;/p&gt;
-
 &lt;blockquote&gt;
 &lt;p&gt;So what should be do?&lt;/p&gt;
 &lt;/blockquote&gt;
-
 &lt;p&gt;Here we will introduce &lt;strong&gt;Homogeneous Coordinates&lt;/strong&gt;, which will increase the dimension of current coordinates. In our case, 2D points will become 3D points in homogeneous coordinates.&lt;/p&gt;
-
 &lt;h4 id=&#34;scale-in-homogeneous-coordinates&#34;&gt;Scale in Homogeneous Coordinates&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \\\ 1 \end{bmatrix}
 = \begin{bmatrix} k_x &amp;amp; 0 &amp;amp; 0 \\\ 0 &amp;amp; k_y &amp;amp; 0 \\\ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \\\ 1 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;h4 id=&#34;rotate-in-homogeneous-coordinates&#34;&gt;Rotate in Homogeneous Coordinates&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \\\ 1 \end{bmatrix}
 = \begin{bmatrix} \cos\theta &amp;amp; -\sin\theta &amp;amp; 0 \\\ \sin\theta &amp;amp; \cos\theta &amp;amp; 0 \\\ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \\\ 1 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;h4 id=&#34;translate-in-homogeneous-coordinates&#34;&gt;Translate in Homogeneous Coordinates&lt;/h4&gt;
-
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \\\ 1 \end{bmatrix}
 = \begin{bmatrix} 1 &amp;amp; 0 &amp;amp; t_x \\\ 0 &amp;amp; 1 &amp;amp; t_y \\\ 0 &amp;amp; 0 &amp;amp; 1 \end{bmatrix}
 \begin{bmatrix} x_0 \\\ y_0 \\\ 1 \end{bmatrix}
 $$&lt;/p&gt;
-
 &lt;p&gt;So now in homogeneous coordinates, we are able to do scaling, rotation and translation by simple matrix multiplication instead of applying all the transformations separately, which is much more convenient for us when we want to combine these operations together.&lt;/p&gt;
-
-&lt;h2 id=&#34;example-lidar-to-camera-point-projection&#34;&gt;Example - LiDAR to Camera Point Projection&lt;/h2&gt;
-
+&lt;h2 id=&#34;example---lidar-to-camera-point-projection&#34;&gt;Example - LiDAR to Camera Point Projection&lt;/h2&gt;
 &lt;p&gt;In order to convert from Homogeneous coordinates $(x, y, w)$ to Cartesian coordinates, we simply divide $x$ and $y$ by $w$;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;./homogeneous01.png&#34; alt=&#34;homogeneous-to-Cartesian&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;./homogeneous01.png&#34; alt=&#34;homogeneous-to-Cartesian&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Let&amp;rsquo;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.&lt;/p&gt;
-
 &lt;p&gt;In addition to the intrinsic camera parameters which make up the geometry of the projection, we need additional information about the position and alignment of both camera and LiDAR in a common reference coordinate system. To move from LiDAR to camera involves translation and rotation operations, which we need to apply to every 3D point. So our goal here is to simplify the notation with which we can express the projection. Using a linear transformation (or mapping), 3D points could be represented by a vector and operations such as translation, rotation, scaling and perspective projection could be represented as matrices by which the vector is multiplied.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;./8.png&#34; alt=&#34;LiDAR projection&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;./8.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Once we are in the homogeneous coordinate system, projective transformations become linear and can thus be expressed as simple matrix-vector multiplications.&lt;/p&gt;
-
 &lt;p&gt;$$
 \overbrace{
 \begin{bmatrix} u \\\ v \\\ 1 \end{bmatrix}
-}^\text{2D Camera}&lt;br /&gt;
+}^\text{2D Camera} &lt;br&gt;
 = \overbrace{
-     \begin{bmatrix}
-     1  &amp;amp;  0  &amp;amp; x_0 \\&lt;br /&gt;
-     0  &amp;amp;  1  &amp;amp; y_0 \\&lt;br /&gt;
-     0  &amp;amp;  0  &amp;amp; 1
-     \end{bmatrix}
-     \times
-     \begin{bmatrix}
-     f_x &amp;amp;  0  &amp;amp; 0 \\&lt;br /&gt;
-     0  &amp;amp; f_y &amp;amp; 0 \\&lt;br /&gt;
-     0  &amp;amp;  0  &amp;amp; 1
-     \end{bmatrix}
-     \times
-     \begin{bmatrix}
-     1  &amp;amp;  s/f_x  &amp;amp; 0 \\&lt;br /&gt;
-     0  &amp;amp;    1    &amp;amp; 0 \\&lt;br /&gt;
-     0  &amp;amp;    0    &amp;amp; 1
-     \end{bmatrix}
+\begin{bmatrix}
+1  &amp;amp;  0  &amp;amp; x_0 \\\&lt;br&gt;
+0  &amp;amp;  1  &amp;amp; y_0 \\\&lt;br&gt;
+0  &amp;amp;  0  &amp;amp; 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+f_x &amp;amp;  0  &amp;amp; 0 \\\&lt;br&gt;
+0  &amp;amp; f_y &amp;amp; 0 \\\&lt;br&gt;
+0  &amp;amp;  0  &amp;amp; 1
+\end{bmatrix}
+\times
+\begin{bmatrix}
+1  &amp;amp;  s/f_x  &amp;amp; 0 \\\&lt;br&gt;
+0  &amp;amp;    1    &amp;amp; 0 \\\&lt;br&gt;
+0  &amp;amp;    0    &amp;amp; 1
+\end{bmatrix}
 }^\text{Intrinsic Matrix}
-     \times
-\overbrace{&lt;br /&gt;
-     \begin{bmatrix}
-     I &amp;amp; \mathbf{t}
-     \end{bmatrix}
-     \times
-     \begin{bmatrix}
-     R &amp;amp; 0 \\&lt;br /&gt;
-     0 &amp;amp; 1
-     \end{bmatrix}
-}^\text{Extrinsic Matrix}&lt;br /&gt;
-     \times
-     \overbrace{
-     \begin{bmatrix} X \\\ Y \\\ Z \\\ 1 \end{bmatrix}
-     }^\text{3D LiDAR}&lt;br /&gt;
+\times
+\overbrace{  &lt;br&gt;
+\begin{bmatrix}
+I &amp;amp; \mathbf{t}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+R &amp;amp; 0 \\\&lt;br&gt;
+0 &amp;amp; 1
+\end{bmatrix}
+}^\text{Extrinsic Matrix}  &lt;br&gt;
+\times
+\overbrace{
+\begin{bmatrix} X \\\ Y \\\ Z \\\ 1 \end{bmatrix}
+}^\text{3D LiDAR}&lt;br&gt;
 $$&lt;/p&gt;
-
 &lt;h4 id=&#34;c-implementation&#34;&gt;C++ Implementation:&lt;/h4&gt;
-
 &lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// LiDAR point in homogeneous coordinates
 cv::Mat X(4, 1, cv::DataType&amp;lt;double&amp;gt;::type);
 // Camera pixel in homogeneous coordinates
@@ -187,19 +154,16 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
     pt.y = static_cast&amp;lt;int&amp;gt;(Y.at&amp;lt;double&amp;gt;(1, 0) / Y.at&amp;lt;double&amp;gt;(2, 0));
 }
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;img src=&#34;./draggedimage-17.png&#34; alt=&#34;LiDAR projection&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;./draggedimage-17.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
-
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34; target=&#34;_blank&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34; target=&#34;_blank&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34; target=&#34;_blank&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34; target=&#34;_blank&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34; target=&#34;_blank&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34; target=&#34;_blank&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

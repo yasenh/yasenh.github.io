@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Authors on Yasen Hu</title>
+    <title>Authors | Yasen Hu</title>
     <link>https://yasenh.github.io/authors/</link>
-    <description>Recent content in Authors on Yasen Hu</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
-    <language>en-us</language>
-    <copyright>{year}</copyright>
-    <lastBuildDate>Sun, 25 Aug 2019 14:07:20 -0400</lastBuildDate>
-    
-	    <atom:link href="https://yasenh.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+      <atom:link href="https://yasenh.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Sun, 25 Aug 2019 14:07:20 -0400</lastBuildDate>
     <item>
       <title></title>
       <link>https://yasenh.github.io/authors/admin/</link>
       <pubDate>Sun, 25 Aug 2019 14:07:20 -0400</pubDate>
-      
       <guid>https://yasenh.github.io/authors/admin/</guid>
       <description>&lt;p&gt;Yasen is a perception systems engineer at the General Motors Research &amp;amp; Development. His research interests include perception and sensor fusion.&lt;/p&gt;
 </description>
@@ -26,7 +19,6 @@
       <title>Robert Ford</title>
       <link>https://yasenh.github.io/authors/robert-ford/</link>
       <pubDate>Tue, 01 Sep 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://yasenh.github.io/authors/robert-ford/</guid>
       <description></description>
     </item>

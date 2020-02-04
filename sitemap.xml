@@ -4,27 +4,32 @@
   
   <url>
     <loc>https://yasenh.github.io/courses/example/example1/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/courses/example/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2018-09-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/courses/example/example2/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2019-05-05T00:00:00+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/talk/example/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/talk/</loc>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/</loc>
-    <lastmod>2019-11-06T22:52:31-05:00</lastmod>
+    <lastmod>2030-06-01T13:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,203 +38,197 @@
   </url>
   
   <url>
+    <loc>https://yasenh.github.io/post/</loc>
+    <lastmod>2019-11-06T22:52:31-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://yasenh.github.io/authors/admin/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/algorithm/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/algorithm/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/authors/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/post/hungarian-algorithm-2/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/</loc>
-    <lastmod>2019-09-29T22:26:10-04:00</lastmod>
+    <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/post/hungarian-algorithm-1/</loc>
-    <lastmod>2019-08-25T23:24:36-04:00</lastmod>
+    <lastmod>2019-08-10T15:56:26-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/post/kd-tree/</loc>
-    <lastmod>2019-07-23T20:52:03-04:00</lastmod>
+    <lastmod>2019-07-18T21:54:54-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/project/</loc>
-    <lastmod>2019-06-24T23:42:47-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/project/sort-cpp/</loc>
-    <lastmod>2019-06-24T23:42:47-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/tracking/</loc>
-    <lastmod>2019-06-24T23:42:47-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/tracking/</loc>
-    <lastmod>2019-06-24T23:42:47-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/categories/sensor-fusion/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/sensor-fusion/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-06-11T21:51:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/categories/sensor-fusion/</loc>
+    <lastmod>2019-06-11T21:51:42-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/project/unscented-kalman-filter/</loc>
-    <lastmod>2019-06-11T21:57:53-04:00</lastmod>
+    <lastmod>2019-06-11T21:51:42-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/computer-vision/</loc>
-    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <lastmod>2019-06-09T20:28:56-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/computer-vision/</loc>
-    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <lastmod>2019-06-09T20:28:56-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/post/homogeneous-coordinates/</loc>
-    <lastmod>2019-07-18T23:01:29-04:00</lastmod>
+    <lastmod>2019-06-09T20:28:56-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/project/lidar-object-detection/</loc>
-    <lastmod>2019-06-01T22:31:25-04:00</lastmod>
+    <lastmod>2019-06-01T19:55:39-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/kd-tree/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/lidar/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/post/sfnd-lidar-object-detection/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/tags/ransac/</loc>
-    <lastmod>2019-08-11T22:15:20-04:00</lastmod>
+    <lastmod>2019-04-17T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/publication_types/3/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/publication/preprint/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/publication_types/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/tags/source-themes/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/post/jupyter/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/slides/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/slides/example/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/publication_types/2/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/publication/journal-article/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/authors/robert-ford/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/publication_types/1/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/publication/conference-paper/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/courses/</loc>
-    <lastmod>2019-05-20T20:47:57-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yasenh.github.io/post/</loc>
-    <lastmod>2019-05-06T17:54:11+01:00</lastmod>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/publication/</loc>
-    <lastmod>2019-05-06T17:54:11+01:00</lastmod>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yasenh.github.io/talk/</loc>
-    <lastmod>2019-05-06T17:54:11+01:00</lastmod>
+    <loc>https://yasenh.github.io/tags/source-themes/</loc>
+    <lastmod>2019-04-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/post/jupyter/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/slides/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/slides/example/</loc>
+    <lastmod>2019-02-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/publication_types/2/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/publication/journal-article/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/authors/robert-ford/</loc>
+    <lastmod>2015-09-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/publication_types/1/</loc>
+    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/publication/conference-paper/</loc>
+    <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/courses/</loc>
   </url>
   
 </urlset>
