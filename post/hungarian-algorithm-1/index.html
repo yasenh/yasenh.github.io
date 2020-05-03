@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.7.0">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
 
   
 
@@ -54,7 +54,7 @@
   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -66,8 +66,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -218,13 +218,15 @@
       dataLayer.push(arguments);
   }
 
-  function trackOutboundLink(url) {
+  function trackOutboundLink(url, target) {
     gtag('event', 'click', {
          'event_category': 'outbound',
          'event_label': url,
          'transport_type': 'beacon',
          'event_callback': function () {
-           document.location = url;
+           if (target !== '_blank') {
+             document.location = url;
+           }
          }
     });
     console.debug("Outbound link clicked: " + url);
@@ -234,7 +236,7 @@
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);  
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
   }
 
   gtag('js', new Date());
@@ -293,8 +295,6 @@
 
 
 
-
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -322,7 +322,7 @@
     "name": "Yasen Hu",
     "logo": {
       "@type": "ImageObject",
-      "url": "img/https://yasenh.github.io/"
+      "url": "https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_192x192_fit_lanczos_2.png"
     }
   },
   "description": "Unweighted bipartite graph maximum matching"
@@ -382,6 +382,14 @@
 
 
   
+
+
+
+
+
+
+  
+
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
@@ -586,11 +594,8 @@
   <div>
     
 
-
-
   
   <span><a href="/authors/admin/">Yasen Hu</a></span>
-
   </div>
   
   
@@ -651,10 +656,12 @@
 
     <div class="article-style">
       <h2 id="introduction">Introduction</h2>
-<p>From  <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">wikipedia</a>, the  <strong>Hungarian method</strong> is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &ldquo;Hungarian method&rdquo; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.</p>
+<p>From  
+<a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank" rel="noopener">wikipedia</a>, the  <strong>Hungarian method</strong> is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &ldquo;Hungarian method&rdquo; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.</p>
 <h2 id="prerequisite">Prerequisite</h2>
 <h3 id="bipartite-graph">Bipartite Graph</h3>
-<p>From <a href="https://en.wikipedia.org/wiki/Bipartite_graph">wikipedia</a>, a <strong>bipartite graph</strong> (or <strong>bigraph</strong>) is a graph whose vertices can be divided into two disjoint and independent sets <em><strong>U</strong></em> and <em><strong>V</strong></em> such that every edge connects a vertex in <em><strong>U</strong></em> to one in <em><strong>V</strong></em>. Vertex sets <em><strong>U</strong></em> and <em><strong>V</strong></em> are usually called the <em>parts</em> of the graph. Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles. Following graph is actually a bipartite graph:</p>
+<p>From 
+<a href="https://en.wikipedia.org/wiki/Bipartite_graph" target="_blank" rel="noopener">wikipedia</a>, a <strong>bipartite graph</strong> (or <strong>bigraph</strong>) is a graph whose vertices can be divided into two disjoint and independent sets <em><strong>U</strong></em> and <em><strong>V</strong></em> such that every edge connects a vertex in <em><strong>U</strong></em> to one in <em><strong>V</strong></em>. Vertex sets <em><strong>U</strong></em> and <em><strong>V</strong></em> are usually called the <em>parts</em> of the graph. Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles. Following graph is actually a bipartite graph:</p>
 <p><img src="./1.png" alt=""></p>
 <p>For clarity, here we redraw the figure above as:</p>
 <p><img src="./2.png" alt=""></p>
@@ -697,7 +704,8 @@
 <p>After update:</p>
 <p><img src="./18.png" alt=""></p>
 <h2 id="hungarian-algorithm">Hungarian Algorithm</h2>
-<p>The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called <a href="https://en.wikipedia.org/wiki/Berge's_lemma">Berge&rsquo;s lemma</a>.)</p>
+<p>The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called 
+<a href="https://en.wikipedia.org/wiki/Berge%27s_lemma" target="_blank" rel="noopener">Berge&rsquo;s lemma</a>.)</p>
 <p>The algorithm starts with any matching $M$ and constructs a tree via a breadth-first search to find an augmenting path, namely a path $P$ that starts and finishes at unmatched vertices whose first and last edges are not in $M$ and whose edges alternate being outside and inside $M$. If the search succeeds, the symmetric difference of $M$ and the edges in $P$ yields a matching with one more edge than $M$ . That edge is added, and then another search is performed for a new augmenting path. If the search is unsuccessful, the algorithm terminates and $M$ must be the largest-size matching.</p>
 <p>Again, let&rsquo;s start with an example:</p>
 <p>First of all, we begin with vertex <strong>1</strong>, try to find augmenting path. Obviously, the edge connects between 1 and 5 meets our requirement, then we update the path information and stop searching.</p>
@@ -795,11 +803,16 @@ int main() {
 </code></pre>
 <h2 id="references">References</h2>
 <ol>
-<li><a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian algorithm Wikipedia</a></li>
-<li><a href="http://mathworld.wolfram.com/HungarianMaximumMatchingAlgorithm.html">Wolfram - Hungarian Maximum Matching Algorithm</a></li>
-<li><a href="https://blog.csdn.net/dark_scope/article/details/8880547">趣写算法系列之&ndash;匈牙利算法</a></li>
-<li><a href="https://www.renfei.org/blog/bipartite-matching.html">二分图的最大匹配、完美匹配和匈牙利算法</a></li>
-<li><a href="https://liam.page/2016/04/03/Hungarian-algorithm-in-the-maximum-matching-problem-of-bigraph/">二分图最大匹配问题与匈牙利算法的核心思想</a></li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank" rel="noopener">Hungarian algorithm Wikipedia</a></li>
+<li>
+<a href="http://mathworld.wolfram.com/HungarianMaximumMatchingAlgorithm.html" target="_blank" rel="noopener">Wolfram - Hungarian Maximum Matching Algorithm</a></li>
+<li>
+<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">趣写算法系列之&ndash;匈牙利算法</a></li>
+<li>
+<a href="https://www.renfei.org/blog/bipartite-matching.html" target="_blank" rel="noopener">二分图的最大匹配、完美匹配和匈牙利算法</a></li>
+<li>
+<a href="https://liam.page/2016/04/03/Hungarian-algorithm-in-the-maximum-matching-problem-of-bigraph/" target="_blank" rel="noopener">二分图最大匹配问题与匈牙利算法的核心思想</a></li>
 </ol>
 
     </div>
@@ -912,11 +925,8 @@ int main() {
 
 
   
-  
     
-  
-  
-
+    
 
 
 
@@ -926,12 +936,13 @@ int main() {
   
   
     
+  
   
   
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_270x270_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
@@ -980,6 +991,10 @@ int main() {
   </div>
 
 
+  
+
+
+
 
 
 
@@ -1018,7 +1033,7 @@ int main() {
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
         
       
 
@@ -1032,6 +1047,11 @@ int main() {
     
     
     <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -1096,7 +1116,7 @@ int main() {
     
     
     
-    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
 
     
 

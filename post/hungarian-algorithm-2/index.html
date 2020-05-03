@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.7.0">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
 
   
 
@@ -54,7 +54,7 @@
   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -66,8 +66,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -218,13 +218,15 @@
       dataLayer.push(arguments);
   }
 
-  function trackOutboundLink(url) {
+  function trackOutboundLink(url, target) {
     gtag('event', 'click', {
          'event_category': 'outbound',
          'event_label': url,
          'transport_type': 'beacon',
          'event_callback': function () {
-           document.location = url;
+           if (target !== '_blank') {
+             document.location = url;
+           }
          }
     });
     console.debug("Outbound link clicked: " + url);
@@ -234,7 +236,7 @@
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);  
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
   }
 
   gtag('js', new Date());
@@ -293,8 +295,6 @@
 
 
 
-
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -322,7 +322,7 @@
     "name": "Yasen Hu",
     "logo": {
       "@type": "ImageObject",
-      "url": "img/https://yasenh.github.io/"
+      "url": "https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_192x192_fit_lanczos_2.png"
     }
   },
   "description": "Maximum-weighted matching in bipartite graph - KM Algorithm"
@@ -382,6 +382,14 @@
 
 
   
+
+
+
+
+
+
+  
+
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
@@ -588,11 +596,8 @@
   <div>
     
 
-
-
   
   <span><a href="/authors/admin/">Yasen Hu</a></span>
-
   </div>
   
   
@@ -684,17 +689,19 @@
 </tr>
 </tbody>
 </table>
-<p>The Hungarian method, when applied to the above table, would give the minimum cost: this is $\textit{$}$6, achieved by having Paul clean the bathroom($\textit{$}$2), Dave sweep the floors($\textit{$}$2), and Chris wash the windows($\textit{$}$2).</p>
+<p>The Hungarian method, when applied to the above table, would give the minimum cost: this is 6 dollars, achieved by having Paul clean the bathroom(2 dollars), Dave sweep the floors(2 dollars), and Chris wash the windows(2 dollars).</p>
 <blockquote>
 <p>There are two ways to formulate the problem: as a <em>matrix</em> or as a <em>bipartite graph</em>. The problem is easier to describe if we formulate it with a bipartite graph.</p>
 </blockquote>
 <p>We have a <strong>complete bipartite graph</strong> $G=(S, T, E)$ with $n$ worker vertices $(S)$ and $n$ job vertices $(T)$, and each edge $(E)$ has a non-negative cost $c(i,j)$. We want to find a <strong>complete matching with a minimum total cost</strong>.</p>
 <h2 id="prerequisite">Prerequisite</h2>
 <h3 id="complete-bipartite-graph">Complete Bipartite Graph</h3>
-<p>From  <a href="https://en.wikipedia.org/wiki/Complete_bipartite_graph">wikipedia</a>, a <strong>complete bipartite graph</strong> is a special kind of bipartite graph whose vertices can be partitioned into two subsets $V_1$ and $V_2$ such that no edge has both endpoints in the same subset, and every possible edge that could connect vertices in different subsets is part of the graph. That is, it is a bipartite graph $(V_1, V_2, E)$ such that for every two vertices $v_1 \in V_1$ and $v_2 \in V_2$, $v_1$ and $v_2$ is an edge in <em>E</em>.</p>
+<p>From  
+<a href="https://en.wikipedia.org/wiki/Complete_bipartite_graph" target="_blank" rel="noopener">wikipedia</a>, a <strong>complete bipartite graph</strong> is a special kind of bipartite graph whose vertices can be partitioned into two subsets $V_1$ and $V_2$ such that no edge has both endpoints in the same subset, and every possible edge that could connect vertices in different subsets is part of the graph. That is, it is a bipartite graph $(V_1, V_2, E)$ such that for every two vertices $v_1 \in V_1$ and $v_2 \in V_2$, $v_1$ and $v_2$ is an edge in <em>E</em>.</p>
 <p><img src="./1.png" alt="Complete Bipartite Graph"></p>
 <h3 id="complete-matching">Complete Matching</h3>
-<p>The definition comes from the <a href="http://www.amazon.in/Theory-Applications-Engineering-Computer-Science/dp/8120301455">book by Narsingh Deo</a>:</p>
+<p>The definition comes from the 
+<a href="http://www.amazon.in/Theory-Applications-Engineering-Computer-Science/dp/8120301455" target="_blank" rel="noopener">book by Narsingh Deo</a>:</p>
 <p>In a bipartite graph with vertex partition $V_1$ and $V_2$,  where $|V_1| \leq |V_2|$, a <strong>complete matching of vertices in set $V_1$ into $V_2$</strong> is a matching in which there is one edge incident with every vertex in $V_1$. In other words, every vertex in $V_1$ is matched against some vertex in $V_2$.</p>
 <blockquote>
 <ol>
@@ -738,7 +745,8 @@
 <p>Repeat step 2 and step 3, until we find complete matching.</p>
 </li>
 </ol>
-<p>The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my <a href="http://localhost:1313/post/hungarian-algorithm-1/">previous post.</a></p>
+<p>The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my 
+<a href="http://localhost:1313/post/hungarian-algorithm-1/" target="_blank" rel="noopener">previous post.</a></p>
 <h3 id="proof">Proof</h3>
 <p>Let&rsquo;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:</p>
 <p>$$l(x) + l(y) == \text{weight(x, y)}$$</p>
@@ -793,17 +801,28 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
 </ol>
 <h2 id="references">References</h2>
 <ol>
-<li><a href="https://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian algorithm Wikipedia</a></li>
-<li><a href="https://www.cnblogs.com/wenruo/p/5264235.html">KM算法详解+模板</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/62981901">带你入门多目标跟踪（三）匈牙利算法&amp;KM算法</a></li>
-<li><a href="https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm">topcoder - assignment problem and hungarian algorithm</a></li>
-<li><a href="http://www.cnblogs.com/kuangbin/archive/2012/08/19/2646535.html">Kuhn-Munkres算法(二分图最大权匹配)</a></li>
-<li><a href="https://blog.csdn.net/sixdaycoder/article/details/47720471">二分图的最佳完美匹配——KM算法</a></li>
-<li><a href="https://www.iteye.com/blog/dsqiu-1689505">二分图大讲堂——彻底搞定最大匹配数（最小覆盖数）、最大独立数、最小路径覆盖、带权最优匹配</a></li>
-<li><a href="https://acm.taifua.com/archives/uva1411.html">UVA1411 Ants - 二分图最优匹配 / 最小权值匹配</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/23562855">图论在计算广告中的应用</a></li>
-<li><a href="https://www.youtube.com/watch?v=Q03gdAhILB4">DM-64-Graphs Complete Matching</a></li>
-<li><a href="http://dlib.net/max_cost_assignment_ex.cpp.html">dlib - max cost assignment</a></li>
+<li>
+<a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank" rel="noopener">Hungarian algorithm Wikipedia</a></li>
+<li>
+<a href="https://www.cnblogs.com/wenruo/p/5264235.html" target="_blank" rel="noopener">KM算法详解+模板</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/62981901" target="_blank" rel="noopener">带你入门多目标跟踪（三）匈牙利算法&amp;KM算法</a></li>
+<li>
+<a href="https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm" target="_blank" rel="noopener">topcoder - assignment problem and hungarian algorithm</a></li>
+<li>
+<a href="http://www.cnblogs.com/kuangbin/archive/2012/08/19/2646535.html" target="_blank" rel="noopener">Kuhn-Munkres算法(二分图最大权匹配)</a></li>
+<li>
+<a href="https://blog.csdn.net/sixdaycoder/article/details/47720471" target="_blank" rel="noopener">二分图的最佳完美匹配——KM算法</a></li>
+<li>
+<a href="https://www.iteye.com/blog/dsqiu-1689505" target="_blank" rel="noopener">二分图大讲堂——彻底搞定最大匹配数（最小覆盖数）、最大独立数、最小路径覆盖、带权最优匹配</a></li>
+<li>
+<a href="https://acm.taifua.com/archives/uva1411.html" target="_blank" rel="noopener">UVA1411 Ants - 二分图最优匹配 / 最小权值匹配</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/23562855" target="_blank" rel="noopener">图论在计算广告中的应用</a></li>
+<li>
+<a href="https://www.youtube.com/watch?v=Q03gdAhILB4" target="_blank" rel="noopener">DM-64-Graphs Complete Matching</a></li>
+<li>
+<a href="http://dlib.net/max_cost_assignment_ex.cpp.html" target="_blank" rel="noopener">dlib - max cost assignment</a></li>
 </ol>
 
     </div>
@@ -916,11 +935,8 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
 
 
   
-  
     
-  
-  
-
+    
 
 
 
@@ -930,12 +946,13 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
   
   
     
+  
   
   
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_270x270_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
@@ -984,6 +1001,10 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
   </div>
 
 
+  
+
+
+
 
 
 
@@ -1024,7 +1045,7 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
         
       
 
@@ -1038,6 +1059,11 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
     
     
     <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -1102,7 +1128,7 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
     
     
     
-    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
 
     
 

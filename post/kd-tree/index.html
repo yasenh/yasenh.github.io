@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Source Themes Academic 4.7.0">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
 
   
 
@@ -54,7 +54,7 @@
   
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
     
@@ -66,8 +66,8 @@
       
       
         
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
         
       
     
@@ -218,13 +218,15 @@
       dataLayer.push(arguments);
   }
 
-  function trackOutboundLink(url) {
+  function trackOutboundLink(url, target) {
     gtag('event', 'click', {
          'event_category': 'outbound',
          'event_label': url,
          'transport_type': 'beacon',
          'event_callback': function () {
-           document.location = url;
+           if (target !== '_blank') {
+             document.location = url;
+           }
          }
     });
     console.debug("Outbound link clicked: " + url);
@@ -234,7 +236,7 @@
     if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
       return;
     }
-    trackOutboundLink(event.target);  
+    trackOutboundLink(event.target, event.target.getAttribute('target'));  
   }
 
   gtag('js', new Date());
@@ -293,8 +295,6 @@
 
 
 
-
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -322,7 +322,7 @@
     "name": "Yasen Hu",
     "logo": {
       "@type": "ImageObject",
-      "url": "img/https://yasenh.github.io/"
+      "url": "https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_192x192_fit_lanczos_2.png"
     }
   },
   "description": "Use KD-Tree to speed up Nearest Neighbor (NN) search for point cloud clustering"
@@ -382,6 +382,14 @@
 
 
   
+
+
+
+
+
+
+  
+
 
 <nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
   <div class="container">
@@ -586,11 +594,8 @@
   <div>
     
 
-
-
   
   <span><a href="/authors/admin/">Yasen Hu</a></span>
-
   </div>
   
   
@@ -654,7 +659,8 @@
 <p>A KD-Tree  (short for <em>k-dimensional tree</em>) is a binary tree that splits points between alternating axes. Every leaf node is a <em>k</em>-dimensional point. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.</p>
 <h2 id="problem-statement">Problem Statement</h2>
 <p><img src="./1.png" alt="Fig 1-point clouds"></p>
-<p>Let&rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using <a href="https://en.wikipedia.org/wiki/DBSCAN">DBSCAN</a>.</p>
+<p>Let&rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
+<a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank" rel="noopener">DBSCAN</a>.</p>
 <p>The basic idea is to associate groups of points by how close together they are. In other words, we need to implement a <em>nearest neighbor search</em>.</p>
 <h2 id="brute-force-nearest-neighbor-search">Brute-force Nearest Neighbor search</h2>
 <p><img src="./10.png" alt="Brute-force"></p>
@@ -721,12 +727,18 @@
 <h2 id="references">References</h2>
 <ol>
 <li>[<em>k</em>-d tree Wikipedia](&lt;https://en.wikipedia.org/wiki/K-d_tree)</li>
-<li><a href="https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313">Udacity Sensor Fusion Nanodegree Program</a></li>
-<li><a href="https://scikit-learn.org/stable/modules/neighbors.html">sklearn - Nearest Neighbor Algorithms</a></li>
-<li><a href="https://www.cnblogs.com/chenying99/p/4919252.html">Kd-Tree算法原理和开源实现代码</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/45346117">KD Tree的原理及Python实现</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/22557068">kd 树算法之思路篇</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/23966698">kd 树算法之详细篇</a></li>
+<li>
+<a href="https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313" target="_blank" rel="noopener">Udacity Sensor Fusion Nanodegree Program</a></li>
+<li>
+<a href="https://scikit-learn.org/stable/modules/neighbors.html" target="_blank" rel="noopener">sklearn - Nearest Neighbor Algorithms</a></li>
+<li>
+<a href="https://www.cnblogs.com/chenying99/p/4919252.html" target="_blank" rel="noopener">Kd-Tree算法原理和开源实现代码</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/45346117" target="_blank" rel="noopener">KD Tree的原理及Python实现</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/22557068" target="_blank" rel="noopener">kd 树算法之思路篇</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/23966698" target="_blank" rel="noopener">kd 树算法之详细篇</a></li>
 </ol>
 
     </div>
@@ -839,11 +851,8 @@
 
 
   
-  
     
-  
-  
-
+    
 
 
 
@@ -853,12 +862,13 @@
   
   
     
+  
   
   
   <div class="media author-card content-widget-hr">
     
       
-      <img class="portrait mr-3" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+      <img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_270x270_fill_q90_lanczos_center.jpg" alt="Avatar">
     
 
     <div class="media-body">
@@ -907,6 +917,10 @@
   </div>
 
 
+  
+
+
+
 
 
 
@@ -936,7 +950,7 @@
 
       
         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
         
       
 
@@ -950,6 +964,11 @@
     
     
     <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = false;</script>
     
 
     
@@ -1014,7 +1033,7 @@
     
     
     
-    <script src="/js/academic.min.a0d331bcd05dbe8b31e244f796710f08.js"></script>
+    <script src="/js/academic.min.c816d323c3a55093dae0829b44ea1ca8.js"></script>
 
     
 

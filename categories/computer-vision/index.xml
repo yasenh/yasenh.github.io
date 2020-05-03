@@ -157,13 +157,20 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
 &lt;p&gt;&lt;img src=&#34;./draggedimage-17.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

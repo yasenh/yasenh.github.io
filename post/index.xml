@@ -50,7 +50,8 @@ You might see a log similar to this:
 &lt;/ul&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://devtalk.nvidia.com/default/topic/1050477/jetson-tx2/jetpack-4-2-flashing-issues-and-how-to-resolve/&#34;&gt;NVIDIA Forums - JetPack 4.2 Flashing Issues and how to resolve&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://devtalk.nvidia.com/default/topic/1050477/jetson-tx2/jetpack-4-2-flashing-issues-and-how-to-resolve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;NVIDIA Forums - JetPack 4.2 Flashing Issues and how to resolve&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -92,17 +93,19 @@ You might see a log similar to this:
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The Hungarian method, when applied to the above table, would give the minimum cost: this is $\textit{$}$6, achieved by having Paul clean the bathroom($\textit{$}$2), Dave sweep the floors($\textit{$}$2), and Chris wash the windows($\textit{$}$2).&lt;/p&gt;
+&lt;p&gt;The Hungarian method, when applied to the above table, would give the minimum cost: this is 6 dollars, achieved by having Paul clean the bathroom(2 dollars), Dave sweep the floors(2 dollars), and Chris wash the windows(2 dollars).&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There are two ways to formulate the problem: as a &lt;em&gt;matrix&lt;/em&gt; or as a &lt;em&gt;bipartite graph&lt;/em&gt;. The problem is easier to describe if we formulate it with a bipartite graph.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;We have a &lt;strong&gt;complete bipartite graph&lt;/strong&gt; $G=(S, T, E)$ with $n$ worker vertices $(S)$ and $n$ job vertices $(T)$, and each edge $(E)$ has a non-negative cost $c(i,j)$. We want to find a &lt;strong&gt;complete matching with a minimum total cost&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
 &lt;h3 id=&#34;complete-bipartite-graph&#34;&gt;Complete Bipartite Graph&lt;/h3&gt;
-&lt;p&gt;From  &lt;a href=&#34;https://en.wikipedia.org/wiki/Complete_bipartite_graph&#34;&gt;wikipedia&lt;/a&gt;, a &lt;strong&gt;complete bipartite graph&lt;/strong&gt; is a special kind of bipartite graph whose vertices can be partitioned into two subsets $V_1$ and $V_2$ such that no edge has both endpoints in the same subset, and every possible edge that could connect vertices in different subsets is part of the graph. That is, it is a bipartite graph $(V_1, V_2, E)$ such that for every two vertices $v_1 \in V_1$ and $v_2 \in V_2$, $v_1$ and $v_2$ is an edge in &lt;em&gt;E&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;From  
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Complete_bipartite_graph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;, a &lt;strong&gt;complete bipartite graph&lt;/strong&gt; is a special kind of bipartite graph whose vertices can be partitioned into two subsets $V_1$ and $V_2$ such that no edge has both endpoints in the same subset, and every possible edge that could connect vertices in different subsets is part of the graph. That is, it is a bipartite graph $(V_1, V_2, E)$ such that for every two vertices $v_1 \in V_1$ and $v_2 \in V_2$, $v_1$ and $v_2$ is an edge in &lt;em&gt;E&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./1.png&#34; alt=&#34;Complete Bipartite Graph&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;complete-matching&#34;&gt;Complete Matching&lt;/h3&gt;
-&lt;p&gt;The definition comes from the &lt;a href=&#34;http://www.amazon.in/Theory-Applications-Engineering-Computer-Science/dp/8120301455&#34;&gt;book by Narsingh Deo&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;The definition comes from the 
+&lt;a href=&#34;http://www.amazon.in/Theory-Applications-Engineering-Computer-Science/dp/8120301455&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;book by Narsingh Deo&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;In a bipartite graph with vertex partition $V_1$ and $V_2$,  where $|V_1| \leq |V_2|$, a &lt;strong&gt;complete matching of vertices in set $V_1$ into $V_2$&lt;/strong&gt; is a matching in which there is one edge incident with every vertex in $V_1$. In other words, every vertex in $V_1$ is matched against some vertex in $V_2$.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ol&gt;
@@ -146,7 +149,8 @@ You might see a log similar to this:
 &lt;p&gt;Repeat step 2 and step 3, until we find complete matching.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my &lt;a href=&#34;http://localhost:1313/post/hungarian-algorithm-1/&#34;&gt;previous post.&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my 
+&lt;a href=&#34;http://localhost:1313/post/hungarian-algorithm-1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;previous post.&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;proof&#34;&gt;Proof&lt;/h3&gt;
 &lt;p&gt;Let&amp;rsquo;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:&lt;/p&gt;
 &lt;p&gt;$$l(x) + l(y) == \text{weight(x, y)}$$&lt;/p&gt;
@@ -201,17 +205,28 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;/ol&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;Hungarian algorithm Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/wenruo/p/5264235.html&#34;&gt;KM算法详解+模板&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/62981901&#34;&gt;带你入门多目标跟踪（三）匈牙利算法&amp;amp;KM算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm&#34;&gt;topcoder - assignment problem and hungarian algorithm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.cnblogs.com/kuangbin/archive/2012/08/19/2646535.html&#34;&gt;Kuhn-Munkres算法(二分图最大权匹配)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/sixdaycoder/article/details/47720471&#34;&gt;二分图的最佳完美匹配——KM算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.iteye.com/blog/dsqiu-1689505&#34;&gt;二分图大讲堂——彻底搞定最大匹配数（最小覆盖数）、最大独立数、最小路径覆盖、带权最优匹配&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://acm.taifua.com/archives/uva1411.html&#34;&gt;UVA1411 Ants - 二分图最优匹配 / 最小权值匹配&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23562855&#34;&gt;图论在计算广告中的应用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=Q03gdAhILB4&#34;&gt;DM-64-Graphs Complete Matching&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://dlib.net/max_cost_assignment_ex.cpp.html&#34;&gt;dlib - max cost assignment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hungarian algorithm Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.cnblogs.com/wenruo/p/5264235.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;KM算法详解+模板&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/62981901&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;带你入门多目标跟踪（三）匈牙利算法&amp;amp;KM算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;topcoder - assignment problem and hungarian algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://www.cnblogs.com/kuangbin/archive/2012/08/19/2646535.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kuhn-Munkres算法(二分图最大权匹配)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://blog.csdn.net/sixdaycoder/article/details/47720471&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;二分图的最佳完美匹配——KM算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.iteye.com/blog/dsqiu-1689505&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;二分图大讲堂——彻底搞定最大匹配数（最小覆盖数）、最大独立数、最小路径覆盖、带权最优匹配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://acm.taifua.com/archives/uva1411.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UVA1411 Ants - 二分图最优匹配 / 最小权值匹配&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23562855&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;图论在计算广告中的应用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=Q03gdAhILB4&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DM-64-Graphs Complete Matching&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://dlib.net/max_cost_assignment_ex.cpp.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;dlib - max cost assignment&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -222,10 +237,12 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
       <pubDate>Sat, 10 Aug 2019 15:56:26 -0400</pubDate>
       <guid>https://yasenh.github.io/post/hungarian-algorithm-1/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;From  &lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;wikipedia&lt;/a&gt;, the  &lt;strong&gt;Hungarian method&lt;/strong&gt; is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &amp;ldquo;Hungarian method&amp;rdquo; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.&lt;/p&gt;
+&lt;p&gt;From  
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;, the  &lt;strong&gt;Hungarian method&lt;/strong&gt; is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &amp;ldquo;Hungarian method&amp;rdquo; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
 &lt;h3 id=&#34;bipartite-graph&#34;&gt;Bipartite Graph&lt;/h3&gt;
-&lt;p&gt;From &lt;a href=&#34;https://en.wikipedia.org/wiki/Bipartite_graph&#34;&gt;wikipedia&lt;/a&gt;, a &lt;strong&gt;bipartite graph&lt;/strong&gt; (or &lt;strong&gt;bigraph&lt;/strong&gt;) is a graph whose vertices can be divided into two disjoint and independent sets &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt; such that every edge connects a vertex in &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; to one in &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt;. Vertex sets &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt; are usually called the &lt;em&gt;parts&lt;/em&gt; of the graph. Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles. Following graph is actually a bipartite graph:&lt;/p&gt;
+&lt;p&gt;From 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Bipartite_graph&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;wikipedia&lt;/a&gt;, a &lt;strong&gt;bipartite graph&lt;/strong&gt; (or &lt;strong&gt;bigraph&lt;/strong&gt;) is a graph whose vertices can be divided into two disjoint and independent sets &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt; such that every edge connects a vertex in &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; to one in &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt;. Vertex sets &lt;em&gt;&lt;strong&gt;U&lt;/strong&gt;&lt;/em&gt; and &lt;em&gt;&lt;strong&gt;V&lt;/strong&gt;&lt;/em&gt; are usually called the &lt;em&gt;parts&lt;/em&gt; of the graph. Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles. Following graph is actually a bipartite graph:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;For clarity, here we redraw the figure above as:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
@@ -268,7 +285,8 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;p&gt;After update:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./18.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hungarian-algorithm&#34;&gt;Hungarian Algorithm&lt;/h2&gt;
-&lt;p&gt;The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called &lt;a href=&#34;https://en.wikipedia.org/wiki/Berge&#39;s_lemma&#34;&gt;Berge&amp;rsquo;s lemma&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Berge%27s_lemma&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Berge&amp;rsquo;s lemma&lt;/a&gt;.)&lt;/p&gt;
 &lt;p&gt;The algorithm starts with any matching $M$ and constructs a tree via a breadth-first search to find an augmenting path, namely a path $P$ that starts and finishes at unmatched vertices whose first and last edges are not in $M$ and whose edges alternate being outside and inside $M$. If the search succeeds, the symmetric difference of $M$ and the edges in $P$ yields a matching with one more edge than $M$ . That edge is added, and then another search is performed for a new augmenting path. If the search is unsuccessful, the algorithm terminates and $M$ must be the largest-size matching.&lt;/p&gt;
 &lt;p&gt;Again, let&amp;rsquo;s start with an example:&lt;/p&gt;
 &lt;p&gt;First of all, we begin with vertex &lt;strong&gt;1&lt;/strong&gt;, try to find augmenting path. Obviously, the edge connects between 1 and 5 meets our requirement, then we update the path information and stop searching.&lt;/p&gt;
@@ -366,11 +384,16 @@ int main() {
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34;&gt;Hungarian algorithm Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://mathworld.wolfram.com/HungarianMaximumMatchingAlgorithm.html&#34;&gt;Wolfram - Hungarian Maximum Matching Algorithm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/dark_scope/article/details/8880547&#34;&gt;趣写算法系列之&amp;ndash;匈牙利算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.renfei.org/blog/bipartite-matching.html&#34;&gt;二分图的最大匹配、完美匹配和匈牙利算法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://liam.page/2016/04/03/Hungarian-algorithm-in-the-maximum-matching-problem-of-bigraph/&#34;&gt;二分图最大匹配问题与匈牙利算法的核心思想&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Hungarian_algorithm&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hungarian algorithm Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://mathworld.wolfram.com/HungarianMaximumMatchingAlgorithm.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wolfram - Hungarian Maximum Matching Algorithm&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://blog.csdn.net/dark_scope/article/details/8880547&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;趣写算法系列之&amp;ndash;匈牙利算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.renfei.org/blog/bipartite-matching.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;二分图的最大匹配、完美匹配和匈牙利算法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://liam.page/2016/04/03/Hungarian-algorithm-in-the-maximum-matching-problem-of-bigraph/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;二分图最大匹配问题与匈牙利算法的核心思想&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -384,7 +407,8 @@ int main() {
 &lt;p&gt;A KD-Tree  (short for &lt;em&gt;k-dimensional tree&lt;/em&gt;) is a binary tree that splits points between alternating axes. Every leaf node is a &lt;em&gt;k&lt;/em&gt;-dimensional point. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.&lt;/p&gt;
 &lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./1.png&#34; alt=&#34;Fig 1-point clouds&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using &lt;a href=&#34;https://en.wikipedia.org/wiki/DBSCAN&#34;&gt;DBSCAN&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/DBSCAN&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DBSCAN&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The basic idea is to associate groups of points by how close together they are. In other words, we need to implement a &lt;em&gt;nearest neighbor search&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;brute-force-nearest-neighbor-search&#34;&gt;Brute-force Nearest Neighbor search&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./10.png&#34; alt=&#34;Brute-force&#34;&gt;&lt;/p&gt;
@@ -451,12 +475,18 @@ int main() {
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;[&lt;em&gt;k&lt;/em&gt;-d tree Wikipedia](&amp;lt;https://en.wikipedia.org/wiki/K-d_tree)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://scikit-learn.org/stable/modules/neighbors.html&#34;&gt;sklearn - Nearest Neighbor Algorithms&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/chenying99/p/4919252.html&#34;&gt;Kd-Tree算法原理和开源实现代码&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/45346117&#34;&gt;KD Tree的原理及Python实现&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/22557068&#34;&gt;kd 树算法之思路篇&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23966698&#34;&gt;kd 树算法之详细篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://scikit-learn.org/stable/modules/neighbors.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sklearn - Nearest Neighbor Algorithms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.cnblogs.com/chenying99/p/4919252.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kd-Tree算法原理和开源实现代码&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/45346117&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;KD Tree的原理及Python实现&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/22557068&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kd 树算法之思路篇&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://zhuanlan.zhihu.com/p/23966698&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;kd 树算法之详细篇&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -606,13 +636,20 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
 &lt;p&gt;&lt;img src=&#34;./draggedimage-17.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://www.songho.ca/math/homogeneous/homogeneous.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Homogeneous Coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://en.m.wikipedia.org/wiki/Homogeneous_coordinates&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://robotics.stanford.edu/~birch/projective/node4.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Stanford Homogeneous coordinates Explaination&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://wordsandbuttons.online/interactive_guide_to_homogeneous_coordinates.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Interactive guide to homogeneous coordinates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://ksimek.github.io/2013/08/13/intrinsic/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Dissecting the Camera Matrix, Part 3: The Intrinsic Matrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://blog.csdn.net/saltriver/article/details/79680364&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;为什么要引入齐次坐标&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -625,8 +662,10 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;demo.gif&#34; alt=&#34;Scenario 1 demo&#34;&gt;&lt;/p&gt;
 &lt;p&gt;LiDAR data is stored in a format called Point Cloud Data (PCD for short). A PCD file is a list of (x,y,z) Cartesian coordinates along with intensity values. The animation above shows the PCD of a city block with parked cars, and a passing van. Intensity values are being shown as different colors.&lt;/p&gt;
-&lt;p&gt;In this project, we will be be working on processing point cloud data to find obstacles with the help of PCL. &lt;a href=&#34;http://pointclouds.org/&#34;&gt;Point Cloud Library (&lt;strong&gt;PCL&lt;/strong&gt;)&lt;/a&gt;  is an open source C++ library for 2D/3D image and point cloud processing. We will use it to visualize data, render shapes, and take advantage of some built in functions to process point cloud data. Built in PCL functions that will be used later in this project are Segmentation, Extraction, and Clustering.&lt;/p&gt;
-&lt;p&gt;You can find the &lt;a href=&#34;https://github.com/yasenh/SFND_Lidar_Obstacle_Detection&#34;&gt;C++ Implementation&lt;/a&gt; on my GitHub.&lt;/p&gt;
+&lt;p&gt;In this project, we will be be working on processing point cloud data to find obstacles with the help of PCL. 
+&lt;a href=&#34;http://pointclouds.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Point Cloud Library (&lt;strong&gt;PCL&lt;/strong&gt;)&lt;/a&gt;  is an open source C++ library for 2D/3D image and point cloud processing. We will use it to visualize data, render shapes, and take advantage of some built in functions to process point cloud data. Built in PCL functions that will be used later in this project are Segmentation, Extraction, and Clustering.&lt;/p&gt;
+&lt;p&gt;You can find the 
+&lt;a href=&#34;https://github.com/yasenh/SFND_Lidar_Obstacle_Detection&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;C++ Implementation&lt;/a&gt; on my GitHub.&lt;/p&gt;
 &lt;h2 id=&#34;point-cloud-segmentation&#34;&gt;Point Cloud Segmentation&lt;/h2&gt;
 &lt;p&gt;Segment the filtered cloud into two parts, road and obstacles.&lt;/p&gt;
 &lt;h2 id=&#34;clustering-obstacles&#34;&gt;Clustering Obstacles&lt;/h2&gt;
@@ -636,7 +675,8 @@ for (const auto&amp;amp; lidarPoint : lidarPoints) {
 &lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.udacity.com/course/sensor-fusion-engineer-nanodegree--nd313&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Udacity Sensor Fusion Nanodegree Program&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
@@ -655,9 +695,11 @@ Image(&#39;https://www.python.org/static/community_logos/python-logo-master-v3-T
 &lt;pre&gt;&lt;code&gt;Welcome to Academic!
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;install-python-and-jupyter&#34;&gt;Install Python and Jupyter&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.anaconda.com/distribution/#download-section&#34;&gt;Install Anaconda&lt;/a&gt; which includes Python 3 and Jupyter notebook.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.anaconda.com/distribution/#download-section&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Install Anaconda&lt;/a&gt; which includes Python 3 and Jupyter notebook.&lt;/p&gt;
 &lt;p&gt;Otherwise, for advanced users, install Jupyter notebook with &lt;code&gt;pip3 install jupyter&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;create-a-new-blog-post-as-usualhttpssourcethemescomacademicdocsmanaging-contentcreate-a-blog-post&#34;&gt;Create a new blog post &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-a-blog-post&#34;&gt;as usual&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;create-a-new-blog-post-as-usualhttpssourcethemescomacademicdocsmanaging-contentcreate-a-blog-post&#34;&gt;Create a new blog post 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#create-a-blog-post&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;as usual&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Run the following commands in your Terminal, substituting &lt;code&gt;&amp;lt;MY_WEBSITE_FOLDER&amp;gt;&lt;/code&gt; and &lt;code&gt;my-post&lt;/code&gt; with the file path to your Academic website folder and a name for your blog post (without spaces), respectively:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;cd &amp;lt;MY_WEBSITE_FOLDER&amp;gt;
 hugo new  --kind post post/my-post
@@ -677,9 +719,12 @@ cat Untitled.md | tee -a index.md
 rm Untitled.md
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;edit-your-post-metadata&#34;&gt;Edit your post metadata&lt;/h2&gt;
-&lt;p&gt;Open &lt;code&gt;index.md&lt;/code&gt; in your text editor and edit the title etc. in the &lt;a href=&#34;https://sourcethemes.com/academic/docs/front-matter/&#34;&gt;front matter&lt;/a&gt; according to your preference.&lt;/p&gt;
-&lt;p&gt;To set a &lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#featured-image&#34;&gt;featured image&lt;/a&gt;, place an image named &lt;code&gt;featured&lt;/code&gt; into your post&amp;rsquo;s folder.&lt;/p&gt;
-&lt;p&gt;For other tips, such as using math, see the guide on &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34;&gt;writing content with Academic&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Open &lt;code&gt;index.md&lt;/code&gt; in your text editor and edit the title etc. in the 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/front-matter/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;front matter&lt;/a&gt; according to your preference.&lt;/p&gt;
+&lt;p&gt;To set a 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#featured-image&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;featured image&lt;/a&gt;, place an image named &lt;code&gt;featured&lt;/code&gt; into your post&amp;rsquo;s folder.&lt;/p&gt;
+&lt;p&gt;For other tips, such as using math, see the guide on 
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;writing content with Academic&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
