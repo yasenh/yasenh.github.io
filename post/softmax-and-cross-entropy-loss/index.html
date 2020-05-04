@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Perception Systems Engineer">
+  <meta name="description" content="How to calculate derivative of softmax loss">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/">
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/softmax-and-cross-entropy-loss/">
 
   
 
@@ -251,14 +251,12 @@
 
 
   
-  <link rel="alternate" href="/post/index.xml" type="application/rss+xml" title="Yasen Hu">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://yasenh.github.io/post/">
+  <link rel="canonical" href="https://yasenh.github.io/post/softmax-and-cross-entropy-loss/">
 
   
   
@@ -272,18 +270,63 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="Yasen Hu">
-  <meta property="og:url" content="https://yasenh.github.io/post/">
-  <meta property="og:title" content="Posts | Yasen Hu">
-  <meta property="og:description" content="Perception Systems Engineer"><meta property="og:image" content="https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_300x300_fit_lanczos_2.png">
+  <meta property="og:url" content="https://yasenh.github.io/post/softmax-and-cross-entropy-loss/">
+  <meta property="og:title" content="Softmax Function and Cross Entropy Loss | Yasen Hu">
+  <meta property="og:description" content="How to calculate derivative of softmax loss"><meta property="og:image" content="https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_300x300_fit_lanczos_2.png">
   <meta property="twitter:image" content="https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_300x300_fit_lanczos_2.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-05-03T16:11:14-04:00">
+    
+      <meta property="article:published_time" content="2020-05-03T16:11:14-04:00">
+    
+    <meta property="article:modified_time" content="2020-05-03T16:11:14-04:00">
   
 
   
 
 
+    
 
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yasenh.github.io/post/softmax-and-cross-entropy-loss/"
+  },
+  "headline": "Softmax Function and Cross Entropy Loss",
+  
+  "datePublished": "2020-05-03T16:11:14-04:00",
+  "dateModified": "2020-05-03T16:11:14-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Yasen Hu"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yasen Hu",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_192x192_fit_lanczos_2.png"
+    }
+  },
+  "description": "How to calculate derivative of softmax loss"
+}
+</script>
+
+  
 
   
 
@@ -291,10 +334,13 @@
   
 
 
+  
 
 
 
-  <title>Posts | Yasen Hu</title>
+
+
+  <title>Softmax Function and Cross Entropy Loss | Yasen Hu</title>
 
 </head>
 
@@ -507,78 +553,33 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1>Softmax Function and Cross Entropy Loss</h1>
+
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1>Posts</h1>
-
-  
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-
-  
-
-  
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/softmax-and-cross-entropy-loss/" >Softmax Function and Cross Entropy Loss</a>
-    </h3>
-
-    
-    <div class="article-style">
-      How to calculate derivative of softmax loss
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
 
 
 <div class="article-metadata">
@@ -628,732 +629,394 @@
 
 </div>
 
-      
-    </div>
-
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </div>
 
-    
-  
-    
-      
 
 
+  <div class="article-container">
 
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/nvidia-jetson-1/" >NVIDIA JetPack Flashing Issues Q&amp;A</a>
-    </h3>
-
-    
     <div class="article-style">
-      JetPack 4.2 Flashing Issues and how to resolve
+      <h2 id="softmax-function">Softmax Function</h2>
+<p>The softmax function is a function that takes a vector of $K$ real numbers as input, and normalizes it into a probability distribution. After applying softmax, each input will be in the interval (0, 1), and all of the inputs will add up to 1, so that they can be interpreted as probabilities.</p>
+<p>Softmax function is defined by:
+$$
+\sigma_i(z) = \frac{e^{z_i}} {\sum_{j=1}^{K} e^{z_j}}
+$$</p>
+<p>$$
+\text{For} \ i = 1, &hellip;, K \ \text{and} \ z = (z_1, &hellip; , z_K) \in \mathbb{R}^k
+$$</p>
+<p>Note that in neural network, $z_i$ could come from the last convolutional layer or fully-connected layer, which indicates the unnormalized score of the element.</p>
+<h3 id="example">Example</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$z_1$</th>
+<th>$z_2$</th>
+<th align="center">$z_3$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>z</td>
+<td>3</td>
+<td>4</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>$e^{z_i}$</td>
+<td>20.0855369232</td>
+<td>54.5981500331</td>
+<td align="center">2.71828182846</td>
+</tr>
+<tr>
+<td>$\sigma_i(z)$</td>
+<td>0.25949646034</td>
+<td>0.70538451269</td>
+<td align="center">0.03511902695</td>
+</tr>
+</tbody>
+</table>
+<p>$\sigma_2(z) = \frac{54.5981500331}{20.0855369232 + 54.5981500331 +2.71828182846} = 0.70538451269 $</p>
+<h2 id="derivative-of-softmax-loss">Derivative of Softmax Loss</h2>
+<p><img src="./1.png" alt=""></p>
+<p>We will try to differentiate the softmax function with respect to the cross entropy loss.</p>
+<blockquote>
+<p>Sometimes we use softmax loss to stand for the combination of softmax function and cross entropy loss.</p>
+<p>Softmax function is an activation function, and cross entropy loss is a loss function. Softmax function can also work with other loss functions.</p>
+</blockquote>
+<p>The cross entropy loss can be defined as:
+$$
+L_i = - \sum_{i=1}^{K} y_i log(\sigma_i(z))
+$$
+Note that for multi-class classification problem, we assume that each sample is assigned to one and only one label. So following 
+<a href="https://en.wikipedia.org/wiki/One-hot" target="_blank" rel="noopener">one-hot encoding</a>, we choose $y_i = 1$ for the label that matches with ground truth data, and all other labels will be $y_i = 0$. Thus we can simplify the equation above as:
+$$
+L_i = -\log (\sigma_i(z) ) = -\log(\frac{e^{z_i}} {\sum_{j=1}^{K} e^{z_j}})
+$$
+And:
+$$
+z_i = w_{i1}x_1 + w_{i2}x_2 + &hellip;
+$$
+According to chain rule:
+$$
+\frac {\partial L_i} {\partial w} =
+\frac {\partial L_i} {\partial \sigma_i(z)} \times
+\frac {\partial \sigma_i(z)} {\partial z_j} \times
+\frac {\partial z_j} {\partial w}
+$$</p>
+<p>Let&rsquo;s break it down:
+$$
+\frac {\partial L_i} {\partial \sigma_i(z)} = - \frac{1}{\sigma_i(z)}
+$$</p>
+<p>For simplicity, we use $\sum$ to denote $\sum_{j=1}^{K} e^{z_j}$ for following equations:
+$$
+\begin{aligned}
+\frac {\partial \sigma_i(z)} {\partial z_j}
+&amp;= \frac{\partial} {\partial z_j} (\frac{e^{z_i}} {\sum}) \\
+&amp;= \frac {\frac {\partial} {\partial z_j} (e^{z_i}) \times \sum -   e^{z_i} \times \frac {\partial} {\partial z_j} (\sum) } {(\sum)^2}
+\end{aligned}
+$$</p>
+<p>There are 2 cases:</p>
+<ol>
+<li>
+<p>Same:  $i = j$</p>
+<p><img src="./2.png" alt=""></p>
+<p>$$
+\begin{aligned}
+\frac {\partial \sigma_i(z)} {\partial z_j}
+&amp;=  \frac {e^{z_i} \times \sum -   e^{z_i} \times e^{z_i} } {(\sum)^2} \\<br>
+&amp;= \frac{e^{z_i}}{\sum} - \frac{e^{z_i}}{\sum} \times \frac{e^{z_i}}{\sum} \\<br>
+&amp;= \sigma_i(z) (1 - \sigma_i(z))
+\end{aligned}
+$$</p>
+<p>So that:
+$$
+\frac {\partial L_i} {\partial \sigma_i(z)} \times
+\frac {\partial \sigma_i(z)} {\partial s_j} = - \frac{1}{\sigma_i(z)} \times \sigma_i(z) (1 - \sigma_i(z)) =  \sigma_i(z) - 1
+$$</p>
+</li>
+<li>
+<p>Different: $i \ne j$</p>
+</li>
+</ol>
+<p><img src="./3.png" alt=""></p>
+<p>$$
+\begin{aligned}
+\frac {\partial \sigma_i(z)} {\partial z_j}
+&amp;=  \frac {0 \times \sum -   e^{z_i} \times e^{z_j} } {(\sum)^2} \<br>
+&amp;= - \frac{e^{z_i}}{\sum} \times \frac{e^{z_j}}{\sum} \<br>
+&amp;= -\sigma_i(z)  \sigma_j(z)
+\end{aligned}
+$$</p>
+<p>So that:
+$$
+\frac {\partial L_i} {\partial \sigma_i(z)} \times
+\frac {\partial \sigma_i(z)} {\partial z_j} = - \frac{1}{\sigma_i(z)} \times  -\sigma_i(z)  \sigma_j(z) =  \sigma_j(z)
+$$</p>
+<h3 id="example-1">Example</h3>
+<p>Here we assume the second class is the correct label, in other words $y_2 = 1$</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$z_1$</th>
+<th>$z_2$</th>
+<th align="center">$z_3$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>z</td>
+<td>3</td>
+<td>4</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>$e^{z_i}$</td>
+<td>20.0855369232</td>
+<td>54.5981500331</td>
+<td align="center">2.71828182846</td>
+</tr>
+<tr>
+<td>$\sigma_i(z)$</td>
+<td>0.25949646034</td>
+<td>0.70538451269</td>
+<td align="center">0.03511902695</td>
+</tr>
+<tr>
+<td>Partial derivative</td>
+<td>0.25949646034</td>
+<td><strong>-0.29461548731</strong></td>
+<td align="center">0.03511902695</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cross-entropy-loss-vs-svm-loss">Cross entropy loss vs. SVM loss</h2>
+<p>SVM loss cares about getting the correct score greater than a margin above the incorrect scores. <strong>Then it will give up.</strong> The SVM is happy once the margins are satisfied and it does not micromanage the exact scores beyond this constraint.</p>
+<p>Cross entropy actually always wants to drive that probability mass all the way to 1. So even if you are giving very high score to the correct class, and very low score to all the incorrect classes, softmax still want you to pile more and more probability mass on the correct class and <strong>continue to push the score of that correct class up towards infinity</strong>.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<a href="https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/#derivative-of-the-softmax" target="_blank" rel="noopener">Understanding softmax and the negative log-likelihood</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/25723112" target="_blank" rel="noopener">详解softmax函数以及相关求导过程</a></li>
+<li>
+<a href="https://zhuanlan.zhihu.com/p/27223959" target="_blank" rel="noopener">Softmax函数与交叉熵</a></li>
+<li>
+<a href="https://cs231n.github.io/linear-classify/" target="_blank" rel="noopener">CS231n: Linear Classification</a></li>
+</ol>
+
     </div>
+
     
 
-    <div class="stream-meta article-metadata">
 
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/machine-learning/">Machine Learning</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
       
-
+      
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/post/softmax-and-cross-entropy-loss/&amp;text=Softmax%20Function%20and%20Cross%20Entropy%20Loss" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
       
-    
-    Nov 6, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/hungarian-algorithm-2/" >Hungarian Algorithm II</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Maximum-weighted matching in bipartite graph - KM Algorithm
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/post/softmax-and-cross-entropy-loss/&amp;t=Softmax%20Function%20and%20Cross%20Entropy%20Loss" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
       
-    
-    Aug 25, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    6 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/algorithm/">Algorithm</a></span>
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/hungarian-algorithm-2/" >
-      <img src="/post/hungarian-algorithm-2/featured_hud53351b7ce331ef509d0bd06895fa7a3_24292_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/hungarian-algorithm-1/" >Hungarian Algorithm I</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Unweighted bipartite graph maximum matching
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Softmax%20Function%20and%20Cross%20Entropy%20Loss&amp;body=https://yasenh.github.io/post/softmax-and-cross-entropy-loss/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
       
-    
-    Aug 10, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    7 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/algorithm/">Algorithm</a></span>
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/hungarian-algorithm-1/" >
-      <img src="/post/hungarian-algorithm-1/featured_huf319457629c1cd4def8750a5e7b2dc55_37938_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/kd-tree/" >KD-Tree</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Use KD-Tree to speed up Nearest Neighbor (NN) search for point cloud clustering
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/post/softmax-and-cross-entropy-loss/&amp;title=Softmax%20Function%20and%20Cross%20Entropy%20Loss" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
     
       
-    
-    Jul 18, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    6 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/algorithm/">Algorithm</a></span>
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/kd-tree/" >
-      <img src="/post/kd-tree/featured_hu4ef65a43483839f569f1c6345726a578_77264_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/homogeneous-coordinates/" >Homogeneous Coordinates</a>
-    </h3>
-
-    
-    <div class="article-style">
-      What is homogeneous coordinates and the benefits of using it
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Softmax%20Function%20and%20Cross%20Entropy%20Loss%20https://yasenh.github.io/post/softmax-and-cross-entropy-loss/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
     
       
-    
-    Jun 9, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    5 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/computer-vision/">Computer Vision</a></span>
-  
-
-</div>
-
       
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/homogeneous-coordinates/" >
-      <img src="/post/homogeneous-coordinates/featured_hu972e56df2ab4fc3855a4ffa834c84ecf_18241_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/sfnd-lidar-object-detection/" >LiDAR Object Detection</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Segment and cluster point clouds
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
       
         
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
       
-          Last updated on
       
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/post/softmax-and-cross-entropy-loss/&amp;title=Softmax%20Function%20and%20Cross%20Entropy%20Loss" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
-    Apr 17, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-  <span class="middot-divider"></span>
-  <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/sensor-fusion/">Sensor Fusion</a></span>
-  
-
+  </ul>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
       
+      <img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_huedb03c8409b1e5b412ce03606179204a_138038_270x270_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://yasenh.github.io/">Yasen Hu</a></h5>
+      <h6 class="card-subtitle">Perception Systems Engineer</h6>
+      <p class="card-text">My research interests include perception and sensor fusion.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/yasenh" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
     </div>
+  </div>
 
-    
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
 
   </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/sfnd-lidar-object-detection/" >
-      <img src="/post/sfnd-lidar-object-detection/featured_huf298ca7cdf99bb6152d568a961fc884c_606783_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-    
-      
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<div class="media stream-item">
-  <div class="media-body">
-
-    <h3 class="article-title mb-0 mt-0">
-      <a href="/post/jupyter/" >Display Jupyter Notebooks with Academic</a>
-    </h3>
-
-    
-    <div class="article-style">
-      Learn how to blog in Academic using Jupyter notebooks
-    </div>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
-
-
-<div class="article-metadata">
-
-  
-  
-  
-  
-  <div>
-    
-
-  
-  <span><a href="/authors/admin/">Yasen Hu</a></span>
-  </div>
-  
-  
-
-  
-  <span class="article-date">
-    
-    
-      
-    
-    Feb 5, 2019
-  </span>
-  
-
-  
-
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-  
-  
-
-  
-  
-
-</div>
-
-      
-    </div>
-
-    
-
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/jupyter/" >
-      <img src="/post/jupyter/featured_hub1daa031c2af6888ff37bd93eb033a1a_71549_150x0_resize_lanczos_2.png" alt="">
-    </a>
-    
-  </div>
-</div>
-
-    
-  
-
-  
-
-
-</div>
+</article>
 
       
 
