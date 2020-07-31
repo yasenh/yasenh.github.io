@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning | Yasen Hu</title>
+    <link>https://yasenh.github.io/tags/deep-learning/</link>
+      <atom:link href="https://yasenh.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <description>Deep Learning</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Fri, 31 Jul 2020 17:49:16 -0400</lastBuildDate>
+    <image>
+      <url>https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_300x300_fit_lanczos_2.png</url>
+      <title>Deep Learning</title>
+      <link>https://yasenh.github.io/tags/deep-learning/</link>
+    </image>
+    
+    <item>
+      <title>Libtorch Yolov5</title>
+      <link>https://yasenh.github.io/project/libtorch-yolov5/</link>
+      <pubDate>Fri, 31 Jul 2020 17:49:16 -0400</pubDate>
+      <guid>https://yasenh.github.io/project/libtorch-yolov5/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
