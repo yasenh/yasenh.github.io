@@ -38,7 +38,7 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;why-using-homogeneous-coordinates&#34;&gt;Why Using Homogeneous Coordinates?&lt;/h2&gt;
 &lt;p&gt;One of the advantages of homogeneous coordinates is that they allow for an easy combination of multiple transformations by concatenating several matrix-vector multiplications.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
+&lt;p&gt;Let&#39;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
 &lt;h4 id=&#34;scale&#34;&gt;Scale&lt;/h4&gt;
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
@@ -92,7 +92,7 @@ $$&lt;/p&gt;
 &lt;h2 id=&#34;example---lidar-to-camera-point-projection&#34;&gt;Example - LiDAR to Camera Point Projection&lt;/h2&gt;
 &lt;p&gt;In order to convert from Homogeneous coordinates $(x, y, w)$ to Cartesian coordinates, we simply divide $x$ and $y$ by $w$;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./homogeneous01.png&#34; alt=&#34;homogeneous-to-Cartesian&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.&lt;/p&gt;
+&lt;p&gt;Let&#39;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.&lt;/p&gt;
 &lt;p&gt;In addition to the intrinsic camera parameters which make up the geometry of the projection, we need additional information about the position and alignment of both camera and LiDAR in a common reference coordinate system. To move from LiDAR to camera involves translation and rotation operations, which we need to apply to every 3D point. So our goal here is to simplify the notation with which we can express the projection. Using a linear transformation (or mapping), 3D points could be represented by a vector and operations such as translation, rotation, scaling and perspective projection could be represented as matrices by which the vector is multiplied.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./8.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Once we are in the homogeneous coordinate system, projective transformations become linear and can thus be expressed as simple matrix-vector multiplications.&lt;/p&gt;

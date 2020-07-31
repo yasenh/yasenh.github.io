@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Unweighted bipartite graph maximum matching">
+  <meta name="description" content="A C&#43;&#43; LibTorch inference implementation of the yolov5 object detection algorithm.">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/hungarian-algorithm-1/">
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/project/libtorch-yolov5/">
 
   
 
@@ -256,7 +256,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://yasenh.github.io/post/hungarian-algorithm-1/">
+  <link rel="canonical" href="https://yasenh.github.io/project/libtorch-yolov5/">
 
   
   
@@ -269,15 +269,15 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Yasen Hu">
-  <meta property="og:url" content="https://yasenh.github.io/post/hungarian-algorithm-1/">
-  <meta property="og:title" content="Hungarian Algorithm I | Yasen Hu">
-  <meta property="og:description" content="Unweighted bipartite graph maximum matching"><meta property="og:image" content="https://yasenh.github.io/post/hungarian-algorithm-1/featured.png">
-  <meta property="twitter:image" content="https://yasenh.github.io/post/hungarian-algorithm-1/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://yasenh.github.io/project/libtorch-yolov5/">
+  <meta property="og:title" content="Libtorch Yolov5 | Yasen Hu">
+  <meta property="og:description" content="A C&#43;&#43; LibTorch inference implementation of the yolov5 object detection algorithm."><meta property="og:image" content="https://yasenh.github.io/project/libtorch-yolov5/featured.jpg">
+  <meta property="twitter:image" content="https://yasenh.github.io/project/libtorch-yolov5/featured.jpg"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2019-08-10T15:56:26-04:00">
+      <meta property="article:published_time" content="2020-07-31T17:49:16-04:00">
     
-    <meta property="article:modified_time" content="2019-08-10T15:56:26-04:00">
+    <meta property="article:modified_time" content="2020-07-31T17:49:16-04:00">
   
 
   
@@ -289,8 +289,6 @@
 
 
 
-
-  
 
 
 
@@ -298,19 +296,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
+  "@type": "Article",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://yasenh.github.io/post/hungarian-algorithm-1/"
+    "@id": "https://yasenh.github.io/project/libtorch-yolov5/"
   },
-  "headline": "Hungarian Algorithm I",
+  "headline": "Libtorch Yolov5",
   
   "image": [
-    "https://yasenh.github.io/post/hungarian-algorithm-1/featured.png"
+    "https://yasenh.github.io/project/libtorch-yolov5/featured.jpg"
   ],
   
-  "datePublished": "2019-08-10T15:56:26-04:00",
-  "dateModified": "2019-08-10T15:56:26-04:00",
+  "datePublished": "2020-07-31T17:49:16-04:00",
+  "dateModified": "2020-07-31T17:49:16-04:00",
   
   "author": {
     "@type": "Person",
@@ -325,7 +323,7 @@
       "url": "https://yasenh.github.io/images/logo_hua235b20c26de23a006d4e436991121ab_721_192x192_fit_lanczos_2.png"
     }
   },
-  "description": "Unweighted bipartite graph maximum matching"
+  "description": "A C++ LibTorch inference implementation of the yolov5 object detection algorithm."
 }
 </script>
 
@@ -343,7 +341,7 @@
 
 
 
-  <title>Hungarian Algorithm I | Yasen Hu</title>
+  <title>Libtorch Yolov5 | Yasen Hu</title>
 
 </head>
 
@@ -556,7 +554,7 @@
 </nav>
 
 
-  <article class="article">
+  <article class="article article-project">
 
   
 
@@ -571,18 +569,26 @@
 
 
 
-  
+
+
+
+
+
+
+
 
   
-  
-  
-<div class="article-container pt-3">
-  <h1>Hungarian Algorithm I</h1>
-
-  
-
   
     
+  
+
+
+<div class="article-container pt-3">
+  <h1>Libtorch Yolov5</h1>
+
+  
+
+  
 
 
 <div class="article-metadata">
@@ -606,17 +612,12 @@
     
       
     
-    Aug 10, 2019
+    Jul 31, 2020
   </span>
   
 
   
 
-  
-  <span class="middot-divider"></span>
-  <span class="article-reading-time">
-    7 min read
-  </span>
   
 
   
@@ -627,18 +628,30 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/categories/algorithm/">Algorithm</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/categories/deep-learning/">Deep Learning</a></span>
   
 
 </div>
 
-    
+  
 
 
 
 
 
 
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  <a class="btn btn-outline-primary my-1" href="https://github.com/yasenh/libtorch-yolov5" target="_blank" rel="noopener">Go to Project Site</a>
+  
+  
 
 
 
@@ -648,6 +661,36 @@
 
 
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 960px;">
+  <div style="position: relative">
+    <img src="/project/libtorch-yolov5/featured_hue9fdf8ad6736f8ebb2256c47c20d157e_496742_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    
+  </div>
 </div>
 
 
@@ -655,166 +698,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <h2 id="introduction">Introduction</h2>
-<p>From  
-<a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank" rel="noopener">wikipedia</a>, the  <strong>Hungarian method</strong> is a combinatorial optimization algorithm that solves the  assignment problem in polynomial time and which anticipated later primal-dual methods. It was developed and published in 1955 by Harold Kuhn, who gave the name &ldquo;Hungarian method&rdquo; because the algorithm was largely based on the earlier works of two Hungarian mathematicians: Dénes Kőnig and Jenő Egerváry.</p>
-<h2 id="prerequisite">Prerequisite</h2>
-<h3 id="bipartite-graph">Bipartite Graph</h3>
-<p>From 
-<a href="https://en.wikipedia.org/wiki/Bipartite_graph" target="_blank" rel="noopener">wikipedia</a>, a <strong>bipartite graph</strong> (or <strong>bigraph</strong>) is a graph whose vertices can be divided into two disjoint and independent sets <em><strong>U</strong></em> and <em><strong>V</strong></em> such that every edge connects a vertex in <em><strong>U</strong></em> to one in <em><strong>V</strong></em>. Vertex sets <em><strong>U</strong></em> and <em><strong>V</strong></em> are usually called the <em>parts</em> of the graph. Equivalently, a bipartite graph is a graph that does not contain any odd-length cycles. Following graph is actually a bipartite graph:</p>
-<p><img src="./1.png" alt=""></p>
-<p>For clarity, here we redraw the figure above as:</p>
-<p><img src="./2.png" alt=""></p>
-<h3 id="matching">Matching</h3>
-<p>Given a graph $G = (V,E)$, a <strong>matching</strong> <em>M</em> in <em>G</em> is a set of pairwise non-adjacent edges, none of which are loops, that is, no two edges share a common vertex.</p>
-<p>A vertex is <strong>matched</strong> (or <strong>saturated</strong>) if it is an endpoint of one of the edges in the matching. Otherwise the vertex is <strong>unmatched</strong>.</p>
-<p>For example, one matching is consisted of two red edges in the figure below.</p>
-<p><img src="./3.png" alt=""></p>
-<p>A <strong>maximum matching</strong> is a matching that contains the largest possible number of edges. There may be many maximum matchings.</p>
-<p>A <strong>perfect matching</strong> is a matching which matches all vertices of the graph. That is, every vertex of the graph is incident to exactly one edge of the matching.   In some literature, the term <strong>complete matching</strong> is used. A perfect matching can only occur when the graph has an even number of vertices. And even so, a graph may not have its perfect matching.</p>
-<blockquote>
-<p>Every perfect matching is maximum matching. However, a maximum matching is not necessarily to be a perfect matching.</p>
-</blockquote>
-<p>The following figure shows examples of a prefect(also maximum) matching.</p>
-<p><img src="./4.png" alt=""></p>
-<h3 id="alternating-path-and-augmenting-path">Alternating Path and Augmenting Path</h3>
-<p>Given a matching <em>M</em>,</p>
-<ul>
-<li>an <strong>alternating path</strong> is a path that begins with an <strong>unmatched vertex</strong> and whose edges belong alternately to the matching and not to the matching.</li>
-<li>an <strong>augmenting path</strong> is an alternating path that starts from and ends on (two different) unmatched vertices.</li>
-</ul>
-<blockquote>
-<p>The path length(total number of edges) of augmenting path must be an odd number.</p>
-</blockquote>
-<p>Here is an example:</p>
-<p><img src="./16.png" alt=""></p>
-<p>In current graph, we have 2 matchings (1&lt;&ndash;&gt;5, 4&lt;&ndash;&gt;7 ), so that vertices 1, 4, 5, 7 are matched vertices. Now, let's try to find a augmenting path from the graph. Starting from an unmatched vertex <strong>8</strong>, then we follow the alternating path (unmatched edge -&gt; matched edge -&gt; unmatched edge&hellip;), finally end up with <strong>another</strong> unmatched vertex.</p>
-<p>Note that we have <strong>2 matched edges and 3 unmatched edges</strong> in current augmenting path. Because we always starts and ends on unmatched vertices, which in other words, we start and ends with unmatched edges. It is obvious that the total number of unmatched edges is always greater than the number of matched edges by 1.</p>
-<p>$$N_{unmatched} = N_{match} + 1$$</p>
-<blockquote>
-<p>Why it is called augmenting path?</p>
-</blockquote>
-<p>Think about switch between unmatched edges and matched edges in the augmenting path:</p>
-<p><img src="./17.png" alt=""></p>
-<p>So in this way, unmatched edges become to matched edges, and vice versa, matched edges become unmatched edges.</p>
-<p>Still remember $N_{unmatched} = N_{match} + 1$ in previous example?  What about now? We have 3 matched edges and 2 unmatched edges 😆</p>
-<blockquote>
-<p>After we switch unmatched edges with matched edges, we always get 1 more matched edges! That explains why augmenting path can augment matching by adding new matched edges!</p>
-</blockquote>
-<p>After update:</p>
-<p><img src="./18.png" alt=""></p>
-<h2 id="hungarian-algorithm">Hungarian Algorithm</h2>
-<p>The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called 
-<a href="https://en.wikipedia.org/wiki/Berge%27s_lemma" target="_blank" rel="noopener">Berge's lemma</a>.)</p>
-<p>The algorithm starts with any matching $M$ and constructs a tree via a breadth-first search to find an augmenting path, namely a path $P$ that starts and finishes at unmatched vertices whose first and last edges are not in $M$ and whose edges alternate being outside and inside $M$. If the search succeeds, the symmetric difference of $M$ and the edges in $P$ yields a matching with one more edge than $M$ . That edge is added, and then another search is performed for a new augmenting path. If the search is unsuccessful, the algorithm terminates and $M$ must be the largest-size matching.</p>
-<p>Again, let's start with an example:</p>
-<p>First of all, we begin with vertex <strong>1</strong>, try to find augmenting path. Obviously, the edge connects between 1 and 5 meets our requirement, then we update the path information and stop searching.</p>
-<p><img src="./5.png" alt=""></p>
-<p>Then, it comes to vertex <strong>2</strong>, and we noticed that 2 and 5 is connected but 5 is occupied by 1 already. Fortunately, however, we can find an augment path, which is from 2 -&gt; 5 -&gt; 1 -&gt; 7. Then as we mentioned before, we switch unmatched edges and matched edges. Finally we will get 1 more matched edges, and the whole process looks like:</p>
-<p><img src="./1.gif" alt=""></p>
-<p>OK, we shift to vertex <strong>3</strong> now, try to find augment path but in vain. We can see the alternating path stops at vertex <strong>2</strong>, but it is a matched vertex. In other words, we are not able to find augment path by following current path.</p>
-<p><img src="./2.gif" alt=""></p>
-<p>However, vertex <strong>3</strong> has another edge to vertex <strong>6</strong>, and vertex <strong>6</strong> is still unmatched vertex, which indicates the path from 3 to 6 is what? Yes, it is augment path 😸</p>
-<p><img src="./12.png" alt=""></p>
-<p>Keep moving to our last vertex <strong>4</strong>, we try to find augment path as well but unfortunately it stuck at vertex <strong>2</strong> again 😞. So we have to give it up and iterate other edges from vertex <strong>4</strong>.</p>
-<p><img src="./3.gif" alt=""></p>
-<p>Finally,  we notice that 4 and 8 are both unmatched vertex, and there is an unmatched edge between them.  Bingo! We find the last augment path and the following figure shows the maximum matching result:</p>
-<p><img src="./15.png" alt=""></p>
-<h2 id="c-implementation">C++ Implementation</h2>
-<pre><code class="language-cpp">#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-#include &lt;map&gt;
-#include &quot;graph.h&quot;
-
-// Maximum Bipartite Matching for Unweighted Graph
-class Hungarian {
-public:
-    explicit Hungarian(int n_u, int n_v) :
-    num_vertices_U_(n_u), num_vertices_V_(n_v), g_(n_u + n_v) {
-        g_.AddEdge(0, 4);
-        g_.AddEdge(0, 5);
-        g_.AddEdge(1, 5);
-        g_.AddEdge(1, 6);
-        g_.AddEdge(2, 4);
-        g_.AddEdge(2, 5);
-        g_.AddEdge(3, 6);
-
-        total_num_ = n_u + n_v;
-        for (int i = 0; i &lt; total_num; i++) {
-            matching_[i] = -1;
-        }
-    }
-
-    void Run() {
-        int total_matching = 0;
-        for (int i = 0; i &lt; num_vertices_U_; i++) {
-            visited_.assign(num_vertices_V_, false);
-            if (FindMatching(i)) {
-                total_matching++;
-            }
-        }
-
-        std::cout &lt;&lt; &quot;Total = &quot; &lt;&lt; total_matching &lt;&lt; std::endl;
-        for (int i = 0; i &lt; num_vertices_U_; i++) {
-            std::cout &lt;&lt; i &lt;&lt; &quot; -&gt; &quot; &lt;&lt; matching_[i] &lt;&lt; std::endl;
-        }
-    }
-
-private:
-    Graph g_;
-    int num_vertices_U_, num_vertices_V_;
-    int total_num_;
-    std::vector&lt;bool&gt; visited_;
-    std::map&lt;int, int&gt; matching_;
-
-    bool FindMatching(int u) {
-        // iterating sets V      
-        for (unsigned int v = num_vertices_U_; v &lt; total_num_; v++) {
-            // if there is a edge between vertices from U and V
-            bool is_connected = 
-                std::find(g_.adj_list_[u].cbegin(), g_.adj_list_[u].cend(), v) 
-                != g_.adj_list_[u].cend();
-            // augmenting path - unmatched -&gt; matched -&gt; ... -&gt; matched -&gt; unmatched
-            if (false == visited_[v] &amp;&amp; is_connected) {
-                visited_[v] = true;
-                // if vertex in V is not matched, we will match it
-                // if it is matched already, we then go back to set U
-                // we will try to figure out if the vertex from U can be 
-                // matched with another vertex in V
-                // remember unmatched -&gt; matched -&gt; unmatched -&gt; .....
-                if (-1 == matching_[v] || FindMatching(matching_[v])) {
-                    matching_[v] = u;
-                    matching_[u] = v;
-                    return true;
-                }
-            }
-        }
-        return false;
-    } // end of FindMatching function
-}; // end of class
-
-
-int main() {
-    // number of vertices on two independent sets U and V
-    Hungarian hungarian(4, 4);
-    hungarian.Run();
-    return 0;
-}
-</code></pre>
-<h2 id="references">References</h2>
-<ol>
-<li>
-<a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank" rel="noopener">Hungarian algorithm Wikipedia</a></li>
-<li>
-<a href="http://mathworld.wolfram.com/HungarianMaximumMatchingAlgorithm.html" target="_blank" rel="noopener">Wolfram - Hungarian Maximum Matching Algorithm</a></li>
-<li>
-<a href="https://blog.csdn.net/dark_scope/article/details/8880547" target="_blank" rel="noopener">趣写算法系列之&ndash;匈牙利算法</a></li>
-<li>
-<a href="https://www.renfei.org/blog/bipartite-matching.html" target="_blank" rel="noopener">二分图的最大匹配、完美匹配和匈牙利算法</a></li>
-<li>
-<a href="https://liam.page/2016/04/03/Hungarian-algorithm-in-the-maximum-matching-problem-of-bigraph/" target="_blank" rel="noopener">二分图最大匹配问题与匈牙利算法的核心思想</a></li>
-</ol>
-
+      
     </div>
 
     
@@ -823,7 +707,7 @@ int main() {
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tags/algorithm/">Algorithm</a>
+  <a class="badge badge-light" href="/tags/object-detection/">Object Detection</a>
   
 </div>
 
@@ -840,7 +724,7 @@ int main() {
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/post/hungarian-algorithm-1/&amp;text=Hungarian%20Algorithm%20I" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;text=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -853,7 +737,7 @@ int main() {
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/post/hungarian-algorithm-1/&amp;t=Hungarian%20Algorithm%20I" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/project/libtorch-yolov5/&amp;t=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -866,7 +750,7 @@ int main() {
       
       
       <li>
-        <a href="mailto:?subject=Hungarian%20Algorithm%20I&amp;body=https://yasenh.github.io/post/hungarian-algorithm-1/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Libtorch%20Yolov5&amp;body=https://yasenh.github.io/project/libtorch-yolov5/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -879,7 +763,7 @@ int main() {
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/post/hungarian-algorithm-1/&amp;title=Hungarian%20Algorithm%20I" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;title=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -892,7 +776,7 @@ int main() {
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Hungarian%20Algorithm%20I%20https://yasenh.github.io/post/hungarian-algorithm-1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Libtorch%20Yolov5%20https://yasenh.github.io/project/libtorch-yolov5/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -905,7 +789,7 @@ int main() {
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/post/hungarian-algorithm-1/&amp;title=Hungarian%20Algorithm%20I" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;title=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1004,18 +888,25 @@ int main() {
 
   
   
-  <div class="article-widget content-widget-hr">
-    <h3>Related</h3>
-    <ul>
+
+
+
+    <div class="project-related-pages content-widget-hr">
       
-      <li><a href="/post/kd-tree/">KD-Tree</a></li>
       
-    </ul>
-  </div>
-  
 
+      
+      
+      
 
+      
+      
+      
 
+      
+      
+      
+    </div>
   </div>
 </article>
 

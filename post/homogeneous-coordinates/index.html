@@ -676,7 +676,7 @@
 </ul>
 <h2 id="why-using-homogeneous-coordinates">Why Using Homogeneous Coordinates?</h2>
 <p>One of the advantages of homogeneous coordinates is that they allow for an easy combination of multiple transformations by concatenating several matrix-vector multiplications.</p>
-<p>Let&rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.</p>
+<p>Let's assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.</p>
 <h4 id="scale">Scale</h4>
 <p>$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
@@ -730,7 +730,7 @@ $$</p>
 <h2 id="example---lidar-to-camera-point-projection">Example - LiDAR to Camera Point Projection</h2>
 <p>In order to convert from Homogeneous coordinates $(x, y, w)$ to Cartesian coordinates, we simply divide $x$ and $y$ by $w$;</p>
 <p><img src="./homogeneous01.png" alt="homogeneous-to-Cartesian"></p>
-<p>Let&rsquo;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.</p>
+<p>Let's give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.</p>
 <p>In addition to the intrinsic camera parameters which make up the geometry of the projection, we need additional information about the position and alignment of both camera and LiDAR in a common reference coordinate system. To move from LiDAR to camera involves translation and rotation operations, which we need to apply to every 3D point. So our goal here is to simplify the notation with which we can express the projection. Using a linear transformation (or mapping), 3D points could be represented by a vector and operations such as translation, rotation, scaling and perspective projection could be represented as matrices by which the vector is multiplied.</p>
 <p><img src="./8.png" alt="LiDAR projection"></p>
 <p>Once we are in the homogeneous coordinate system, projective transformations become linear and can thus be expressed as simple matrix-vector multiplications.</p>

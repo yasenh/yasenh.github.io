@@ -659,7 +659,7 @@
 <p>A KD-Tree  (short for <em>k-dimensional tree</em>) is a binary tree that splits points between alternating axes. Every leaf node is a <em>k</em>-dimensional point. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.</p>
 <h2 id="problem-statement">Problem Statement</h2>
 <p><img src="./1.png" alt="Fig 1-point clouds"></p>
-<p>Let&rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
+<p>Let's assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
 <a href="https://en.wikipedia.org/wiki/DBSCAN" target="_blank" rel="noopener">DBSCAN</a>.</p>
 <p>The basic idea is to associate groups of points by how close together they are. In other words, we need to implement a <em>nearest neighbor search</em>.</p>
 <h2 id="brute-force-nearest-neighbor-search">Brute-force Nearest Neighbor search</h2>
@@ -668,7 +668,7 @@
 <p>The improved idea is to associate groups of points by how close together they are. By grouping points into regions in a KD-Tree, you can avoid calculating distance for possibly thousands of points just because you know they are not even considered in a close enough region.</p>
 <h2 id="building-kd-tree">Building KD-Tree</h2>
 <p>The key idea of building KD-Tree is to insert points alternating comparison between dimensions. As one moves down the tree, one cycles through the axes used to select the splitting planes.</p>
-<p>For example, in a 3-dimensional tree, the root would have an <em>x</em>-aligned plane, the root&rsquo;s children would both have <em>y</em>-aligned planes, the root&rsquo;s grandchildren would all have <em>z</em>-aligned planes, and so on.</p>
+<p>For example, in a 3-dimensional tree, the root would have an <em>x</em>-aligned plane, the root's children would both have <em>y</em>-aligned planes, the root's grandchildren would all have <em>z</em>-aligned planes, and so on.</p>
 <p>The canonical method of <em>k</em>-d tree construction has the following steps:</p>
 <ol>
 <li>First inserted point becomes root of the tree.</li>
@@ -685,7 +685,7 @@
 <p>Having a balanced tree that evenly splits regions improves the search time for finding points later. To improve the tree, insert points that alternate between splitting the x region and the y region evenly.</p>
 <p>A popular practice is to sort a <em>fixed</em> number of <em>randomly</em> <em>selected</em> points, and use the median of those points to serve as the splitting plane. In practice, this technique often results in nicely balanced trees.</p>
 <h3 id="example">Example</h3>
-<p>Let&rsquo;s start to build KD-Tree with an example.  First of all, we randomly generate 6 points in 2D as our dataset:</p>
+<p>Let's start to build KD-Tree with an example.  First of all, we randomly generate 6 points in 2D as our dataset:</p>
 <pre><code class="language-c++">(2,3), (5,4), (9,6), (4,7), (8,1), (7,2)
 </code></pre>
 <p>So first of all, we would first insert (7,2) since it is the median along the x axis. Since point (7,2) is the first inserted point, it becomes the root of the tree with depth equals to 0. And this point splits the whole plane into left and right parts.</p>
@@ -706,7 +706,7 @@
 <li>The algorithm also checks whether there could be any points <strong>on the other side of the splitting plane</strong> that are closer to the search point than the current best. In concept, this is done by intersecting the splitting hyperplane with a hypersphere around the search point that has a radius equal to the current nearest distance.
 <ul>
 <li>If the hypersphere crosses the plane, there could be nearer points on the other side of the plane, so the algorithm must move down the other branch of the tree from the current node looking for closer points, following the same recursive process as the entire search.</li>
-<li>If the hypersphere doesn&rsquo;t intersect the splitting plane, then the algorithm continues walking up the tree, and the entire branch on the other side of that node is eliminated.</li>
+<li>If the hypersphere doesn't intersect the splitting plane, then the algorithm continues walking up the tree, and the entire branch on the other side of that node is eliminated.</li>
 </ul>
 </li>
 <li>When the algorithm reaches the root node, then the search is complete.</li>

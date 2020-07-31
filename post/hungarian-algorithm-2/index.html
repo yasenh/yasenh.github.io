@@ -748,7 +748,7 @@
 <p>The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my 
 <a href="http://localhost:1313/post/hungarian-algorithm-1/" target="_blank" rel="noopener">previous post.</a></p>
 <h3 id="proof">Proof</h3>
-<p>Let&rsquo;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:</p>
+<p>Let's assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:</p>
 <p>$$l(x) + l(y) == \text{weight(x, y)}$$</p>
 <p>Remember that the vertices remain <strong>perfectly feasible</strong> during calculation, so that the sum of the edge weights always equals to the sum of all vertices labelling value:</p>
 <p>$$ W(M^{*}) = \sum_{e \in M^{*}} W(e) = \sum_{ v \in V(G) } L(v) $$</p>
@@ -764,12 +764,12 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
 <p>OK, so the equality subgraph looks like:</p>
 <p><img src="./4.png" alt="ES-1"></p>
 <p>And obviously, we are able to match vertex $A_1$ with $B_3$. However, we cannot find an augment path when trying to match $A_2$, which indicates that we have to update equality subgraph by modifying vertex labelling. Note that $S = (A_1, A_2)$ and $T = (B_3)$ at this point.</p>
-<p>Let&rsquo;s go back to the original graph, and we can easily get the minimal delta value is:</p>
+<p>Let's go back to the original graph, and we can easily get the minimal delta value is:</p>
 <p>$$ \Delta = 1 $$</p>
 <p><img src="./5.png" alt=""></p>
 <p>After update:</p>
 <p><img src="./6.png" alt="update-1"></p>
-<p>Then what&rsquo;s the new equality subgraph looks like?</p>
+<p>Then what's the new equality subgraph looks like?</p>
 <p><img src="./7.png" alt="ES-2"></p>
 <p>Again, we notice that there are 2 matches: $A_1$ to $B_3$ and $A_2$ to $B_1$, unfortunately we are not able to find any matching for $A_3$. In current stage, $S = (A_3)$ and $T = ()$.</p>
 <p>Similarly, $$ \Delta = 1 $$</p>
@@ -778,7 +778,7 @@ feasible vertex labelling whose equality subgraph contains a complete matching.<
 <p><img src="./9.png" alt="update-2"></p>
 <p>New equality subgraph:</p>
 <p><img src="./10.png" alt="ES-3"></p>
-<p>We trying to find augment path from A3 -&gt; B3 -&gt; A1 -&gt; B1 -&gt; A2, but failed because it ends up with a matched vertex $A_2$. $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$. Let&rsquo;s go back to original graph one more time 😃</p>
+<p>We trying to find augment path from A3 -&gt; B3 -&gt; A1 -&gt; B1 -&gt; A2, but failed because it ends up with a matched vertex $A_2$. $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$. Let's go back to original graph one more time 😃</p>
 <p><img src="./11.png" alt=""></p>
 <p>Updating $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$:</p>
 <p><img src="./12.png" alt="update-3"></p>

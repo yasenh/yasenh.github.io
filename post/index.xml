@@ -86,7 +86,7 @@ $$
 \frac {\partial \sigma_i(z)} {\partial z_j} \times
 \frac {\partial z_j} {\partial w}
 $$&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s break it down:
+&lt;p&gt;Let&#39;s break it down:
 $$
 \frac {\partial L_i} {\partial \sigma_i(z)} = - \frac{1}{\sigma_i(z)}
 $$&lt;/p&gt;
@@ -330,7 +330,7 @@ You might see a log similar to this:
 &lt;p&gt;The key idea of KM(Kuhn–Munkres) algorithm is to utilize Hungarian algorithm while maintaining equality subgraphs. If you are not familiar with Hungarian algorithm, you can review my 
 &lt;a href=&#34;http://localhost:1313/post/hungarian-algorithm-1/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;previous post.&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;proof&#34;&gt;Proof&lt;/h3&gt;
-&lt;p&gt;Let&amp;rsquo;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:&lt;/p&gt;
+&lt;p&gt;Let&#39;s assume $M^*$ is a complete matching in $G^*$, obviously, $M^*$ is also a complete matching in $G$, and note that in the equality subgraph $G^*$:&lt;/p&gt;
 &lt;p&gt;$$l(x) + l(y) == \text{weight(x, y)}$$&lt;/p&gt;
 &lt;p&gt;Remember that the vertices remain &lt;strong&gt;perfectly feasible&lt;/strong&gt; during calculation, so that the sum of the edge weights always equals to the sum of all vertices labelling value:&lt;/p&gt;
 &lt;p&gt;$$ W(M^{*}) = \sum_{e \in M^{*}} W(e) = \sum_{ v \in V(G) } L(v) $$&lt;/p&gt;
@@ -346,12 +346,12 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;p&gt;OK, so the equality subgraph looks like:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./4.png&#34; alt=&#34;ES-1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;And obviously, we are able to match vertex $A_1$ with $B_3$. However, we cannot find an augment path when trying to match $A_2$, which indicates that we have to update equality subgraph by modifying vertex labelling. Note that $S = (A_1, A_2)$ and $T = (B_3)$ at this point.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s go back to the original graph, and we can easily get the minimal delta value is:&lt;/p&gt;
+&lt;p&gt;Let&#39;s go back to the original graph, and we can easily get the minimal delta value is:&lt;/p&gt;
 &lt;p&gt;$$ \Delta = 1 $$&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;After update:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./6.png&#34; alt=&#34;update-1&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Then what&amp;rsquo;s the new equality subgraph looks like?&lt;/p&gt;
+&lt;p&gt;Then what&#39;s the new equality subgraph looks like?&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./7.png&#34; alt=&#34;ES-2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Again, we notice that there are 2 matches: $A_1$ to $B_3$ and $A_2$ to $B_1$, unfortunately we are not able to find any matching for $A_3$. In current stage, $S = (A_3)$ and $T = ()$.&lt;/p&gt;
 &lt;p&gt;Similarly, $$ \Delta = 1 $$&lt;/p&gt;
@@ -360,7 +360,7 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;p&gt;&lt;img src=&#34;./9.png&#34; alt=&#34;update-2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;New equality subgraph:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./10.png&#34; alt=&#34;ES-3&#34;&gt;&lt;/p&gt;
-&lt;p&gt;We trying to find augment path from A3 -&amp;gt; B3 -&amp;gt; A1 -&amp;gt; B1 -&amp;gt; A2, but failed because it ends up with a matched vertex $A_2$. $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$. Let&amp;rsquo;s go back to original graph one more time 😃&lt;/p&gt;
+&lt;p&gt;We trying to find augment path from A3 -&amp;gt; B3 -&amp;gt; A1 -&amp;gt; B1 -&amp;gt; A2, but failed because it ends up with a matched vertex $A_2$. $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$. Let&#39;s go back to original graph one more time 😃&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./11.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Updating $S = (A_1, A_2, A_3)$ and $T = (B_1, B_3)$:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./12.png&#34; alt=&#34;update-3&#34;&gt;&lt;/p&gt;
@@ -447,7 +447,7 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;/blockquote&gt;
 &lt;p&gt;Here is an example:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./16.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
-&lt;p&gt;In current graph, we have 2 matchings (1&amp;lt;&amp;ndash;&amp;gt;5, 4&amp;lt;&amp;ndash;&amp;gt;7 ), so that vertices 1, 4, 5, 7 are matched vertices. Now, let&amp;rsquo;s try to find a augmenting path from the graph. Starting from an unmatched vertex &lt;strong&gt;8&lt;/strong&gt;, then we follow the alternating path (unmatched edge -&amp;gt; matched edge -&amp;gt; unmatched edge&amp;hellip;), finally end up with &lt;strong&gt;another&lt;/strong&gt; unmatched vertex.&lt;/p&gt;
+&lt;p&gt;In current graph, we have 2 matchings (1&amp;lt;&amp;ndash;&amp;gt;5, 4&amp;lt;&amp;ndash;&amp;gt;7 ), so that vertices 1, 4, 5, 7 are matched vertices. Now, let&#39;s try to find a augmenting path from the graph. Starting from an unmatched vertex &lt;strong&gt;8&lt;/strong&gt;, then we follow the alternating path (unmatched edge -&amp;gt; matched edge -&amp;gt; unmatched edge&amp;hellip;), finally end up with &lt;strong&gt;another&lt;/strong&gt; unmatched vertex.&lt;/p&gt;
 &lt;p&gt;Note that we have &lt;strong&gt;2 matched edges and 3 unmatched edges&lt;/strong&gt; in current augmenting path. Because we always starts and ends on unmatched vertices, which in other words, we start and ends with unmatched edges. It is obvious that the total number of unmatched edges is always greater than the number of matched edges by 1.&lt;/p&gt;
 &lt;p&gt;$$N_{unmatched} = N_{match} + 1$$&lt;/p&gt;
 &lt;blockquote&gt;
@@ -464,9 +464,9 @@ feasible vertex labelling whose equality subgraph contains a complete matching.&
 &lt;p&gt;&lt;img src=&#34;./18.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;hungarian-algorithm&#34;&gt;Hungarian Algorithm&lt;/h2&gt;
 &lt;p&gt;The key idea of Hungarian Algorithm is to find augmenting path. One can prove that a matching is maximum if and only if it does not have any augmenting path. (This result is sometimes called 
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Berge%27s_lemma&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Berge&amp;rsquo;s lemma&lt;/a&gt;.)&lt;/p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Berge%27s_lemma&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Berge&#39;s lemma&lt;/a&gt;.)&lt;/p&gt;
 &lt;p&gt;The algorithm starts with any matching $M$ and constructs a tree via a breadth-first search to find an augmenting path, namely a path $P$ that starts and finishes at unmatched vertices whose first and last edges are not in $M$ and whose edges alternate being outside and inside $M$. If the search succeeds, the symmetric difference of $M$ and the edges in $P$ yields a matching with one more edge than $M$ . That edge is added, and then another search is performed for a new augmenting path. If the search is unsuccessful, the algorithm terminates and $M$ must be the largest-size matching.&lt;/p&gt;
-&lt;p&gt;Again, let&amp;rsquo;s start with an example:&lt;/p&gt;
+&lt;p&gt;Again, let&#39;s start with an example:&lt;/p&gt;
 &lt;p&gt;First of all, we begin with vertex &lt;strong&gt;1&lt;/strong&gt;, try to find augmenting path. Obviously, the edge connects between 1 and 5 meets our requirement, then we update the path information and stop searching.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./5.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Then, it comes to vertex &lt;strong&gt;2&lt;/strong&gt;, and we noticed that 2 and 5 is connected but 5 is occupied by 1 already. Fortunately, however, we can find an augment path, which is from 2 -&amp;gt; 5 -&amp;gt; 1 -&amp;gt; 7. Then as we mentioned before, we switch unmatched edges and matched edges. Finally we will get 1 more matched edges, and the whole process looks like:&lt;/p&gt;
@@ -585,7 +585,7 @@ int main() {
 &lt;p&gt;A KD-Tree  (short for &lt;em&gt;k-dimensional tree&lt;/em&gt;) is a binary tree that splits points between alternating axes. Every leaf node is a &lt;em&gt;k&lt;/em&gt;-dimensional point. By separating space by splitting regions, nearest neighbor search can be made much faster when using an algorithm like euclidean clustering.&lt;/p&gt;
 &lt;h2 id=&#34;problem-statement&#34;&gt;Problem Statement&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;./1.png&#34; alt=&#34;Fig 1-point clouds&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
+&lt;p&gt;Let&#39;s assume we get some 3D point clouds from LiDAR scan, and we want to abstract bounding box from each objects and track them. It would be great to break up and regroup the whole point clouds into smaller clusters, especially if you want to do multiple object tracking with cars, pedestrians, and bicyclists, for instance. One way to do that grouping and cluster point cloud data is called euclidean clustering, e.g. using 
 &lt;a href=&#34;https://en.wikipedia.org/wiki/DBSCAN&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DBSCAN&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The basic idea is to associate groups of points by how close together they are. In other words, we need to implement a &lt;em&gt;nearest neighbor search&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;brute-force-nearest-neighbor-search&#34;&gt;Brute-force Nearest Neighbor search&lt;/h2&gt;
@@ -594,7 +594,7 @@ int main() {
 &lt;p&gt;The improved idea is to associate groups of points by how close together they are. By grouping points into regions in a KD-Tree, you can avoid calculating distance for possibly thousands of points just because you know they are not even considered in a close enough region.&lt;/p&gt;
 &lt;h2 id=&#34;building-kd-tree&#34;&gt;Building KD-Tree&lt;/h2&gt;
 &lt;p&gt;The key idea of building KD-Tree is to insert points alternating comparison between dimensions. As one moves down the tree, one cycles through the axes used to select the splitting planes.&lt;/p&gt;
-&lt;p&gt;For example, in a 3-dimensional tree, the root would have an &lt;em&gt;x&lt;/em&gt;-aligned plane, the root&amp;rsquo;s children would both have &lt;em&gt;y&lt;/em&gt;-aligned planes, the root&amp;rsquo;s grandchildren would all have &lt;em&gt;z&lt;/em&gt;-aligned planes, and so on.&lt;/p&gt;
+&lt;p&gt;For example, in a 3-dimensional tree, the root would have an &lt;em&gt;x&lt;/em&gt;-aligned plane, the root&#39;s children would both have &lt;em&gt;y&lt;/em&gt;-aligned planes, the root&#39;s grandchildren would all have &lt;em&gt;z&lt;/em&gt;-aligned planes, and so on.&lt;/p&gt;
 &lt;p&gt;The canonical method of &lt;em&gt;k&lt;/em&gt;-d tree construction has the following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;First inserted point becomes root of the tree.&lt;/li&gt;
@@ -611,7 +611,7 @@ int main() {
 &lt;p&gt;Having a balanced tree that evenly splits regions improves the search time for finding points later. To improve the tree, insert points that alternate between splitting the x region and the y region evenly.&lt;/p&gt;
 &lt;p&gt;A popular practice is to sort a &lt;em&gt;fixed&lt;/em&gt; number of &lt;em&gt;randomly&lt;/em&gt; &lt;em&gt;selected&lt;/em&gt; points, and use the median of those points to serve as the splitting plane. In practice, this technique often results in nicely balanced trees.&lt;/p&gt;
 &lt;h3 id=&#34;example&#34;&gt;Example&lt;/h3&gt;
-&lt;p&gt;Let&amp;rsquo;s start to build KD-Tree with an example.  First of all, we randomly generate 6 points in 2D as our dataset:&lt;/p&gt;
+&lt;p&gt;Let&#39;s start to build KD-Tree with an example.  First of all, we randomly generate 6 points in 2D as our dataset:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-c++&#34;&gt;(2,3), (5,4), (9,6), (4,7), (8,1), (7,2)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;So first of all, we would first insert (7,2) since it is the median along the x axis. Since point (7,2) is the first inserted point, it becomes the root of the tree with depth equals to 0. And this point splits the whole plane into left and right parts.&lt;/p&gt;
@@ -632,7 +632,7 @@ int main() {
 &lt;li&gt;The algorithm also checks whether there could be any points &lt;strong&gt;on the other side of the splitting plane&lt;/strong&gt; that are closer to the search point than the current best. In concept, this is done by intersecting the splitting hyperplane with a hypersphere around the search point that has a radius equal to the current nearest distance.
 &lt;ul&gt;
 &lt;li&gt;If the hypersphere crosses the plane, there could be nearer points on the other side of the plane, so the algorithm must move down the other branch of the tree from the current node looking for closer points, following the same recursive process as the entire search.&lt;/li&gt;
-&lt;li&gt;If the hypersphere doesn&amp;rsquo;t intersect the splitting plane, then the algorithm continues walking up the tree, and the entire branch on the other side of that node is eliminated.&lt;/li&gt;
+&lt;li&gt;If the hypersphere doesn&#39;t intersect the splitting plane, then the algorithm continues walking up the tree, and the entire branch on the other side of that node is eliminated.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;When the algorithm reaches the root node, then the search is complete.&lt;/li&gt;
@@ -695,7 +695,7 @@ int main() {
 &lt;/ul&gt;
 &lt;h2 id=&#34;why-using-homogeneous-coordinates&#34;&gt;Why Using Homogeneous Coordinates?&lt;/h2&gt;
 &lt;p&gt;One of the advantages of homogeneous coordinates is that they allow for an easy combination of multiple transformations by concatenating several matrix-vector multiplications.&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
+&lt;p&gt;Let&#39;s assume we want to do some data augmentation for a image dataset. The popular augmentation technique, or projective geometry works in 2D, includes: scale, rotate and translate.&lt;/p&gt;
 &lt;h4 id=&#34;scale&#34;&gt;Scale&lt;/h4&gt;
 &lt;p&gt;$$
 \begin{bmatrix} x_1 \\\ y_1 \end{bmatrix}
@@ -749,7 +749,7 @@ $$&lt;/p&gt;
 &lt;h2 id=&#34;example---lidar-to-camera-point-projection&#34;&gt;Example - LiDAR to Camera Point Projection&lt;/h2&gt;
 &lt;p&gt;In order to convert from Homogeneous coordinates $(x, y, w)$ to Cartesian coordinates, we simply divide $x$ and $y$ by $w$;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./homogeneous01.png&#34; alt=&#34;homogeneous-to-Cartesian&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Let&amp;rsquo;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.&lt;/p&gt;
+&lt;p&gt;Let&#39;s give an example, our goal here is to project LiDAR point cloud from 3D space onto the image plane in 2D.&lt;/p&gt;
 &lt;p&gt;In addition to the intrinsic camera parameters which make up the geometry of the projection, we need additional information about the position and alignment of both camera and LiDAR in a common reference coordinate system. To move from LiDAR to camera involves translation and rotation operations, which we need to apply to every 3D point. So our goal here is to simplify the notation with which we can express the projection. Using a linear transformation (or mapping), 3D points could be represented by a vector and operations such as translation, rotation, scaling and perspective projection could be represented as matrices by which the vector is multiplied.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;./8.png&#34; alt=&#34;LiDAR projection&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Once we are in the homogeneous coordinate system, projective transformations become linear and can thus be expressed as simple matrix-vector multiplications.&lt;/p&gt;
@@ -900,7 +900,7 @@ rm Untitled.md
 &lt;p&gt;Open &lt;code&gt;index.md&lt;/code&gt; in your text editor and edit the title etc. in the 
 &lt;a href=&#34;https://sourcethemes.com/academic/docs/front-matter/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;front matter&lt;/a&gt; according to your preference.&lt;/p&gt;
 &lt;p&gt;To set a 
-&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#featured-image&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;featured image&lt;/a&gt;, place an image named &lt;code&gt;featured&lt;/code&gt; into your post&amp;rsquo;s folder.&lt;/p&gt;
+&lt;a href=&#34;https://sourcethemes.com/academic/docs/managing-content/#featured-image&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;featured image&lt;/a&gt;, place an image named &lt;code&gt;featured&lt;/code&gt; into your post&#39;s folder.&lt;/p&gt;
 &lt;p&gt;For other tips, such as using math, see the guide on 
 &lt;a href=&#34;https://sourcethemes.com/academic/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;writing content with Academic&lt;/a&gt;.&lt;/p&gt;
 </description>
