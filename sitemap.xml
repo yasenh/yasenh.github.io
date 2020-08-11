@@ -98,12 +98,12 @@
   </url>
   
   <url>
-    <loc>https://yasenh.github.io/tags/algorithm/</loc>
+    <loc>https://yasenh.github.io/categories/algorithm/</loc>
     <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yasenh.github.io/categories/algorithm/</loc>
+    <loc>https://yasenh.github.io/tags/algorithm/</loc>
     <lastmod>2019-08-25T14:07:20-04:00</lastmod>
   </url>
   
@@ -128,22 +128,22 @@
   </url>
   
   <url>
-    <loc>https://yasenh.github.io/tags/tracking/</loc>
-    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yasenh.github.io/categories/tracking/</loc>
     <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
-    <loc>https://yasenh.github.io/tags/sensor-fusion/</loc>
-    <lastmod>2019-06-11T21:51:42-04:00</lastmod>
+    <loc>https://yasenh.github.io/tags/tracking/</loc>
+    <lastmod>2019-06-24T23:33:17-04:00</lastmod>
   </url>
   
   <url>
     <loc>https://yasenh.github.io/categories/sensor-fusion/</loc>
+    <lastmod>2019-06-11T21:51:42-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yasenh.github.io/tags/sensor-fusion/</loc>
     <lastmod>2019-06-11T21:51:42-04:00</lastmod>
   </url>
   
