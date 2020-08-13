@@ -5,12 +5,20 @@
     <link>https://yasenh.github.io/categories/</link>
       <atom:link href="https://yasenh.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Fri, 31 Jul 2020 17:49:16 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Categories</title>
       <link>https://yasenh.github.io/categories/</link>
     </image>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://yasenh.github.io/categories/c&#43;&#43;/</link>
+      <pubDate>Thu, 13 Aug 2020 15:19:43 -0400</pubDate>
+      <guid>https://yasenh.github.io/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Deep Learning</title>
@@ -25,6 +33,14 @@
       <link>https://yasenh.github.io/categories/machine-learning/</link>
       <pubDate>Sun, 03 May 2020 16:11:14 -0400</pubDate>
       <guid>https://yasenh.github.io/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Misc</title>
+      <link>https://yasenh.github.io/categories/misc/</link>
+      <pubDate>Wed, 06 Nov 2019 22:52:31 -0500</pubDate>
+      <guid>https://yasenh.github.io/categories/misc/</guid>
       <description></description>
     </item>
     

@@ -5,12 +5,20 @@
     <link>https://yasenh.github.io/tags/</link>
       <atom:link href="https://yasenh.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Fri, 31 Jul 2020 17:49:16 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Tags</title>
       <link>https://yasenh.github.io/tags/</link>
     </image>
+    
+    <item>
+      <title>cpp</title>
+      <link>https://yasenh.github.io/tags/cpp/</link>
+      <pubDate>Thu, 13 Aug 2020 15:19:43 -0400</pubDate>
+      <guid>https://yasenh.github.io/tags/cpp/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Deep Learning</title>
@@ -25,6 +33,14 @@
       <link>https://yasenh.github.io/tags/machine-learning/</link>
       <pubDate>Sun, 03 May 2020 16:11:14 -0400</pubDate>
       <guid>https://yasenh.github.io/tags/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jetson</title>
+      <link>https://yasenh.github.io/tags/jetson/</link>
+      <pubDate>Wed, 06 Nov 2019 22:52:31 -0500</pubDate>
+      <guid>https://yasenh.github.io/tags/jetson/</guid>
       <description></description>
     </item>
     
