@@ -5,12 +5,111 @@
     <link>https://yasenh.github.io/</link>
       <atom:link href="https://yasenh.github.io/index.xml" rel="self" type="application/rss+xml" />
     <description>Yasen Hu</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Mon, 07 Sep 2020 23:13:09 -0400</lastBuildDate>
     <image>
       <url>https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png</url>
       <title>Yasen Hu</title>
       <link>https://yasenh.github.io/</link>
     </image>
+    
+    <item>
+      <title>Install CUDA and Nvidia Driver in Linux</title>
+      <link>https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/</link>
+      <pubDate>Mon, 07 Sep 2020 23:13:09 -0400</pubDate>
+      <guid>https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The purpose of this post is to log and share my experience when installing the CUDA and Nvidia driver. The Nvidia driver may be easily messed up if you accidentally upgrade or downgrade your CUDA version.&lt;/p&gt;
+&lt;p&gt;Recently I updated my PyTorch version with following commands:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then I am not able to login my Linux system anymore, it gets stuck in a login loop which indicates there maybe something wrong with the Nvidia driver. The issues was resolved by reinstalling the CUDA and Nvidia driver again.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisite&#34;&gt;Prerequisite&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CUDA-Capable GPU&lt;/li&gt;
+&lt;li&gt;Supported version of Linux&lt;/li&gt;
+&lt;li&gt;GCC installed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;More details can be found from the 
+&lt;a href=&#34;https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Nvidia official document&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;install-cuda-and-nvidia-driver&#34;&gt;Install CUDA and Nvidia driver&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Download CUDA toolkit 
+&lt;a href=&#34;https://developer.nvidia.com/cuda-downloads&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://developer.nvidia.com/cuda-downloads&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Switch to virtual console by pressing &amp;ldquo;Ctrl+Alt+F1&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disabling Nouveau&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# The Nouveau drivers are loaded if the following command prints anything:
+$ lsmod | grep nouveau
+
+# Create a file at /etc/modprobe.d/blacklist-nouveau.confs:
+blacklist nouveau
+options nouveau modeset=0
+
+# Regenerate the kernel initramfs:
+$ sudo update-initramfs -u
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Disable  X server and run installation file from there. &lt;strong&gt;Important Note:&lt;/strong&gt; user should add &lt;code&gt;--run-nvidia-xconfig&lt;/code&gt; option to tell the driver installation to run nvidia-xconfig to update the system X configuration file, so that the NVIDIA X driver is used. &lt;strong&gt;Otherwise the system may gets stuck in a login loop after reboot!&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo service lightdm stop
+# Remember to run Nvidia xconfig
+$ sudo ./cuda_10.2.89_440.33.01_linux.run --run-nvidia-xconfig
+# User may need to remove old driver, follow instructions from run file.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Post-installation actions: environment setup. The &lt;code&gt;PATH&lt;/code&gt; variable needs to include /usr/local/cuda/bin. The &lt;code&gt;LD_LIBRARY_PATH&lt;/code&gt; variable needs to contain /usr/local/cuda/lib64 on a 64-bit system, and /usr/local/cuda-7.5/lib on a 32-bit system&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo vim /etc/profile.d/myenvvars.sh
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+
+$ sudo vim /etc/ld.so.conf.d/mylib.conf
+/usr/local/cuda/lib64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify the driver version&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cat /proc/driver/nvidia/version
+# CUDA Toolkit version
+$ nvcc -V
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install Third-party Libraries&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo apt-get install g++ freeglut3-dev build-essential libx11-dev \
+    libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install cuDNN if needed&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd folder/extracted/contents
+$ sudo cp include/cudnn.h /usr/local/cuda/include
+$ sudo cp -a lib64/libcudnn* /usr/local/cuda/lib64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check CUDA/cuDNN versions&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Check CUDA version
+$ nvcc --version
+# Check cuDNN version
+$ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://docs.nvidia.com/cuda/cuda-installation-guide-linux&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cuda-installation-guide-linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#linux&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cuda-quick-start-guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://docs.nvidia.com/pdf/CUDA_Installation_Guide_Linux.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CUDA_Installation_Guide_Linux.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>C&#43;&#43; Diary #1 | emplace_back vs. push_back</title>

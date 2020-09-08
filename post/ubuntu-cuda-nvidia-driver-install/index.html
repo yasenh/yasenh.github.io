@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="Perception Systems Engineer">
+  <meta name="description" content="Setup environment in 10 minutes">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/categories/">
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/">
 
   
 
@@ -289,14 +289,12 @@
   
 
   
-  <link rel="alternate" href="/categories/index.xml" type="application/rss+xml" title="Yasen Hu">
-  
 
   <link rel="manifest" href="/index.webmanifest">
   <link rel="icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://yasenh.github.io/categories/">
+  <link rel="canonical" href="https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/">
 
   
   
@@ -306,35 +304,86 @@
   
   
     
-    
   
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Yasen Hu">
-  <meta property="og:url" content="https://yasenh.github.io/categories/">
-  <meta property="og:title" content="Categories | Yasen Hu">
-  <meta property="og:description" content="Perception Systems Engineer"><meta property="og:image" content="https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png">
-  <meta property="twitter:image" content="https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/">
+  <meta property="og:title" content="Install CUDA and Nvidia Driver in Linux | Yasen Hu">
+  <meta property="og:description" content="Setup environment in 10 minutes"><meta property="og:image" content="https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/featured.png">
+  <meta property="twitter:image" content="https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/featured.png"><meta property="og:locale" content="en-us">
   
-    <meta property="og:updated_time" content="2020-09-07T23:13:09-04:00">
+    
+      <meta property="article:published_time" content="2020-09-07T23:13:09-04:00">
+    
+    <meta property="article:modified_time" content="2020-09-07T23:13:09-04:00">
   
-
-  
-
-
-
 
   
 
 
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/"
+  },
+  "headline": "Install CUDA and Nvidia Driver in Linux",
+  
+  "image": [
+    "https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/featured.png"
+  ],
+  
+  "datePublished": "2020-09-07T23:13:09-04:00",
+  "dateModified": "2020-09-07T23:13:09-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Yasen Hu"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Yasen Hu",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Setup environment in 10 minutes"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
   
 
 
 
 
 
-  <title>Categories | Yasen Hu</title>
+  <title>Install CUDA and Nvidia Driver in Linux | Yasen Hu</title>
 
 </head>
 
@@ -616,125 +665,420 @@
 
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>Install CUDA and Nvidia Driver in Linux</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
   
   
   
+  
+  <div>
     
+
   
-<div class="universal-wrapper pt-3">
-  <h1>Categories</h1>
+  <span ><a href="/author/yasen-hu/">Yasen Hu</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Sep 7, 2020
+  </span>
+  
 
   
 
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    2 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder mr-1"></i><a href="/category/misc/">Misc</a></span>
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 559px; max-height: 168px;">
+  <div style="position: relative">
+    <img src="/post/ubuntu-cuda-nvidia-driver-install/featured.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="introduction">Introduction</h2>
+<p>The purpose of this post is to log and share my experience when installing the CUDA and Nvidia driver. The Nvidia driver may be easily messed up if you accidentally upgrade or downgrade your CUDA version.</p>
+<p>Recently I updated my PyTorch version with following commands:</p>
+<pre><code class="language-bash">conda install pytorch torchvision cudatoolkit=10.2 -c pytorch
+</code></pre>
+<p>Then I am not able to login my Linux system anymore, it gets stuck in a login loop which indicates there maybe something wrong with the Nvidia driver. The issues was resolved by reinstalling the CUDA and Nvidia driver again.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>CUDA-Capable GPU</li>
+<li>Supported version of Linux</li>
+<li>GCC installed</li>
+</ul>
+<p>More details can be found from the 
+<a href="https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions" target="_blank" rel="noopener">Nvidia official document</a>.</p>
+<h2 id="install-cuda-and-nvidia-driver">Install CUDA and Nvidia driver</h2>
+<ol>
+<li>
+<p>Download CUDA toolkit 
+<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-downloads</a></p>
+</li>
+<li>
+<p>Switch to virtual console by pressing &ldquo;Ctrl+Alt+F1&rdquo;</p>
+</li>
+<li>
+<p>Disabling Nouveau</p>
+<pre><code class="language-bash"># The Nouveau drivers are loaded if the following command prints anything:
+$ lsmod | grep nouveau
+
+# Create a file at /etc/modprobe.d/blacklist-nouveau.confs:
+blacklist nouveau
+options nouveau modeset=0
+
+# Regenerate the kernel initramfs:
+$ sudo update-initramfs -u
+</code></pre>
+</li>
+<li>
+<p>Disable  X server and run installation file from there. <strong>Important Note:</strong> user should add <code>--run-nvidia-xconfig</code> option to tell the driver installation to run nvidia-xconfig to update the system X configuration file, so that the NVIDIA X driver is used. <strong>Otherwise the system may gets stuck in a login loop after reboot!</strong></p>
+<pre><code class="language-bash">$ sudo service lightdm stop
+# Remember to run Nvidia xconfig
+$ sudo ./cuda_10.2.89_440.33.01_linux.run --run-nvidia-xconfig
+# User may need to remove old driver, follow instructions from run file.
+</code></pre>
+</li>
+<li>
+<p>Post-installation actions: environment setup. The <code>PATH</code> variable needs to include /usr/local/cuda/bin. The <code>LD_LIBRARY_PATH</code> variable needs to contain /usr/local/cuda/lib64 on a 64-bit system, and /usr/local/cuda-7.5/lib on a 32-bit system</p>
+<pre><code class="language-bash">$ sudo vim /etc/profile.d/myenvvars.sh
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}
+
+$ sudo vim /etc/ld.so.conf.d/mylib.conf
+/usr/local/cuda/lib64
+</code></pre>
+</li>
+<li>
+<p>Verify the driver version</p>
+<pre><code class="language-bash">$ cat /proc/driver/nvidia/version
+# CUDA Toolkit version
+$ nvcc -V
+</code></pre>
+</li>
+<li>
+<p>Install Third-party Libraries</p>
+<pre><code class="language-bash">$ sudo apt-get install g++ freeglut3-dev build-essential libx11-dev \
+    libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+</code></pre>
+</li>
+<li>
+<p>Install cuDNN if needed</p>
+<pre><code class="language-bash">$ cd folder/extracted/contents
+$ sudo cp include/cudnn.h /usr/local/cuda/include
+$ sudo cp -a lib64/libcudnn* /usr/local/cuda/lib64
+</code></pre>
+</li>
+<li>
+<p>Check CUDA/cuDNN versions</p>
+<pre><code class="language-bash"># Check CUDA version
+$ nvcc --version
+# Check cuDNN version
+$ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+</code></pre>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<a href="http://docs.nvidia.com/cuda/cuda-installation-guide-linux" target="_blank" rel="noopener">cuda-installation-guide-linux</a></li>
+<li>
+<a href="https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#linux" target="_blank" rel="noopener">cuda-quick-start-guide</a></li>
+<li>
+<a href="https://docs.nvidia.com/pdf/CUDA_Installation_Guide_Linux.pdf" target="_blank" rel="noopener">CUDA_Installation_Guide_Linux.pdf</a></li>
+</ol>
+
+    </div>
+
+    
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/cuda/">CUDA</a>
   
 </div>
 
 
 
-<div class="universal-wrapper">
-  
-
-  
-  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
-    
-    
-    <div>
-      <h2><a href="/category/misc/" >Misc</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/&amp;text=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/c-/" >C&#43;&#43;</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/&amp;t=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/deep-learning/" >Deep Learning</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux&amp;body=https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/machine-learning/" >Machine Learning</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/&amp;title=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/algorithm/" >Algorithm</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="whatsapp://send?text=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux%20https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/tracking/" >Tracking</a></h2>
-      <div class="article-style">
+      
+      
+      
         
-      </div>
-    </div>
-  
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/post/ubuntu-cuda-nvidia-driver-install/&amp;title=Install%20CUDA%20and%20Nvidia%20Driver%20in%20Linux" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
-    
-    
-    <div>
-      <h2><a href="/category/sensor-fusion/" >Sensor Fusion</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-    
-    
-    
-    <div>
-      <h2><a href="/category/computer-vision/" >Computer Vision</a></h2>
-      <div class="article-style">
-        
-      </div>
-    </div>
-  
-
-  
-
+  </ul>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+    
+    
+    
+      
+    
+    
+    
+    <div class="media author-card content-widget-hr">
+      
+        
+        <img class="avatar mr-3 avatar-circle" src="/author/yasen-hu/avatar_huedb03c8409b1e5b412ce03606179204a_138038_270x270_fill_q90_lanczos_center.jpg" alt="Yasen Hu">
+      
+
+      <div class="media-body">
+        <h5 class="card-title"><a href="https://yasenh.github.io/">Yasen Hu</a></h5>
+        <h6 class="card-subtitle">Perception Systems Engineer</h6>
+        <p class="card-text">My research interests include perception and sensor fusion.</p>
+        <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/yasenh" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+      </div>
+    </div>
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/nvidia-jetson-1/">NVIDIA JetPack Flashing Issues Q&amp;A</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+
+
+  </div>
+</article>
 
       
 
