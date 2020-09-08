@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; | Yasen Hu</title>
+    <link>https://yasenh.github.io/category/c-/</link>
+      <atom:link href="https://yasenh.github.io/category/c-/index.xml" rel="self" type="application/rss+xml" />
+    <description>C&#43;&#43;</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
+    <image>
+      <url>https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png</url>
+      <title>C&#43;&#43;</title>
+      <link>https://yasenh.github.io/category/c-/</link>
+    </image>
+    
+    <item>
+      <title>C&#43;&#43; Diary #1 | emplace_back vs. push_back</title>
+      <link>https://yasenh.github.io/post/cpp-diary-1-emplace_back/</link>
+      <pubDate>Thu, 13 Aug 2020 15:19:43 -0400</pubDate>
+      <guid>https://yasenh.github.io/post/cpp-diary-1-emplace_back/</guid>
+      <description>&lt;h2 id=&#34;why&#34;&gt;Why?&lt;/h2&gt;
+&lt;p&gt;Recently someone told me the IDE often suggests  &lt;code&gt;Clang-Tidy: Use emplace_back instead of push_back&lt;/code&gt;, but he don&amp;rsquo;t quite understand what is the difference between &lt;code&gt;emplace_back&lt;/code&gt; and &lt;code&gt;push_back&lt;/code&gt;. I happen to review the Scott Meyers&amp;rsquo;s book &amp;ldquo;Effective Modern C++&amp;rdquo; few months ago, so I think it is a good time to summarise the pros and cons of &lt;code&gt;emplace_back&lt;/code&gt;  method based on my experience.&lt;/p&gt;
+&lt;h2 id=&#34;efficiency&#34;&gt;Efficiency&lt;/h2&gt;
+&lt;p&gt;First of all, let&amp;rsquo;s start from the definition of each method:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;push_back&lt;/strong&gt;: Adds a new element at the end of the container, after its current last element. The content of &lt;em&gt;val&lt;/em&gt; is &lt;strong&gt;copied (or moved)&lt;/strong&gt; to the new element.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;emplace_back&lt;/strong&gt;: Inserts a new element at the end of the container, right after its current last element. This new element is &lt;strong&gt;constructed in place&lt;/strong&gt; using &lt;em&gt;args&lt;/em&gt; as the arguments for its constructor.&lt;/p&gt;
+&lt;p&gt;To be more clear, what will happen if we call &lt;code&gt;push_back&lt;/code&gt;?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A constructor will be called to create a temporary object.&lt;/li&gt;
+&lt;li&gt;A copy of the temporary object will be constructed in the memory for the container. Note that the &lt;code&gt;move constructor&lt;/code&gt; will be called if exist because the temporary object is an &lt;code&gt;rvalue&lt;/code&gt;, otherwise the &lt;code&gt;copy constructor&lt;/code&gt; should be called.&lt;/li&gt;
+&lt;li&gt;The destructor will be called to destroy the temporary object after copy.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As a comparison, &lt;code&gt;emplace_back&lt;/code&gt; directly takes &lt;strong&gt;constructor arguments&lt;/strong&gt; for objects to be inserted. In other words, the emplacement function &lt;strong&gt;avoids constructing and destructing temporary objects&lt;/strong&gt;. It will be much more efficient if developer try to insert large amount of objects or if each object is time consuming to create/destroy.&lt;/p&gt;
+&lt;h2 id=&#34;example&#34;&gt;Example&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s create a simple class:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class MyClass {
+public:
+    MyClass(int x, int y) : x_(x), y_(y) {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Create class&amp;quot; &amp;lt;&amp;lt; std::endl;
+    }
+
+    ~MyClass() {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Destroy class&amp;quot; &amp;lt;&amp;lt; std::endl;
+    }
+
+    // Copy Constructor
+    MyClass(const MyClass&amp;amp; my_class) {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Copy Constructor Called&amp;quot; &amp;lt;&amp;lt; std::endl;
+        x_ = my_class.x_;
+    }
+
+    // Move Constructor
+    MyClass (MyClass&amp;amp;&amp;amp; my_class) noexcept {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Move Constructor Called&amp;quot; &amp;lt;&amp;lt; std::endl;
+        x_ = std::move(my_class.x_);
+    }
+
+private:
+    int x_ = 0;
+    int y_ = 0;
+
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the code above, we print out some debugging statements in each constructor, so that we could have a better understanding of how the flow works.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Refer to 
+&lt;a href=&#34;https://github.com/facontidavide/CPP_Optimizations_Diary/blob/master/docs/reserve.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;here&lt;/a&gt; for why we need to reserve space in advance.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int main() {
+    std::vector&amp;lt;MyClass&amp;gt; vector;
+    // Reserve space to avoid reallocation
+    vector.reserve(2);
+    
+    std::cout &amp;lt;&amp;lt; &amp;quot;\n--- push_back ---&amp;quot; &amp;lt;&amp;lt; std::endl;
+    vector.push_back(MyClass(1, 2));
+    
+    std::cout &amp;lt;&amp;lt; &amp;quot;\n--- emplace_back ---&amp;quot; &amp;lt;&amp;lt; std::endl;
+    vector.emplace_back(1, 2);
+    
+    std::cout &amp;lt;&amp;lt; &amp;quot;\n--- Finish ---&amp;quot; &amp;lt;&amp;lt; std::endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;--- push_back ---
+Create Class
+Move Constructor Called
+Destroy Class
+
+--- emplace_back ---
+Create Class
+
+--- Finish ---
+Destroy Class
+Destroy Class
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As we expected, &lt;code&gt;push_back&lt;/code&gt; method calls the move constructor to make a copy and the destructor to destroy the temporary object. But &lt;code&gt;emplace_back&lt;/code&gt; construct the object directly.&lt;/p&gt;
+&lt;p&gt;With the simple benchmark here, we notice that &lt;code&gt;emplace_back&lt;/code&gt; is &lt;strong&gt;7.62%&lt;/strong&gt; faster than &lt;code&gt;push_back&lt;/code&gt; when we insert 1,000,000 object (MyClass) into an vector.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Insert 1,000,000 objects.
+
+--- push_back ---
+push_back takes 0.00665344 seconds.
+
+--- emplace_back ---
+emplace_back takes 0.00614631 seconds.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;why-not-use-emplace_back-all-the-time&#34;&gt;Why not use &lt;code&gt;emplace_back&lt;/code&gt; all the time?&lt;/h2&gt;
+&lt;p&gt;We elaborate some of benefits of &lt;code&gt;emplace_back&lt;/code&gt; method above, you might want to ask - Can we just get rid of the &lt;code&gt;push_back&lt;/code&gt; method of containers?&lt;/p&gt;
+&lt;p&gt;Consider following code segment:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;vec1.push_back(1000000);
+vec2.emplace_back(1000000);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For the first vector, we can tell it tries to add the number 1,000,000 to the end of the vector. However the behaviour of second line is not clear. Without knowing the type of the vector, we don’t know what constructor is actually invoking.&lt;/p&gt;
+&lt;p&gt;For example, if the vector is defined as:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;std::vector&amp;lt;std::vector&amp;lt;int&amp;gt;&amp;gt; vec1, vec2;
+// vec1.push_back(1000000);  // compile error 
+vec2.emplace_back(1000000);
+std::cout &amp;lt;&amp;lt; &amp;quot;Vector Size = &amp;quot; &amp;lt;&amp;lt; vec2.at(0).size() &amp;lt;&amp;lt; std::endl;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here is the output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Vector Size = 1000000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In the example above, it constructs a &lt;code&gt;vector&lt;/code&gt; of 1,000,000 elements, allocating several megabytes of memory in the process. In most of the cases, it is unexpected and may take longer time for the developers to catch similar issues.&lt;/p&gt;
+&lt;p&gt;In some cases the transformation would be valid, but the code wouldn’t be exception safe. In this case the calls of &lt;code&gt;push_back&lt;/code&gt; won’t be replaced.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;std::vector&amp;lt;std::unique_ptr&amp;lt;int&amp;gt;&amp;gt; v;
+v.push_back(std::unique_ptr&amp;lt;int&amp;gt;(new int(0)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is because replacing it with &lt;code&gt;emplace_back&lt;/code&gt; could cause a leak of this pointer if &lt;code&gt;emplace_back&lt;/code&gt; would throw exception before emplacement (e.g. not enough memory to add a new element).&lt;/p&gt;
+&lt;p&gt;And there are some other corner cases and good examples that &lt;code&gt;push_back&lt;/code&gt; outperforms than &lt;code&gt;emplace_back&lt;/code&gt;, such as container with set of unique objects, or interact with &lt;code&gt;explicit&lt;/code&gt; constructors. More details can be found in &amp;lsquo;&amp;lsquo;Item 42: Consider emplacement instead of insertion&amp;rdquo; in the book &amp;ldquo;Effective Modern C++&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;At the end, I would love to quote the suggestions from this 
+&lt;a href=&#34;https://abseil.io/tips/112&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;blog&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Very often the performance difference just won’t matter. As always, the rule of thumb is that you should avoid “optimizations” that make the code less safe or less clear, unless the performance benefit is big enough to show up in your application benchmarks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://clang.llvm.org/extra/clang-tidy/checks/modernize-use-emplace.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CLANG-TIDY - MODERNIZE-USE-EMPLACE&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;C++ difference between emplace_back and push_back function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://abseil.io/tips/112&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tip of the Week #112: emplace vs. push_back&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

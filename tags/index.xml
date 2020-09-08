@@ -7,106 +7,10 @@
     <description>Tags</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
     <image>
-      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <url>https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png</url>
       <title>Tags</title>
       <link>https://yasenh.github.io/tags/</link>
     </image>
-    
-    <item>
-      <title>cpp</title>
-      <link>https://yasenh.github.io/tags/cpp/</link>
-      <pubDate>Thu, 13 Aug 2020 15:19:43 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Deep Learning</title>
-      <link>https://yasenh.github.io/tags/deep-learning/</link>
-      <pubDate>Fri, 31 Jul 2020 17:49:16 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/deep-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine Learning</title>
-      <link>https://yasenh.github.io/tags/machine-learning/</link>
-      <pubDate>Sun, 03 May 2020 16:11:14 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Jetson</title>
-      <link>https://yasenh.github.io/tags/jetson/</link>
-      <pubDate>Wed, 06 Nov 2019 22:52:31 -0500</pubDate>
-      <guid>https://yasenh.github.io/tags/jetson/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Algorithm</title>
-      <link>https://yasenh.github.io/tags/algorithm/</link>
-      <pubDate>Sun, 25 Aug 2019 14:07:20 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tracking</title>
-      <link>https://yasenh.github.io/tags/tracking/</link>
-      <pubDate>Mon, 24 Jun 2019 23:33:17 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/tracking/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Sensor Fusion</title>
-      <link>https://yasenh.github.io/tags/sensor-fusion/</link>
-      <pubDate>Tue, 11 Jun 2019 21:51:42 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/sensor-fusion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Computer Vision</title>
-      <link>https://yasenh.github.io/tags/computer-vision/</link>
-      <pubDate>Sun, 09 Jun 2019 20:28:56 -0400</pubDate>
-      <guid>https://yasenh.github.io/tags/computer-vision/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kd Tree</title>
-      <link>https://yasenh.github.io/tags/kd-tree/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>https://yasenh.github.io/tags/kd-tree/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>LiDAR</title>
-      <link>https://yasenh.github.io/tags/lidar/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>https://yasenh.github.io/tags/lidar/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>RANSAC</title>
-      <link>https://yasenh.github.io/tags/ransac/</link>
-      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>https://yasenh.github.io/tags/ransac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Source Themes</title>
-      <link>https://yasenh.github.io/tags/source-themes/</link>
-      <pubDate>Sun, 07 Apr 2019 00:00:00 +0000</pubDate>
-      <guid>https://yasenh.github.io/tags/source-themes/</guid>
-      <description></description>
-    </item>
     
   </channel>
 </rss>
