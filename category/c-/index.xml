@@ -5,12 +5,177 @@
     <link>https://yasenh.github.io/category/c-/</link>
       <atom:link href="https://yasenh.github.io/category/c-/index.xml" rel="self" type="application/rss+xml" />
     <description>C&#43;&#43;</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Thu, 13 Aug 2020 15:19:43 -0400</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Sat, 26 Dec 2020 19:53:55 -0500</lastBuildDate>
     <image>
       <url>https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png</url>
       <title>C&#43;&#43;</title>
       <link>https://yasenh.github.io/category/c-/</link>
     </image>
+    
+    <item>
+      <title>C&#43;&#43; Diary #2 | std::vector::reserve</title>
+      <link>https://yasenh.github.io/post/cpp-diary-2-reserve-resize/</link>
+      <pubDate>Sat, 26 Dec 2020 19:53:55 -0500</pubDate>
+      <guid>https://yasenh.github.io/post/cpp-diary-2-reserve-resize/</guid>
+      <description>&lt;h2 id=&#34;how-a-stdvector-grows&#34;&gt;How a &lt;code&gt;std::vector&lt;/code&gt; Grows&lt;/h2&gt;
+&lt;p&gt;In C++, std::vector provides the capability of creating dynamic arrays. In order to support random element access, the elements in vector container will be assigned to contiguously memory blocks. Considering we pre-allocate certain amount of memory and vector can grow (or shrink) dynamically, here we might raise a question:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When we add a new element, what will happen if there is no space left for the new element?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Obviously, the vector container have to do following steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Allocate a new and larger contiguous memory space&lt;/li&gt;
+&lt;li&gt;Move existing elements into the new memory location&lt;/li&gt;
+&lt;li&gt;Add current new element to memory&lt;/li&gt;
+&lt;li&gt;Deallocate the old memory space&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Do we need to allocation and deallocation each time we add an new element?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;We cannot avoid performance degradation if memory allocation and deallocation happens every single time. So what is the mechanism to optimize it in  standard library? Here we start with an example.&lt;/p&gt;
+&lt;p&gt;First of all, we create a simple class with some print statements for debugging purpose:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;class MyClass {
+public:
+    explicit MyClass(int x) : x_(x){
+        std::cout &amp;lt;&amp;lt; &amp;quot;Create Class with number &amp;quot; &amp;lt;&amp;lt; x_ &amp;lt;&amp;lt; std::endl;
+    }
+
+    ~MyClass() {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Destroy Class with number &amp;quot; &amp;lt;&amp;lt; x_ &amp;lt;&amp;lt; std::endl;
+    }
+    
+    // Move Constructor
+    MyClass (MyClass&amp;amp;&amp;amp; my_class) noexcept {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Moving &amp;quot; &amp;lt;&amp;lt; my_class.x_ &amp;lt;&amp;lt; std::endl;
+        x_ = std::move(my_class.x_);
+    }
+
+private:
+    int x_ = 0;
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Here we create a simple task to add numbers into an vector, and we also print out the 
+&lt;a href=&#34;http://www.cplusplus.com/reference/vector/vector/capacity/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;capacity&lt;/a&gt;(currently allocated storage) of the vector:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;int main() {
+    std::vector&amp;lt;MyClass&amp;gt; v;
+    std::cout &amp;lt;&amp;lt; &amp;quot;\n--- Start ---&amp;quot; &amp;lt;&amp;lt; std::endl;
+
+    constexpr int n = 9;
+    for (int i = 0; i &amp;lt; n; i++) {
+        std::cout &amp;lt;&amp;lt; &amp;quot;Insert &amp;quot; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; std::endl;
+        std::cout &amp;lt;&amp;lt; &amp;quot;Current Capacity = &amp;quot; &amp;lt;&amp;lt; v.capacity() &amp;lt;&amp;lt; std::endl;
+        v.emplace_back(i);
+        std::cout &amp;lt;&amp;lt; &amp;quot;New Capacity = &amp;quot; &amp;lt;&amp;lt; v.capacity() &amp;lt;&amp;lt; std::endl;
+        std::cout &amp;lt;&amp;lt; std::endl;
+    }
+
+    std::cout &amp;lt;&amp;lt; &amp;quot;\n--- Finish ---&amp;quot; &amp;lt;&amp;lt; std::endl;
+    return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And let&amp;rsquo;s take a look at the result:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Insert 0
+Current Capacity = 0
+Create Class with number 0
+New Capacity = 1
+
+Insert 1
+Current Capacity = 1
+Create Class with number 1
+Moving 0
+Destroy Class with number 0
+New Capacity = 2
+
+Insert 2
+Current Capacity = 2
+Create Class with number 2
+Moving 0
+Moving 1
+Destroy Class with number 0
+Destroy Class with number 1
+New Capacity = 4
+
+Insert 3
+Current Capacity = 4
+Create Class with number 3
+New Capacity = 4
+
+...
+
+Insert 7
+Current Capacity = 8
+Create Class with number 7
+New Capacity = 8
+
+Insert 8
+Current Capacity = 8
+Create Class with number 8
+Moving 0
+Moving 1
+Moving 2
+Moving 3
+Moving 4
+Moving 5
+Moving 6
+Moving 7
+Destroy Class with number 0
+Destroy Class with number 1
+Destroy Class with number 2
+Destroy Class with number 3
+Destroy Class with number 4
+Destroy Class with number 5
+Destroy Class with number 6
+Destroy Class with number 7
+New Capacity = 16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We notice that the capacity increases from 0-&amp;gt;1-&amp;gt;2-&amp;gt;4-&amp;gt;8-&amp;gt;16, it indicates that the &lt;code&gt;std::vector&lt;/code&gt; actually double the capacity each time when it have to allocate larger memory. In other words, it will allocate more memory that is beyond the immediately needs. For example, it allocate new capacity of 16 when we only store 8 elements in the vector.&lt;/p&gt;
+&lt;p&gt;However, we should also catch that the class&amp;rsquo;s move (or copy) constructor and the destructor is called multiple times, in order to move elements into new memory location. If we have a relatively complex class with lots of member variables to copy and destroy, then overall time may be &lt;strong&gt;non-negligible&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;stdvectorreserve&#34;&gt;std::vector::reserve&lt;/h2&gt;
+&lt;p&gt;A call to &lt;code&gt;vector::reserve(n)&lt;/code&gt;  requests the amount of memory which is at least enough to carry $n$ elements:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;// Reserve space to avoid reallocation
+v.reserve(500);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As a result, it is not necessary to reallocate memory every time, because we already reserved enough amount of memory ahead.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;Insert 0
+Current Capacity = 500
+Create Class with number 0
+New Capacity = 500
+
+Insert 1
+Current Capacity = 500
+Create Class with number 1
+New Capacity = 500
+
+Insert 2
+Current Capacity = 500
+Create Class with number 2
+New Capacity = 500
+
+...
+
+Insert 8
+Current Capacity = 500
+Create Class with number 8
+New Capacity = 500
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reserve-vs-resize&#34;&gt;reserve vs. resize&lt;/h2&gt;
+&lt;p&gt;Vector container have two kinds of capacity parameters, &lt;code&gt;size&lt;/code&gt; and &lt;code&gt;capacity&lt;/code&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;vector::size&lt;/code&gt; returns the number of actual object held in the vector, which is not necessarily equal to the storage capacity. We could use &lt;code&gt;vector::resize&lt;/code&gt; to change the number of real elements by inserting or erasing elements from it. It will change &lt;code&gt;capacity&lt;/code&gt; only when the resize number is greater than the current container&amp;rsquo;s capacity.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vector::capacity&lt;/code&gt; return the size of the storage space currently allocated for the vector. It can be equal or greater than current number of elements in the vector. &lt;code&gt;vector::reserve&lt;/code&gt; can request a change in &lt;code&gt;capacity&lt;/code&gt;, however it does not effect the &lt;code&gt;size&lt;/code&gt; of vector or its actual elements.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;If we have a rough estimation of the number of elements we will store into the vector, we should then use&lt;code&gt;std::vector::reserve&lt;/code&gt; whenever possible to avoid frequently memory reallocation.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;C++ Primer (5th Edition): Chapter 9.4&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;https://www.geeksforgeeks.org/using-stdvectorreserve-whenever-possible/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Using std::vector::reserve whenever possible&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;http://www.cplusplus.com/reference/vector/vector/reserve/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;cplusplus.com - std::vector::reserve&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>C&#43;&#43; Diary #1 | emplace_back vs. push_back</title>

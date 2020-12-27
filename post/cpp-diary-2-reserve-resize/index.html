@@ -30,10 +30,10 @@
   
     
   
-  <meta name="description" content="A C&#43;&#43; LibTorch inference implementation of the yolov5 object detection algorithm.">
+  <meta name="description" content="Using std::vector::reserve whenever possible">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/project/libtorch-yolov5/">
+  <link rel="alternate" hreflang="en-us" href="https://yasenh.github.io/post/cpp-diary-2-reserve-resize/">
 
   
 
@@ -294,7 +294,7 @@
   <link rel="icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_32x32_fill_lanczos_center_2.png">
   <link rel="apple-touch-icon" type="image/png" href="/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png">
 
-  <link rel="canonical" href="https://yasenh.github.io/project/libtorch-yolov5/">
+  <link rel="canonical" href="https://yasenh.github.io/post/cpp-diary-2-reserve-resize/">
 
   
   
@@ -309,15 +309,15 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="Yasen Hu">
-  <meta property="og:url" content="https://yasenh.github.io/project/libtorch-yolov5/">
-  <meta property="og:title" content="Libtorch Yolov5 | Yasen Hu">
-  <meta property="og:description" content="A C&#43;&#43; LibTorch inference implementation of the yolov5 object detection algorithm."><meta property="og:image" content="https://yasenh.github.io/project/libtorch-yolov5/featured.jpg">
-  <meta property="twitter:image" content="https://yasenh.github.io/project/libtorch-yolov5/featured.jpg"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://yasenh.github.io/post/cpp-diary-2-reserve-resize/">
+  <meta property="og:title" content="C&#43;&#43; Diary #2 | std::vector::reserve | Yasen Hu">
+  <meta property="og:description" content="Using std::vector::reserve whenever possible"><meta property="og:image" content="https://yasenh.github.io/post/cpp-diary-2-reserve-resize/featured.png">
+  <meta property="twitter:image" content="https://yasenh.github.io/post/cpp-diary-2-reserve-resize/featured.png"><meta property="og:locale" content="en-us">
   
     
-      <meta property="article:published_time" content="2020-07-31T17:49:16-04:00">
+      <meta property="article:published_time" content="2020-12-26T19:53:55-05:00">
     
-    <meta property="article:modified_time" content="2020-07-31T17:49:16-04:00">
+    <meta property="article:modified_time" content="2020-12-26T19:53:55-05:00">
   
 
   
@@ -329,6 +329,8 @@
 
 
 
+
+  
 
 
 
@@ -336,19 +338,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
+  "@type": "BlogPosting",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://yasenh.github.io/project/libtorch-yolov5/"
+    "@id": "https://yasenh.github.io/post/cpp-diary-2-reserve-resize/"
   },
-  "headline": "Libtorch Yolov5",
+  "headline": "C++ Diary #2 | std::vector::reserve",
   
   "image": [
-    "https://yasenh.github.io/project/libtorch-yolov5/featured.jpg"
+    "https://yasenh.github.io/post/cpp-diary-2-reserve-resize/featured.png"
   ],
   
-  "datePublished": "2020-07-31T17:49:16-04:00",
-  "dateModified": "2020-07-31T17:49:16-04:00",
+  "datePublished": "2020-12-26T19:53:55-05:00",
+  "dateModified": "2020-12-26T19:53:55-05:00",
   
   "author": {
     "@type": "Person",
@@ -363,7 +365,7 @@
       "url": "https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_192x192_fill_lanczos_center_2.png"
     }
   },
-  "description": "A C++ LibTorch inference implementation of the yolov5 object detection algorithm."
+  "description": "Using std::vector::reserve whenever possible"
 }
 </script>
 
@@ -381,7 +383,7 @@
 
 
 
-  <title>Libtorch Yolov5 | Yasen Hu</title>
+  <title>C&#43;&#43; Diary #2 | std::vector::reserve | Yasen Hu</title>
 
 </head>
 
@@ -663,7 +665,7 @@
 
 
 
-  <article class="article article-project">
+  <article class="article">
 
   
 
@@ -678,26 +680,18 @@
 
 
 
-
-
-
-
-
-
-
+  
 
   
+  
+  
+<div class="article-container pt-3">
+  <h1>C&#43;&#43; Diary #2 | std::vector::reserve</h1>
+
+  
+
   
     
-  
-
-
-<div class="article-container pt-3">
-  <h1>Libtorch Yolov5</h1>
-
-  
-
-  
 
 
 <div class="article-metadata">
@@ -721,12 +715,17 @@
     
       
     
-    Jul 31, 2020
+    Dec 26, 2020
   </span>
   
 
   
 
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
   
 
   
@@ -737,69 +736,27 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/deep-learning/">Deep Learning</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/category/c-/">C&#43;&#43;</a></span>
   
 
 </div>
 
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="btn-links mb-3">
-  
-  <a class="btn btn-outline-primary my-1" href="https://github.com/yasenh/libtorch-yolov5" target="_blank" rel="noopener">Go to Project Site</a>
-  
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 960px;">
-  <div style="position: relative">
-    <img src="/project/libtorch-yolov5/featured_hue9fdf8ad6736f8ebb2256c47c20d157e_496742_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
     
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 </div>
 
 
@@ -807,7 +764,164 @@
   <div class="article-container">
 
     <div class="article-style">
-      
+      <h2 id="how-a-stdvector-grows">How a <code>std::vector</code> Grows</h2>
+<p>In C++, std::vector provides the capability of creating dynamic arrays. In order to support random element access, the elements in vector container will be assigned to contiguously memory blocks. Considering we pre-allocate certain amount of memory and vector can grow (or shrink) dynamically, here we might raise a question:</p>
+<blockquote>
+<p>When we add a new element, what will happen if there is no space left for the new element?</p>
+</blockquote>
+<p>Obviously, the vector container have to do following steps:</p>
+<ol>
+<li>Allocate a new and larger contiguous memory space</li>
+<li>Move existing elements into the new memory location</li>
+<li>Add current new element to memory</li>
+<li>Deallocate the old memory space</li>
+</ol>
+<blockquote>
+<p>Do we need to allocation and deallocation each time we add an new element?</p>
+</blockquote>
+<p>We cannot avoid performance degradation if memory allocation and deallocation happens every single time. So what is the mechanism to optimize it in  standard library? Here we start with an example.</p>
+<p>First of all, we create a simple class with some print statements for debugging purpose:</p>
+<pre><code class="language-cpp">class MyClass {
+public:
+    explicit MyClass(int x) : x_(x){
+        std::cout &lt;&lt; &quot;Create Class with number &quot; &lt;&lt; x_ &lt;&lt; std::endl;
+    }
+
+    ~MyClass() {
+        std::cout &lt;&lt; &quot;Destroy Class with number &quot; &lt;&lt; x_ &lt;&lt; std::endl;
+    }
+    
+    // Move Constructor
+    MyClass (MyClass&amp;&amp; my_class) noexcept {
+        std::cout &lt;&lt; &quot;Moving &quot; &lt;&lt; my_class.x_ &lt;&lt; std::endl;
+        x_ = std::move(my_class.x_);
+    }
+
+private:
+    int x_ = 0;
+};
+</code></pre>
+<p>Here we create a simple task to add numbers into an vector, and we also print out the 
+<a href="http://www.cplusplus.com/reference/vector/vector/capacity/" target="_blank" rel="noopener">capacity</a>(currently allocated storage) of the vector:</p>
+<pre><code class="language-cpp">int main() {
+    std::vector&lt;MyClass&gt; v;
+    std::cout &lt;&lt; &quot;\n--- Start ---&quot; &lt;&lt; std::endl;
+
+    constexpr int n = 9;
+    for (int i = 0; i &lt; n; i++) {
+        std::cout &lt;&lt; &quot;Insert &quot; &lt;&lt; i &lt;&lt; std::endl;
+        std::cout &lt;&lt; &quot;Current Capacity = &quot; &lt;&lt; v.capacity() &lt;&lt; std::endl;
+        v.emplace_back(i);
+        std::cout &lt;&lt; &quot;New Capacity = &quot; &lt;&lt; v.capacity() &lt;&lt; std::endl;
+        std::cout &lt;&lt; std::endl;
+    }
+
+    std::cout &lt;&lt; &quot;\n--- Finish ---&quot; &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<p>And let&rsquo;s take a look at the result:</p>
+<pre><code class="language-bash">Insert 0
+Current Capacity = 0
+Create Class with number 0
+New Capacity = 1
+
+Insert 1
+Current Capacity = 1
+Create Class with number 1
+Moving 0
+Destroy Class with number 0
+New Capacity = 2
+
+Insert 2
+Current Capacity = 2
+Create Class with number 2
+Moving 0
+Moving 1
+Destroy Class with number 0
+Destroy Class with number 1
+New Capacity = 4
+
+Insert 3
+Current Capacity = 4
+Create Class with number 3
+New Capacity = 4
+
+...
+
+Insert 7
+Current Capacity = 8
+Create Class with number 7
+New Capacity = 8
+
+Insert 8
+Current Capacity = 8
+Create Class with number 8
+Moving 0
+Moving 1
+Moving 2
+Moving 3
+Moving 4
+Moving 5
+Moving 6
+Moving 7
+Destroy Class with number 0
+Destroy Class with number 1
+Destroy Class with number 2
+Destroy Class with number 3
+Destroy Class with number 4
+Destroy Class with number 5
+Destroy Class with number 6
+Destroy Class with number 7
+New Capacity = 16
+</code></pre>
+<p>We notice that the capacity increases from 0-&gt;1-&gt;2-&gt;4-&gt;8-&gt;16, it indicates that the <code>std::vector</code> actually double the capacity each time when it have to allocate larger memory. In other words, it will allocate more memory that is beyond the immediately needs. For example, it allocate new capacity of 16 when we only store 8 elements in the vector.</p>
+<p>However, we should also catch that the class&rsquo;s move (or copy) constructor and the destructor is called multiple times, in order to move elements into new memory location. If we have a relatively complex class with lots of member variables to copy and destroy, then overall time may be <strong>non-negligible</strong>.</p>
+<h2 id="stdvectorreserve">std::vector::reserve</h2>
+<p>A call to <code>vector::reserve(n)</code>  requests the amount of memory which is at least enough to carry $n$ elements:</p>
+<pre><code class="language-cpp">// Reserve space to avoid reallocation
+v.reserve(500);
+</code></pre>
+<p>As a result, it is not necessary to reallocate memory every time, because we already reserved enough amount of memory ahead.</p>
+<pre><code class="language-bash">Insert 0
+Current Capacity = 500
+Create Class with number 0
+New Capacity = 500
+
+Insert 1
+Current Capacity = 500
+Create Class with number 1
+New Capacity = 500
+
+Insert 2
+Current Capacity = 500
+Create Class with number 2
+New Capacity = 500
+
+...
+
+Insert 8
+Current Capacity = 500
+Create Class with number 8
+New Capacity = 500
+</code></pre>
+<h2 id="reserve-vs-resize">reserve vs. resize</h2>
+<p>Vector container have two kinds of capacity parameters, <code>size</code> and <code>capacity</code>:</p>
+<ol>
+<li><code>vector::size</code> returns the number of actual object held in the vector, which is not necessarily equal to the storage capacity. We could use <code>vector::resize</code> to change the number of real elements by inserting or erasing elements from it. It will change <code>capacity</code> only when the resize number is greater than the current container&rsquo;s capacity.</li>
+<li><code>vector::capacity</code> return the size of the storage space currently allocated for the vector. It can be equal or greater than current number of elements in the vector. <code>vector::reserve</code> can request a change in <code>capacity</code>, however it does not effect the <code>size</code> of vector or its actual elements.</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<p>If we have a rough estimation of the number of elements we will store into the vector, we should then use<code>std::vector::reserve</code> whenever possible to avoid frequently memory reallocation.</p>
+<h2 id="references">References</h2>
+<ol>
+<li>C++ Primer (5th Edition): Chapter 9.4</li>
+<li>
+<a href="https://www.geeksforgeeks.org/using-stdvectorreserve-whenever-possible/" target="_blank" rel="noopener">Using std::vector::reserve whenever possible</a></li>
+<li>
+<a href="http://www.cplusplus.com/reference/vector/vector/reserve/" target="_blank" rel="noopener">cplusplus.com - std::vector::reserve</a></li>
+</ol>
+
     </div>
 
     
@@ -817,7 +931,7 @@
 
 <div class="article-tags">
   
-  <a class="badge badge-light" href="/tag/deep-learning/">Deep Learning</a>
+  <a class="badge badge-light" href="/tag/cpp/">cpp</a>
   
 </div>
 
@@ -834,7 +948,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;text=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://yasenh.github.io/post/cpp-diary-2-reserve-resize/&amp;text=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -847,7 +961,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/project/libtorch-yolov5/&amp;t=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://yasenh.github.io/post/cpp-diary-2-reserve-resize/&amp;t=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -860,7 +974,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Libtorch%20Yolov5&amp;body=https://yasenh.github.io/project/libtorch-yolov5/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve&amp;body=https://yasenh.github.io/post/cpp-diary-2-reserve-resize/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -873,7 +987,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;title=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://yasenh.github.io/post/cpp-diary-2-reserve-resize/&amp;title=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -886,7 +1000,7 @@
       
       
       <li>
-        <a href="whatsapp://send?text=Libtorch%20Yolov5%20https://yasenh.github.io/project/libtorch-yolov5/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="whatsapp://send?text=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve%20https://yasenh.github.io/post/cpp-diary-2-reserve-resize/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -899,7 +1013,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/project/libtorch-yolov5/&amp;title=Libtorch%20Yolov5" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://yasenh.github.io/post/cpp-diary-2-reserve-resize/&amp;title=C&#43;&#43;%20Diary%20#2%20%7c%20std::vector::reserve" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -1019,27 +1133,20 @@
 
   
   
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/cpp-diary-1-emplace_back/">C&#43;&#43; Diary #1 | emplace_back vs. push_back</a></li>
+      
+    </ul>
+  </div>
+  
 
 
 
 
 
-    <div class="project-related-pages content-widget-hr">
-      
-      
-
-      
-      
-      
-
-      
-      
-      
-
-      
-      
-      
-    </div>
   </div>
 </article>
 
