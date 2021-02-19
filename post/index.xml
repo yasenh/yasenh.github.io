@@ -5,7 +5,7 @@
     <link>https://yasenh.github.io/post/</link>
       <atom:link href="https://yasenh.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2020</copyright><lastBuildDate>Sat, 26 Dec 2020 19:53:55 -0500</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>2021</copyright><lastBuildDate>Sat, 26 Dec 2020 19:53:55 -0500</lastBuildDate>
     <image>
       <url>https://yasenh.github.io/images/icon_hua235b20c26de23a006d4e436991121ab_721_512x512_fill_lanczos_center_2.png</url>
       <title>Posts</title>
@@ -708,7 +708,7 @@ You might see a log similar to this:
 &lt;p&gt;KM(Kuhn–Munkres) algorithm has following steps:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Initialize feasible vertex labelling, where $$l(x) = \min (w(x, y)), (x, y) \in E $$ and $$l(y) = 0$$.&lt;/p&gt;
+&lt;p&gt;Initialize feasible vertex labelling, where $$l(x) = \max (w(x, y)), (x, y) \in E $$ and $$l(y) = 0$$.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Try to find complete(maximum) matching $M$ by using Hungarian algorithm in the equality subgraph.&lt;/p&gt;
