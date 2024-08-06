@@ -66,6 +66,11 @@ skills:
         percent: 80
         icon: camera-retro
         icon_pack: fas
+      - name: Drumming
+        description: ''
+        percent: 60
+        icon: drum
+        icon_pack: fas
 
 # Social/Academic Networking
 # For available icons, see: https://wowchemy.com/docs/getting-started/page-builder/#icons
