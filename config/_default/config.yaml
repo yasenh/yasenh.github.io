@@ -21,9 +21,8 @@ removePathAccents: true
 
 module:
   imports:
-    - path: github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-plugin-netlify
-    - path: github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-plugin-reveal
-    - path: github.com/wowchemy/wowchemy-hugo-themes/modules/wowchemy-bootstrap/v5
+    - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-plugin-reveal
+    - path: github.com/HugoBlox/hugo-blox-builder/modules/blox-bootstrap/v5
 
 ############################
 ## ADVANCED
